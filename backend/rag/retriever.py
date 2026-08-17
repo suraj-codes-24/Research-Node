@@ -11,11 +11,11 @@ Full Pipeline:
 Guide Reference: §22, §23, §24, §25, §26, §31
 """
 
+from backend.config import settings
 from backend.embeddings.embedder import get_embedder, get_vector_store
 from backend.graph.neo4j_service import get_neo4j_service
 from backend.rag.query_rewriter import QueryRewriter
 from backend.rag.reranker import LLMReranker
-from backend.config import settings
 
 
 class HybridRetriever:

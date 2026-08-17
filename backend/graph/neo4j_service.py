@@ -1,5 +1,7 @@
 from neo4j import GraphDatabase
+
 from backend.config import settings
+
 
 class Neo4jService:
     """
@@ -74,7 +76,7 @@ class Neo4jService:
         
         # Add dynamic properties if they exist
         if properties:
-            set_clauses = [f"e.{k} = ${k}" for k in properties.keys()]
+            set_clauses = [f"e.{k} = ${k}" for k in properties]
             query += f"ON CREATE SET {', '.join(set_clauses)} "
             query += f"ON MATCH SET {', '.join(set_clauses)} "
             

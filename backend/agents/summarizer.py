@@ -6,7 +6,9 @@ immediate context without needing to ask a question.
 """
 
 import ollama
+
 from backend.config import settings
+
 
 class PaperSummarizer:
     def __init__(self):

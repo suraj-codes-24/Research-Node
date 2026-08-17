@@ -1,10 +1,13 @@
 import uuid
+
 import numpy as np
-from sentence_transformers import SentenceTransformer
-from qdrant_client import QdrantClient
-from qdrant_client.http.models import Distance, VectorParams, PointStruct
 from langchain_text_splitters import RecursiveCharacterTextSplitter
+from qdrant_client import QdrantClient
+from qdrant_client.http.models import Distance, PointStruct, VectorParams
+from sentence_transformers import SentenceTransformer
+
 from backend.config import settings
+
 
 class TextChunker:
     def __init__(self, chunk_size=1000, chunk_overlap=200):

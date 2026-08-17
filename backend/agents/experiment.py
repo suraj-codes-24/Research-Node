@@ -1,8 +1,11 @@
 import json
+
 import ollama
+
 from backend.config import settings
-from backend.embeddings.embedder import get_vector_store, get_embedder
+from backend.embeddings.embedder import get_embedder, get_vector_store
 from backend.graph.neo4j_service import get_neo4j_service
+
 
 class ExperimentAgent:
     def __init__(self):

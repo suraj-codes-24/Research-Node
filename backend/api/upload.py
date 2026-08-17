@@ -8,17 +8,18 @@ Endpoints:
     DELETE /api/papers/{id}  — Delete a paper and its associated data
 """
 
-from fastapi import APIRouter, UploadFile, File, HTTPException
-from pathlib import Path
-import uuid
 import time
+import uuid
+from pathlib import Path
 
+from fastapi import APIRouter, File, HTTPException, UploadFile
+
+from backend.agents.summarizer import PaperSummarizer
 from backend.config import settings
-from backend.pdf_processing.extractor import PDFExtractor
-from backend.pdf_processing.cleaner import TextCleaner
 from backend.embeddings.embedder import TextChunker, get_embedder, get_vector_store
 from backend.graph.graph_builder import GraphBuilder
-from backend.agents.summarizer import PaperSummarizer
+from backend.pdf_processing.cleaner import TextCleaner
+from backend.pdf_processing.extractor import PDFExtractor
 
 router = APIRouter(prefix="/api", tags=["Papers"])
 
@@ -137,7 +138,7 @@ async def upload_paper(file: UploadFile = File(...)):
         "status": status,
         "chunks_count": chunks_count,
         "size_mb": round(size_mb, 2),
-        "message": f"Paper '{file.filename}' uploaded and processed successfully." if status == "processed" else f"Paper uploaded but processing failed.",
+        "message": f"Paper '{file.filename}' uploaded and processed successfully." if status == "processed" else "Paper uploaded but processing failed.",
         "summary": summary,
     }
 

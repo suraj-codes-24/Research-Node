@@ -8,7 +8,9 @@ Guide Reference: §32 (Monitoring)
 """
 
 import time
+
 from fastapi import APIRouter
+
 from backend.config import settings
 
 router = APIRouter(prefix="/api", tags=["Health"])
@@ -33,8 +35,8 @@ async def detailed_health():
 
     # --- Check Ollama ---
     try:
-        import urllib.request
         import json
+        import urllib.request
         resp = urllib.request.urlopen(f"{settings.ollama_host}/api/tags", timeout=3)
         data = json.loads(resp.read().decode())
         models = [m["name"] for m in data.get("models", [])]

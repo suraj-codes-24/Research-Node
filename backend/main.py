@@ -6,14 +6,15 @@ Run with: uvicorn backend.main:app --reload
 """
 
 from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.config import settings
-from backend.api.upload import router as upload_router
-from backend.api.query import router as query_router
 from backend.api.feedback import router as feedback_router
 from backend.api.health import router as health_router
+from backend.api.query import router as query_router
+from backend.api.upload import router as upload_router
+from backend.config import settings
 
 
 @asynccontextmanager

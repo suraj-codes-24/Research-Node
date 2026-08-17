@@ -1,5 +1,6 @@
 import fitz  # PyMuPDF
 
+
 class PDFExtractor:
     def extract(self, file_path: str) -> str:
         """

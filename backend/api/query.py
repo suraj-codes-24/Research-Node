@@ -18,15 +18,18 @@ Endpoints:
     GET  /api/recommendations    — AI-generated research recommendations
 """
 
+import json
+
+import ollama
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
-from typing import Optional
 
-from backend.rag.retriever import HybridRetriever
-from backend.rag.generator import AnswerGenerator
+from backend.agents import ContradictionAgent, ExperimentAgent, LiteratureAgent
+from backend.config import settings
 from backend.graph.neo4j_service import get_neo4j_service
-from backend.agents import LiteratureAgent, ContradictionAgent, ExperimentAgent
+from backend.rag.generator import AnswerGenerator
+from backend.rag.retriever import HybridRetriever
 
 router = APIRouter(prefix="/api", tags=["Query & Agents"])
 
@@ -58,7 +61,7 @@ class ConversationTurn(BaseModel):
 
 class QueryRequest(BaseModel):
     question: str
-    conversation_history: Optional[list[ConversationTurn]] = None
+    conversation_history: list[ConversationTurn] | None = None
 
 
 class LiteratureRequest(BaseModel):
@@ -70,7 +73,6 @@ async def ask_question(request: QueryRequest):
     """
     Ask a question about uploaded papers, streaming the response.
     """
-    import json
     if not request.question.strip():
         raise HTTPException(status_code=400, detail="Question cannot be empty.")
 
@@ -110,7 +112,7 @@ async def ask_question(request: QueryRequest):
     except Exception as e:
         raise HTTPException(
             status_code=500,
-            detail=f"Error processing query: {str(e)}"
+            detail=f"Error processing query: {e!s}"
         )
 
 
@@ -202,9 +204,6 @@ async def export_report(request: ExportRequest):
         raise HTTPException(status_code=400, detail="Conversation history is empty.")
 
     try:
-        from backend.config import settings
-        import ollama
-        
         client = ollama.Client(host=settings.ollama_host)
         model = settings.ollama_model
 
@@ -233,4 +232,4 @@ async def export_report(request: ExportRequest):
         
         return {"report": report_markdown}
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Failed to generate report: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to generate report: {e!s}")

@@ -1,6 +1,8 @@
-import spacy
-import ollama
 import json
+
+import ollama
+import spacy
+
 from backend.config import settings
 from backend.graph.neo4j_service import get_neo4j_service
 

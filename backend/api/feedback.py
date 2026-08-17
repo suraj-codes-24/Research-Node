@@ -9,10 +9,10 @@ Guide Reference: §32 (Monitoring & Feedback), §33 (RAG Evaluation)
 
 import json
 import time
-from pathlib import Path
+
 from fastapi import APIRouter
 from pydantic import BaseModel
-from typing import Optional
+
 from backend.config import settings
 
 router = APIRouter(prefix="/api", tags=["Feedback"])
@@ -25,7 +25,7 @@ class FeedbackRequest(BaseModel):
     query: str
     answer: str
     rating: str  # "helpful", "incorrect", "missing"
-    comment: Optional[str] = ""
+    comment: str | None = ""
 
 
 def _load_feedback() -> list:

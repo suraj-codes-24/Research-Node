@@ -5,8 +5,9 @@ Loads settings from environment variables using Pydantic BaseSettings.
 API keys and database URLs are never hardcoded — they come from env vars.
 """
 
-from pydantic_settings import BaseSettings
 from pathlib import Path
+
+from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):

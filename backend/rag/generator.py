@@ -8,8 +8,8 @@ Guide Reference: §19 (Generation), §29 (Hallucination Guard), §31 (Answer Val
 """
 
 import ollama
-from backend.config import settings
 
+from backend.config import settings
 
 # RAG Prompt Template (enhanced with conversation history support)
 RAG_PROMPT_TEMPLATE = """You are a research assistant analyzing scientific papers. Based on the following context retrieved from research papers, answer the question thoroughly and accurately.
@@ -103,7 +103,7 @@ class AnswerGenerator:
                 yield f"data: {json.dumps({'type': 'token', 'content': text_chunk})}\n\n"
                 
         except Exception as e:
-            full_answer = f"Error generating answer: {str(e)}"
+            full_answer = f"Error generating answer: {e!s}"
             yield f"data: {json.dumps({'type': 'token', 'content': full_answer})}\n\n"
 
         # End of generation, now process metadata

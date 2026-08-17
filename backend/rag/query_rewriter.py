@@ -8,6 +8,7 @@ Guide Reference: §22 (Retrieval Quality), §31 (Query Understanding), §37 (Que
 """
 
 import ollama
+
 from backend.config import settings
 
 
