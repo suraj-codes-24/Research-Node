@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+python-multipart
+pymupdf
+langchain
+langchain-community
+pydantic-settings
+
+sentence-transformers
+qdrant-client
+
+# Phase C: RAG Pipeline
+ollama
+langchain-text-splitters
+neo4j
+spacy

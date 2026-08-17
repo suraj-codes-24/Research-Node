@@ -1,0 +1,252 @@
+.agents-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.agent-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 1rem;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-color);
+}
+
+.tab-btn.active {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.agent-workspace {
+  min-height: 400px;
+}
+
+.agent-controls p {
+  margin-bottom: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.agent-result {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--glass-border);
+}
+
+.agent-result h3 {
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.summary-text {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.two-col-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.result-card {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.result-card h4 {
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.result-card ul, .result-card ol {
+  padding-left: 1.5rem;
+  color: var(--text-muted);
+}
+
+.result-card li {
+  margin-bottom: 0.75rem;
+}
+
+.result-card li strong {
+  color: #e2e8f0;
+  display: block;
+}
+
+.result-card li p {
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+}
+
+/* Contradictions */
+.contradiction-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.conflict-card {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  border-left-width: 4px;
+}
+
+.conflict-card.severity-high { border-left-color: var(--danger); }
+.conflict-card.severity-medium { border-left-color: var(--warning); }
+.conflict-card.severity-low { border-left-color: var(--success); }
+
+.conflict-header {
+  margin-bottom: 1rem;
+}
+
+.explanation {
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+
+.claim-comparison {
+  display: flex;
+  align-items: stretch;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.claim-box {
+  flex: 1;
+}
+
+.claim-box strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.vs-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: var(--danger);
+  padding: 0 1rem;
+}
+
+/* Experiments */
+.experiment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.experiment-card {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.experiment-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.exp-header h4 {
+  margin: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+}
+
+.score-badge {
+  background: rgba(139, 92, 246, 0.2);
+  color: #c4b5fd;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.rationale {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.exp-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.exp-meta ul {
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.empty-icon {
+  margin-bottom: 1rem;
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--danger);
+  background: rgba(239, 68, 68, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
