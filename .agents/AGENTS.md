@@ -25,7 +25,7 @@
 | Frontend Framework | React + Vite | 2026-07-27 |
 | Backend Framework | FastAPI + Uvicorn | 2026-07-27 |
 | Build Approach | Step-by-step, educational | 2026-07-27 |
-| Python Version | 3.12 | 2026-07-27 |
+| Python Version | 3.14 | 2026-08-17 |
 
 ## Build Order
 
@@ -68,7 +68,7 @@ Phase F: Agents
 ## Environment
 
 - **OS:** Windows
-- **Python:** 3.12
+- **Python:** 3.14
 - **Gemini API Key:** Configured (env var: GEMINI_API_KEY)
 - **Qdrant:** NOT YET INSTALLED
 - **Neo4j:** NOT YET INSTALLED
