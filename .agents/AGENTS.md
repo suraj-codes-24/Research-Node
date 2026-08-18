@@ -18,7 +18,7 @@
 
 | Decision | Choice | Date |
 |----------|--------|------|
-| LLM Provider | Hybrid: Gemini (RAG) + Ollama (Reports) | 2026-08-18 |
+| LLM Provider | Ollama (local) | 2026-08-18 |
 | Embedding Model | all-MiniLM-L6-v2 (384 dims) | 2026-07-27 |
 | Vector Database | Qdrant (local) | 2026-07-27 |
 | Graph Database | Neo4j (add later, not required for initial phases) | 2026-07-27 |
@@ -40,7 +40,7 @@ Phase B: Embeddings + Vector Search
   ⑤ Qdrant setup + vector storage/search
 
 Phase C: RAG Pipeline
-  ⑥ Gemini API integration
+  ⑥ Ollama API integration
   ⑦ Basic RAG (question → retrieve → LLM answer)
 
 Phase D: Knowledge Graph
@@ -69,7 +69,7 @@ Phase F: Agents
 
 - **OS:** Windows
 - **Python:** 3.14
-- **Gemini API Key:** Configured (env var: GEMINI_API_KEY)
+- **Ollama:** Configured (env var: OLLAMA_HOST, OLLAMA_MODEL)
 - **Qdrant:** NOT YET INSTALLED
 - **Neo4j:** NOT YET INSTALLED
 - **Node.js:** (check version before frontend phase)
@@ -216,7 +216,7 @@ Port: **7687** (Bolt protocol).
 ### Phase D
 - `Neo4jService` — `create_paper_node()`, `create_entity_node()`, `create_relationship()`, `get_paper_subgraph()`, `get_full_graph()`, `query()`, `find_research_gaps()`, `close()`
 - `NERExtractor` — `extract_entities(text) → list[dict]` (spaCy)
-- `LLMEntityExtractor` — `extract_structured(text) → dict` (Gemini)
+- `LLMEntityExtractor` — `extract_structured(text) → dict` (Ollama)
 - `RelationshipIdentifier` — `identify(entities, text) → list[dict]`
 - `HybridRetriever` — `retrieve(query, top_k) → {vector_chunks, graph_context, combined_context}`
 

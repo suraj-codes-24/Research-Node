@@ -46,7 +46,7 @@ class LiteratureAgent:
                             graph_context += f"- {node['label']}: {node.get('props', {}).get('name', '')}\n"
                         graph_context += "\n"
 
-        # 3. Gemini Synthesis
+        # 3. Ollama Synthesis
         prompt = f"""
         You are a Literature Discovery Agent.
         Analyze the following context regarding the topic: "{topic}".

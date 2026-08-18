@@ -38,7 +38,7 @@ class NERExtractor:
 
 
 class LLMEntityExtractor:
-    """Uses Gemini to extract structured scientific entities (Models, Methods, Datasets, Tasks)."""
+    """Uses Ollama to extract structured scientific entities (Models, Methods, Datasets, Tasks)."""
     
     def __init__(self):
         self.client = ollama.Client(host=settings.ollama_host)
@@ -93,7 +93,7 @@ class GraphBuilder:
         """
         Extract entities from a paper and insert into Neo4j.
         - Uses spaCy on the title/abstract for fast Author/Org extraction.
-        - Uses Gemini on the abstract for complex Models/Methods extraction.
+        - Uses Ollama on the abstract for complex Models/Methods extraction.
         """
         if not self.neo4j.driver:
             print("GraphBuilder: Neo4j not connected. Skipping graph extraction.")
@@ -116,7 +116,7 @@ class GraphBuilder:
                     to_label="Author", to_prop="name", to_val=ent["name"]
                 )
 
-        # 3. LLM Extraction (Gemini) - for scientific entities
+        # 3. LLM Extraction (Ollama) - for scientific entities
         # To save API costs, we only do this if abstract is provided
         if abstract.strip():
             llm_entities = self.llm.extract_structured(abstract)
