@@ -18,7 +18,7 @@
 
 | Decision | Choice | Date |
 |----------|--------|------|
-| LLM Provider | Google Gemini API (free tier) | 2026-07-27 |
+| LLM Provider | Hybrid: Gemini (RAG) + Ollama (Reports) | 2026-08-18 |
 | Embedding Model | all-MiniLM-L6-v2 (384 dims) | 2026-07-27 |
 | Vector Database | Qdrant (local) | 2026-07-27 |
 | Graph Database | Neo4j (add later, not required for initial phases) | 2026-07-27 |
