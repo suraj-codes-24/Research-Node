@@ -41,6 +41,7 @@ graph TB
         L["Neo4j Graph Database"]
         M["Qdrant Vector Database"]
         N["File System (PDFs)"]
+        P["PostgreSQL (Neon DB)"]
     end
 
     subgraph "External Services"
@@ -248,6 +249,7 @@ backend/graph/
 | `get_paper_subgraph()` | Paper ID | Nodes + edges JSON |
 | `get_full_graph()` | — | Complete graph JSON |
 | `find_missing_edges()` | — | Potential research gaps |
+| `compare_papers()` | List of Paper IDs | Shared and distinct entities |
 
 **Neo4j Schema:**
 
@@ -339,27 +341,26 @@ graph TD
 
 ---
 
-### 4.7 API Layer
+### 4.7 API Interface Module
 
 ```
 backend/api/
-├── upload.py    — Paper upload endpoints
-└── query.py     — Query and agent endpoints
+├── upload.py       — File upload endpoints
+├── query.py        — Search, reasoning, graph, agents, and compare endpoints
+├── sessions.py     — PostgreSQL session management endpoints
+└── nodes.py        — Node annotations and contextual AI summaries
 ```
 
-**API Design:**
-
-| Endpoint | Method | Request Body | Response |
-|----------|--------|-------------|----------|
-| `/api/upload-paper` | POST | `multipart/form-data` (file) | `{paper_id, title, status}` |
-| `/api/papers` | GET | — | `[{paper_id, title, pages, date}]` |
-| `/api/query` | POST | `{question: str}` | `{answer, citations[], graph_context}` |
-| `/api/graph` | GET | — | `{nodes[], edges[]}` |
-| `/api/graph/{paper_id}` | GET | — | `{nodes[], edges[]}` |
-| `/api/agents/literature` | POST | `{topic: str}` | `{papers[], relationships[]}` |
-| `/api/agents/contradiction` | POST | — | `{contradictions[]}` |
-| `/api/agents/experiment` | POST | — | `{suggestions[]}` |
-| `/api/recommendations` | GET | — | `{gaps[], trends[]}` |
+| Component | Input | Output | Description |
+|-----------|-------|--------|-------------|
+| `upload_paper()` | PDF file | `{"paper_id": "...", "status": "success"}` | Handles upload |
+| `ask_question()` | Query text | Streamed answer string | Hybrid RAG |
+| `get_paper_graph()` | Paper ID | Subgraph JSON | Fetch local graph |
+| `get_full_graph()` | — | Complete graph JSON | Fetch all graph |
+| `compare_papers()` | List of Paper IDs | Intersection/Distinct JSON | Multi-paper overlap |
+| `predict_graph_links()` | — | List of predicted links | AI node relationships |
+| `get_node_annotations()` | Node ID | Notes and AI Summary | Fetch node metadata |
+| `save_node_annotations()` | Note text | Status success | Save user notes |
 
 ---
 
@@ -371,7 +372,9 @@ frontend/src/
 │   ├── Upload.jsx       — Paper upload form
 │   ├── Chat.jsx         — Question-answer interface
 │   ├── Graph.jsx        — Knowledge graph visualization
-│   └── Dashboard.jsx    — Overview and navigation
+│   ├── Dashboard.jsx    — Overview and navigation
+│   ├── Compare.jsx      — Multi-paper comparison diagram
+│   └── Agents.jsx       — Multi-agent execution dashboard
 ├── App.jsx
 └── index.js
 ```
@@ -385,6 +388,8 @@ graph TD
     App --> Upload["Upload Page"]
     App --> Chat["Chat Page"]
     App --> Graph["Graph View"]
+    App --> Compare["Compare View"]
+    App --> Agents["Agents Dashboard"]
 
     Dash --> PaperList["Paper List"]
     Dash --> Stats["System Stats"]
@@ -441,6 +446,30 @@ graph LR
 | `payload.chunk_text` | string | Original text content |
 | `payload.section` | string | Paper section (abstract, method, etc.) |
 
+### 5.3 PostgreSQL Relational Schema
+
+**Table:** `sessions`
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | TEXT (UUID) | Session identifier |
+| `title` | TEXT | Chat title |
+| `created_at` | TIMESTAMP | Creation time |
+
+**Table:** `messages`
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | INTEGER | Message ID |
+| `session_id` | TEXT (FK) | Reference to `sessions` |
+| `role` | TEXT | 'user' or 'ai' |
+| `content` | TEXT | Message body |
+
+**Table:** `node_annotations`
+| Field | Type | Description |
+|-------|------|-------------|
+| `node_id` | TEXT | Corresponds to Neo4j Node ID |
+| `notes` | TEXT | User-authored notes |
+| `ai_summary` | TEXT | Cached Mini-RAG summary |
+
 ---
 
 ## 6. Technology Justification
@@ -448,12 +477,13 @@ graph LR
 | Technology | Choice | Justification |
 |-----------|--------|---------------|
 | Backend Framework | FastAPI | Async support, auto-documentation, type validation, high performance |
-| Frontend Framework | React | Component-based, large ecosystem, excellent for SPAs |
+| Frontend Framework | React + Vite | Fast HMR, component-based, large ecosystem. UI styled with Neon-Glassmorphism CSS |
 | Graph Database | Neo4j | Industry standard for graph data, Cypher query language, Python driver |
 | Vector Database | Qdrant | Rust-based (fast), simple API, metadata filtering, open-source |
+| Relational DB | PostgreSQL (Neon) | Robust persistence for chat sessions, messages, and node annotations |
 | Embedding Model | all-MiniLM-L6-v2 | Good quality/speed tradeoff, 384 dims (memory efficient), free |
 | PDF Extraction | PyMuPDF | Fast, reliable, handles most PDF formats, pure Python |
 | NLP | spaCy | Pre-trained NER models, fast, production-ready |
 | LLM Orchestration | LangChain | Abstracts LLM providers, text splitters, prompt templates, chain composition |
 | Graph Visualization | Cytoscape.js | Mature, performant, extensive styling options, academic origin |
-| Language | Python 3.12 | ML/AI ecosystem, Neo4j/Qdrant drivers, FastAPI support |
+| Local LLM | Ollama | Runs local AI models for contextual summaries without API costs |

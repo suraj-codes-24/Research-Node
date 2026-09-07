@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { FileText, Database, Share2, Upload, MessageSquare, Server, CheckCircle, XCircle, AlertCircle, Cpu, HardDrive } from 'lucide-react';
+import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { FileText, Database, Share2, Upload, MessageSquare, Server, CheckCircle, XCircle, AlertCircle, Cpu, HardDrive, Sparkles, BookOpen, PieChart as PieChartIcon } from 'lucide-react';
+import { useSession } from '../context/SessionContext';
 import './Dashboard.css';
 
 const Dashboard = () => {
+  const { currentSessionId } = useSession();
   const [stats, setStats] = useState({
     papersCount: 0,
     graphNodes: 0,
     graphEdges: 0,
+    nodesData: [],
+    edgesData: []
   });
+  const [papers, setPapers] = useState([]);
   const [health, setHealth] = useState(null);
   const [feedbackStats, setFeedbackStats] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -17,17 +23,34 @@ const Dashboard = () => {
 
   useEffect(() => {
     const fetchStats = async () => {
+      if (!currentSessionId) {
+        setStats({
+          papersCount: 0,
+          graphNodes: 0,
+          graphEdges: 0,
+          nodesData: [],
+          edgesData: []
+        });
+        setPapers([]);
+        setLoading(false);
+        return;
+      }
+
       try {
+        const queryParam = `?session_id=${currentSessionId}`;
         const [papersRes, graphRes] = await Promise.all([
-          axios.get('/api/papers'),
-          axios.get('/api/graph')
+          axios.get(`/api/papers${queryParam}`),
+          axios.get(`/api/graph${queryParam}`)
         ]);
         
         setStats({
           papersCount: papersRes.data.count || 0,
           graphNodes: graphRes.data.nodes?.length || 0,
           graphEdges: graphRes.data.edges?.length || 0,
+          nodesData: graphRes.data.nodes || [],
+          edgesData: graphRes.data.edges || []
         });
+        setPapers(papersRes.data.papers || []);
       } catch (error) {
         console.error("Failed to fetch dashboard stats", error);
       } finally {
@@ -56,13 +79,43 @@ const Dashboard = () => {
     fetchStats();
     fetchHealth();
     fetchFeedback();
-  }, []);
+  }, [currentSessionId]);
 
   const getStatusIcon = (status) => {
     if (status === 'connected' || status === 'running') return <CheckCircle size={16} color="#10b981" />;
     if (status === 'disconnected') return <XCircle size={16} color="#ef4444" />;
     return <AlertCircle size={16} color="#f59e0b" />;
   };
+
+  const getEntityDistribution = () => {
+    const counts = {};
+    stats.nodesData.forEach(n => {
+      const label = n.label || (n.data && n.data.label) || 'Unknown';
+      counts[label] = (counts[label] || 0) + 1;
+    });
+    return Object.entries(counts).map(([name, value]) => ({ name, value }));
+  };
+
+  const getTopConnectedEntities = () => {
+    const connections = {};
+    stats.edgesData.forEach(e => {
+      const source = e.source || (e.data && e.data.source);
+      const target = e.target || (e.data && e.data.target);
+      if (source) connections[source] = (connections[source] || 0) + 1;
+      if (target) connections[target] = (connections[target] || 0) + 1;
+    });
+    
+    return Object.entries(connections)
+      .map(([id, count]) => {
+        const node = stats.nodesData.find(n => (n.id || (n.data && n.data.id)) === id);
+        const name = node ? (node.name || (node.properties && node.properties.name) || (node.data && node.data.name) || id) : id;
+        return { name, connections: count };
+      })
+      .sort((a, b) => b.connections - a.connections)
+      .slice(0, 5);
+  };
+
+  const COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#a855f7', '#f97316', '#64748b'];
 
   return (
     <div className="dashboard-container">
@@ -103,6 +156,64 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+
+      {/* Analytics Charts */}
+      {stats.nodesData.length > 0 && (
+        <div className="analytics-section" style={{ marginTop: '2rem' }}>
+          <h2><PieChartIcon size={20} color="var(--primary)" style={{marginRight: '8px'}} /> Graph Analytics</h2>
+          <div className="charts-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '1.5rem', marginTop: '1rem' }}>
+            
+            {/* Entity Distribution Pie Chart */}
+            <div className="glass-card" style={{ padding: '1.5rem', height: '350px' }}>
+              <h3 style={{ marginBottom: '1rem', fontSize: '1.1rem' }}>Entity Distribution</h3>
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={getEntityDistribution()}
+                    cx="50%"
+                    cy="50%"
+                    innerRadius={60}
+                    outerRadius={100}
+                    paddingAngle={5}
+                    dataKey="value"
+                  >
+                    {getEntityDistribution().map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} stroke="rgba(255,255,255,0.1)" />
+                    ))}
+                  </Pie>
+                  <Tooltip 
+                    contentStyle={{ backgroundColor: '#1e293b', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', color: '#fff' }}
+                    itemStyle={{ color: '#fff' }}
+                  />
+                  <Legend verticalAlign="bottom" height={36} />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+
+            {/* Top Connected Entities Bar Chart */}
+            <div className="glass-card" style={{ padding: '1.5rem', height: '350px' }}>
+              <h3 style={{ marginBottom: '1rem', fontSize: '1.1rem' }}>Top Connected Entities</h3>
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={getTopConnectedEntities()} layout="vertical" margin={{ top: 5, right: 30, left: 40, bottom: 5 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" horizontal={false} />
+                  <XAxis type="number" stroke="#94a3b8" />
+                  <YAxis dataKey="name" type="category" stroke="#94a3b8" width={100} tick={{ fontSize: 11 }} />
+                  <Tooltip 
+                    contentStyle={{ backgroundColor: '#1e293b', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', color: '#fff' }}
+                    cursor={{ fill: 'rgba(255,255,255,0.05)' }}
+                  />
+                  <Bar dataKey="connections" fill="#3b82f6" radius={[0, 4, 4, 0]}>
+                    {getTopConnectedEntities().map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    ))}
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+
+          </div>
+        </div>
+      )}
 
       {/* System Health Panel */}
       {health && (
@@ -168,33 +279,34 @@ const Dashboard = () => {
         </div>
       )}
 
-      {/* Feedback Stats */}
-      {feedbackStats && feedbackStats.total > 0 && (
-        <div className="feedback-stats-section">
-          <h2>User Feedback</h2>
-          <div className="glass-card feedback-stats-card">
-            <div className="feedback-stat">
-              <span className="feedback-stat-number">{feedbackStats.total}</span>
-              <span className="feedback-stat-label">Total Ratings</span>
-            </div>
-            <div className="feedback-stat">
-              <span className="feedback-stat-number" style={{color: '#10b981'}}>{feedbackStats.satisfaction_rate}%</span>
-              <span className="feedback-stat-label">Satisfaction</span>
-            </div>
-            <div className="feedback-stat">
-              <span className="feedback-stat-number" style={{color: '#10b981'}}>{feedbackStats.helpful}</span>
-              <span className="feedback-stat-label">Helpful</span>
-            </div>
-            <div className="feedback-stat">
-              <span className="feedback-stat-number" style={{color: '#ef4444'}}>{feedbackStats.incorrect}</span>
-              <span className="feedback-stat-label">Incorrect</span>
-            </div>
+
+
+      {/* Auto-Generated Insights */}
+      {papers.length > 0 && (
+        <div className="insights-section" style={{ marginTop: '2rem' }}>
+          <h2><Sparkles size={20} color="var(--primary)" style={{marginRight: '8px'}} /> Auto-Generated Insights</h2>
+          <div className="insights-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.5rem', marginTop: '1rem' }}>
+            {papers.map(p => (
+              <div key={p.id} className="glass-card" style={{ display: 'flex', flexDirection: 'column', padding: '1.5rem' }}>
+                <h4 style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', marginBottom: '1rem', color: 'var(--primary)', lineHeight: '1.4' }}>
+                  <BookOpen size={18} style={{ flexShrink: 0, marginTop: '2px' }} />
+                  {p.title.replace(/_/g, ' ').replace('.pdf', '')}
+                </h4>
+                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: '1.6', flex: 1 }}>
+                  {p.summary || "No summary available."}
+                </p>
+                <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid var(--glass-border)', fontSize: '0.75rem', color: 'var(--text-muted)', display: 'flex', justifyContent: 'space-between' }}>
+                  <span>{p.chunks_count || 0} vector chunks</span>
+                  <span>{(p.size_mb || 0)} MB</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       )}
 
       {/* Quick Actions */}
-      <div className="quick-actions-section">
+      <div className="quick-actions-section" style={{ marginTop: '3rem' }}>
         <h2>Quick Actions</h2>
         <div className="actions-grid">
           <div className="glass-card action-card" onClick={() => navigate('/upload')}>

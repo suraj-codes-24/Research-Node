@@ -22,6 +22,7 @@ graph LR
     M5 --> M7["Module 7: API Layer"]
     M6 --> M7
     M7 --> M8["Module 8: Frontend"]
+    M7 --> M9["Module 9: Sessions & Nodes (PostgreSQL)"]
 ```
 
 ---
@@ -575,7 +576,9 @@ backend/
 ├── config.py        — Configuration and environment variables
 └── api/
     ├── upload.py    — Paper upload endpoints
-    └── query.py     — Query and agent endpoints
+    ├── query.py     — Query and agent endpoints
+    ├── sessions.py  — PostgreSQL session endpoints
+    └── nodes.py     — Node notes and AI summary endpoints
 ```
 
 ### Sub-components
@@ -614,9 +617,18 @@ app = FastAPI(title="ResearchNode API")
 | `/api/agents/experiment` | POST | Run experiment suggestion |
 | `/api/recommendations` | GET | Get AI-generated research recommendations |
 
+#### 8.4 Sessions & Nodes Router (`api/sessions.py` & `api/nodes.py`)
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/sessions` | POST, GET | Create/list chat sessions |
+| `/api/sessions/{id}` | GET | Retrieve session messages |
+| `/api/nodes/{id}/annotations` | GET, POST | Manage user notes and AI context per node |
+
 ### Dependencies
 - `fastapi` — Web framework
 - `uvicorn` — ASGI server
+- `psycopg2` — PostgreSQL driver for sessions
 - All business logic modules (2–6)
 
 ---
@@ -636,7 +648,9 @@ frontend/src/
     ├── Dashboard.jsx
     ├── Upload.jsx
     ├── Chat.jsx
-    └── Graph.jsx
+    ├── Graph.jsx
+    ├── Compare.jsx
+    └── SplitView.jsx
 ```
 
 ### Sub-components
@@ -673,10 +687,10 @@ frontend/src/
   - Dataset: 🟠 Orange square
   - Task: 🟣 Purple hexagon
   - Author: ⚪ Gray circle
-- Edge labels showing relationship types
-- Zoom, pan, and click-to-inspect functionality
-- Filter panel to show/hide node types
-- Search within graph
+- Tabbed Sidebar: View Node Details, AI Context, and User Notes
+- Focus Mode: Isolate subgraph when clicking a node
+- Venn Diagram (`Compare.jsx`): Compare entity overlap between multiple papers
+- Split-View (`SplitView.jsx`): View source PDF citations side-by-side with chat
 
 ### Dependencies
 - `react` — UI framework

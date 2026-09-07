@@ -303,6 +303,40 @@
 | **Expected Result** | Interactive graph with color-coded nodes and labeled edges |
 | **Priority** | High |
 
+#### TC-22: Persistent Sessions
+
+| Attribute | Value |
+|-----------|-------|
+| **ID** | TC-22 |
+| **Module** | API / DB |
+| **Description** | Verify chat sessions persist across reloads |
+| **Precondition** | PostgreSQL running |
+| **Steps** | 1. Send chat message 2. Reload page 3. Open session |
+| **Expected Result** | Previous chat messages load from PostgreSQL |
+| **Priority** | High |
+
+#### TC-23: Multi-Paper Comparison (Venn Diagram)
+
+| Attribute | Value |
+|-----------|-------|
+| **ID** | TC-23 |
+| **Module** | Frontend |
+| **Description** | Compare two papers for overlapping entities |
+| **Steps** | 1. Select two papers 2. Click Compare |
+| **Expected Result** | Renders a Venn Diagram showing shared models, methods, etc. |
+| **Priority** | Medium |
+
+#### TC-24: Split-View PDF Citations
+
+| Attribute | Value |
+|-----------|-------|
+| **ID** | TC-24 |
+| **Module** | Frontend |
+| **Description** | View PDF alongside chat |
+| **Steps** | 1. Ask question 2. Click citation chip |
+| **Expected Result** | Opens Split-View displaying the source PDF |
+| **Priority** | High |
+
 ---
 
 ## 3. Test Data
@@ -344,6 +378,9 @@
 | TC-19 | Upload UI | ⬜ Pending | |
 | TC-20 | Chat UI | ⬜ Pending | |
 | TC-21 | Graph Visualization | ⬜ Pending | |
+| TC-22 | Persistent Sessions | ⬜ Pending | |
+| TC-23 | Venn Diagram Compare | ⬜ Pending | |
+| TC-24 | Split-View Citations | ⬜ Pending | |
 
-**Total Test Cases:** 21  
+**Total Test Cases:** 24  
 **Pass Criteria:** All High-priority tests pass; 80%+ of Medium-priority tests pass.

@@ -1,9 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Send, User, Bot, Loader2, BookOpen, ThumbsUp, ThumbsDown, AlertTriangle, Shield, ShieldCheck, ShieldAlert, Sparkles, BarChart3, Search, Scale, Network, Download } from 'lucide-react';
+import { Send, User, Bot, Loader2, BookOpen, ThumbsUp, ThumbsDown, AlertTriangle, Shield, ShieldCheck, ShieldAlert, Sparkles, BarChart3, Search, Scale, Network, Download, MessageSquare, Plus, Trash2 } from 'lucide-react';
 import './Chat.css';
+import { useSession } from '../context/SessionContext';
 
 const Chat = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { currentSessionId, createNewSession, deleteSession: contextDeleteSession, sessionsList } = useSession();
+  
   const [messages, setMessages] = useState([
     {
       role: 'assistant',
@@ -16,7 +22,10 @@ const Chat = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
   const [pipelineStatus, setPipelineStatus] = useState('');
+  const [activePdfUrl, setActivePdfUrl] = useState(null);
+  const [activePdfTitle, setActivePdfTitle] = useState(null);
   const [conversationHistory, setConversationHistory] = useState([]);
+  
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -25,7 +34,80 @@ const Chat = () => {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages, isLoading, pipelineStatus]);
+  }, [messages, pipelineStatus]);
+
+  useEffect(() => {
+    if (currentSessionId) {
+      loadSessionHistory(currentSessionId);
+    } else {
+      setMessages([{
+        role: 'assistant',
+        content: 'Hello! I am your GraphRAG assistant. Ask me anything about the papers you have uploaded.',
+        citations: [],
+        confidence: null
+      }]);
+    }
+  }, [currentSessionId]);
+
+  useEffect(() => {
+    if (location.state?.initialMessage) {
+      setInput(location.state.initialMessage);
+      window.history.replaceState({}, document.title);
+    }
+  }, [location.state]);
+
+  const loadSessionHistory = async (id) => {
+    try {
+      const res = await axios.get(`/api/sessions/${id}`);
+      const history = res.data.messages;
+      
+      if (history.length === 0) {
+        setMessages([{
+          role: 'assistant',
+          content: 'Hello! I am your GraphRAG assistant. Ask me anything about the papers you have uploaded.',
+          citations: [],
+          confidence: null
+        }]);
+        setConversationHistory([]);
+        return;
+      }
+
+      const formattedMessages = history.map(msg => ({
+        role: msg.role,
+        content: msg.content,
+        citations: msg.citations || [],
+        confidence: msg.metadata?.confidence || null,
+        validation: msg.metadata?.validation || null,
+        hasGraphContext: msg.metadata?.has_graph || false,
+        isStreaming: false,
+        isError: false
+      }));
+
+      setMessages(formattedMessages);
+      
+      // Rebuild conversation history for the context array
+      const convHist = [];
+      for(let i = 0; i < history.length - 1; i+=2) {
+         if (history[i].role === 'user' && history[i+1]?.role === 'assistant') {
+            convHist.push({
+               question: history[i].content,
+               answer: history[i+1].content.substring(0, 500)
+            });
+         }
+      }
+      setConversationHistory(convHist);
+
+    } catch (err) {
+      console.error("Failed to load session history", err);
+    }
+  };
+
+  const deleteSession = async (e, id) => {
+    e.stopPropagation();
+    if (window.confirm("Are you sure you want to delete this session?")) {
+      await contextDeleteSession(id);
+    }
+  };
 
   const handleSend = async (e) => {
     e?.preventDefault();
@@ -51,6 +133,12 @@ const Chat = () => {
     setPipelineStatus('Initializing pipeline...');
 
     try {
+      // Auto-create session if none exists
+      let activeSessionId = currentSessionId;
+      if (!activeSessionId) {
+         activeSessionId = await createNewSession();
+      }
+
       const response = await fetch('/api/query', {
         method: 'POST',
         headers: {
@@ -58,7 +146,8 @@ const Chat = () => {
         },
         body: JSON.stringify({
           question: userMessage,
-          conversation_history: conversationHistory.slice(-5)
+          session_id: activeSessionId,
+          conversation_history: [] // Backend handles it now via session_id
         })
       });
 
@@ -272,7 +361,7 @@ const Chat = () => {
 
   return (
     <div className="chat-container">
-      <header className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <header className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div>
           <h1>GraphRAG Chat</h1>
           <p>Ask questions. Get answers backed by your vector and graph database.</p>
@@ -290,8 +379,9 @@ const Chat = () => {
         )}
       </header>
 
-      <div className="glass-card chat-window">
-        <div className="messages-area">
+      <div className={`chat-split-container ${activePdfUrl ? 'pdf-open' : ''}`}>
+        <div className="glass-card chat-window">
+          <div className="messages-area">
           {messages.map((msg, index) => (
             <div key={index} className={`message-wrapper ${msg.role}`}>
               <div className="message-avatar">
@@ -355,21 +445,43 @@ const Chat = () => {
                     {msg.citations && msg.citations.length > 0 && (
                       <div className="citations-list">
                         <strong>Sources:</strong>
-                        {msg.citations.map((cite, i) => (
-                          <div key={i} className="citation-chip-enhanced">
-                            <BookOpen size={12} />
-                            <span className="cite-title">
-                              {typeof cite === 'string' ? cite : cite.paper_title}
-                            </span>
-                            {typeof cite === 'object' && (
-                              <span className="cite-meta">
-                                {cite.section !== 'General' && <span>§{cite.section}</span>}
-                                {cite.relevance_score && <span>{(cite.relevance_score * 100).toFixed(0)}% match</span>}
-                                {cite.rerank_score && <span>⭐{cite.rerank_score}/10</span>}
-                              </span>
-                            )}
-                          </div>
-                        ))}
+                        {msg.citations.map((cite, i) => {
+                          const isObj = typeof cite === 'object';
+                          const title = isObj ? cite.paper_title : cite;
+                          const paperId = isObj ? cite.paper_id : null;
+                          return (
+                            <div key={i} className="citation-chip-enhanced-container" style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
+                              <div 
+                                className={`citation-chip-enhanced ${paperId ? 'clickable' : ''}`}
+                                onClick={() => {
+                                  if (paperId) {
+                                    setActivePdfUrl(`/api/papers/${paperId}/pdf`);
+                                    setActivePdfTitle(title);
+                                  }
+                                }}
+                                title={paperId ? "Click to view PDF" : ""}
+                              >
+                                <BookOpen size={12} />
+                                <span className="cite-title">{title}</span>
+                                {isObj && (
+                                  <span className="cite-meta">
+                                    {cite.section !== 'General' && <span>§{cite.section}</span>}
+                                    {cite.relevance_score && <span>{(cite.relevance_score * 100).toFixed(0)}% match</span>}
+                                    {cite.rerank_score && <span>⭐{cite.rerank_score}/10</span>}
+                                  </span>
+                                )}
+                              </div>
+                              <button 
+                                className="btn btn-icon btn-sm"
+                                onClick={() => navigate(`/graph?highlightTarget=${encodeURIComponent(title)}`)}
+                                title="View in Knowledge Graph"
+                                style={{ padding: '0.2rem' }}
+                              >
+                                <Network size={14} className="text-primary" />
+                              </button>
+                            </div>
+                          );
+                        })}
                       </div>
                     )}
 
@@ -413,6 +525,33 @@ const Chat = () => {
             <Send size={18} />
           </button>
         </form>
+        </div>
+
+        {activePdfUrl && (
+          <div className="pdf-viewer-pane glass-card fade-in">
+            <div className="pdf-header">
+              <div className="pdf-title">
+                <BookOpen size={16} />
+                <span>{activePdfTitle}</span>
+              </div>
+              <button 
+                className="close-pdf-btn" 
+                onClick={() => {
+                  setActivePdfUrl(null);
+                  setActivePdfTitle(null);
+                }}
+                title="Close PDF"
+              >
+                &times;
+              </button>
+            </div>
+            <iframe 
+              src={activePdfUrl} 
+              className="pdf-iframe" 
+              title="PDF Viewer"
+            ></iframe>
+          </div>
+        )}
       </div>
     </div>
   );

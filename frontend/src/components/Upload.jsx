@@ -1,14 +1,19 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
-import { UploadCloud, File, CheckCircle, AlertCircle, Loader, Sparkles } from 'lucide-react';
+import { FileText, File, CheckCircle, AlertCircle, Loader, Sparkles, X } from 'lucide-react';
+import { useSession } from '../context/SessionContext';
 import './Upload.css';
 
 const UploadPage = () => {
-  const [file, setFile] = useState(null);
+  const { currentSessionId } = useSession();
+  const [files, setFiles] = useState([]);
   const [isDragging, setIsDragging] = useState(false);
-  const [status, setStatus] = useState('idle'); // idle, uploading, success, error
+  
+  // idle, uploading, success, error, partial_success
+  const [status, setStatus] = useState('idle'); 
   const [message, setMessage] = useState('');
-  const [result, setResult] = useState(null);
+  const [results, setResults] = useState([]);
+  const [uploadProgress, setUploadProgress] = useState(0);
   const fileInputRef = useRef(null);
 
   const handleDragOver = (e) => {
@@ -26,100 +31,153 @@ const UploadPage = () => {
     setIsDragging(false);
     
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-      const droppedFile = e.dataTransfer.files[0];
-      validateAndSetFile(droppedFile);
+      validateAndAddFiles(Array.from(e.dataTransfer.files));
     }
   };
 
   const handleFileChange = (e) => {
     if (e.target.files && e.target.files.length > 0) {
-      validateAndSetFile(e.target.files[0]);
+      validateAndAddFiles(Array.from(e.target.files));
     }
   };
 
-  const validateAndSetFile = (selectedFile) => {
-    if (selectedFile.type !== 'application/pdf') {
-      setStatus('error');
-      setMessage('Only PDF files are supported.');
-      return;
+  const validateAndAddFiles = (selectedFiles) => {
+    // Filter PDFs and size
+    const validFiles = selectedFiles.filter(f => f.type === 'application/pdf' && f.size <= 50 * 1024 * 1024);
+    
+    if (validFiles.length < selectedFiles.length) {
+      alert("Some files were skipped because they are not PDFs or exceed 50MB.");
     }
     
-    if (selectedFile.size > 50 * 1024 * 1024) {
-      setStatus('error');
-      setMessage('File exceeds 50MB limit.');
-      return;
-    }
-
-    setFile(selectedFile);
+    setFiles(prev => {
+      const combined = [...prev, ...validFiles];
+      if (combined.length > 10) {
+        alert("You can only upload a maximum of 10 papers at once.");
+        return combined.slice(0, 10);
+      }
+      return combined;
+    });
+    
     setStatus('idle');
     setMessage('');
-    setResult(null);
+    setResults([]);
+    setUploadProgress(0);
+  };
+
+  const removeFile = (indexToRemove) => {
+    setFiles(files.filter((_, index) => index !== indexToRemove));
   };
 
   const handleUpload = async () => {
-    if (!file) return;
+    if (files.length === 0) return;
+    
+    if (!currentSessionId) {
+      setStatus('error');
+      setMessage('Please create or select a workspace session first from the sidebar.');
+      return;
+    }
 
     setStatus('uploading');
-    setMessage('Uploading and processing paper. This involves chunking, embedding, and knowledge graph extraction (may take a minute)...');
-    
-    const formData = new FormData();
-    formData.append('file', file);
+    setResults([]);
+    let successCount = 0;
+    let newResults = [];
 
-    try {
-      const response = await axios.post('/api/upload-paper', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      setUploadProgress(i + 1);
+      setMessage(`Processing paper ${i + 1} of ${files.length}: ${file.name}...`);
       
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('session_id', currentSessionId);
+
+      try {
+        const response = await axios.post('/api/upload-paper', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
+        
+        newResults.push({ file: file.name, success: true, data: response.data });
+        successCount++;
+      } catch (error) {
+        console.error(`Error uploading ${file.name}:`, error);
+        newResults.push({ 
+          file: file.name, 
+          success: false, 
+          error: error.response?.data?.detail || 'An error occurred during upload.'
+        });
+      }
+      // Update results dynamically so user sees them appear
+      setResults([...newResults]);
+    }
+
+    if (successCount === files.length) {
       setStatus('success');
-      setResult(response.data);
-      setMessage('Upload complete! The paper has been processed into the vector store and knowledge graph.');
-    } catch (error) {
-      console.error(error);
+      setMessage('All papers uploaded and processed successfully!');
+    } else if (successCount > 0) {
+      setStatus('partial_success');
+      setMessage(`${successCount} out of ${files.length} papers processed successfully.`);
+    } else {
       setStatus('error');
-      setMessage(error.response?.data?.detail || 'An error occurred during upload.');
+      setMessage('All uploads failed.');
     }
   };
 
   return (
     <div className="upload-container">
       <header className="page-header">
-        <h1>Upload Paper</h1>
-        <p>Add scientific literature to your GraphRAG Knowledge Base.</p>
+        <h1>Upload Papers</h1>
+        <p>Add scientific literature to your GraphRAG Knowledge Base (up to 10 at once).</p>
       </header>
 
       <div className="upload-content">
         <div 
-          className={`glass-card drop-zone ${isDragging ? 'dragging' : ''} ${file ? 'has-file' : ''}`}
+          className={`glass-card drop-zone ${isDragging ? 'dragging' : ''} ${files.length > 0 ? 'has-file' : ''}`}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
-          onClick={() => !file && fileInputRef.current.click()}
+          onClick={() => status === 'idle' && files.length === 0 && fileInputRef.current.click()}
         >
           <input 
             type="file" 
             ref={fileInputRef} 
             onChange={handleFileChange} 
             accept="application/pdf"
+            multiple
             className="hidden-input"
           />
           
-          {file ? (
-            <div className="file-info">
-              <div className="file-icon">
-                <File size={48} color="var(--primary)" />
-              </div>
-              <h3>{file.name}</h3>
-              <p>{(file.size / (1024 * 1024)).toFixed(2)} MB</p>
+          {files.length > 0 ? (
+            <div className="files-list-container">
+              <h3>Selected Papers ({files.length}/10)</h3>
+              <ul className="selected-files-list">
+                {files.map((f, i) => (
+                  <li key={i} className="selected-file-item">
+                    <File size={20} color="var(--primary)" />
+                    <span className="file-name" title={f.name}>{f.name}</span>
+                    <span className="file-size">{(f.size / (1024 * 1024)).toFixed(2)} MB</span>
+                    {status === 'idle' && (
+                      <button className="remove-file-btn" onClick={(e) => { e.stopPropagation(); removeFile(i); }}>
+                        <X size={18} />
+                      </button>
+                    )}
+                  </li>
+                ))}
+              </ul>
               
               {status === 'idle' && (
                 <div className="upload-actions">
-                  <button className="btn btn-secondary" onClick={(e) => { e.stopPropagation(); setFile(null); }}>
-                    Cancel
+                  {files.length < 10 && (
+                    <button className="btn btn-secondary" onClick={(e) => { e.stopPropagation(); fileInputRef.current.click(); }}>
+                      Add More
+                    </button>
+                  )}
+                  <button className="btn btn-secondary" onClick={(e) => { e.stopPropagation(); setFiles([]); }}>
+                    Clear All
                   </button>
                   <button className="btn btn-primary" onClick={(e) => { e.stopPropagation(); handleUpload(); }}>
-                    Process Document
+                    Process {files.length} {files.length === 1 ? 'Document' : 'Documents'}
                   </button>
                 </div>
               )}
@@ -127,10 +185,10 @@ const UploadPage = () => {
           ) : (
             <div className="drop-prompt">
               <div className="upload-icon-wrapper">
-                <UploadCloud size={48} />
+                <FileText size={56} strokeWidth={1.5} />
               </div>
-              <h3>Drag & Drop your PDF here</h3>
-              <p>or click to browse files (Max 50MB)</p>
+              <h3>Drag & Drop your PDFs here</h3>
+              <p>or click to browse files (Max 10 files, 50MB each)</p>
             </div>
           )}
         </div>
@@ -141,39 +199,52 @@ const UploadPage = () => {
             <div className="status-icon">
               {status === 'uploading' && <Loader size={24} className="spin" />}
               {status === 'success' && <CheckCircle size={24} color="var(--success)" />}
+              {status === 'partial_success' && <AlertCircle size={24} color="var(--warning)" />}
               {status === 'error' && <AlertCircle size={24} color="var(--danger)" />}
             </div>
-            <div className="status-message">
+            <div className="status-message" style={{ width: '100%' }}>
               <h4>
-                {status === 'uploading' && 'Processing Document...'}
+                {status === 'uploading' && `Processing Document ${uploadProgress} of ${files.length}...`}
                 {status === 'success' && 'Success!'}
+                {status === 'partial_success' && 'Partial Success'}
                 {status === 'error' && 'Upload Failed'}
               </h4>
               <p>{message}</p>
               
-              {status === 'success' && result && (
-                <div className="result-details">
-                  <div className="upload-metadata">
-                    <span className="badge">Chunks created: {result.chunks_count}</span>
-                  </div>
-                  
-                  {result.summary && (
-                    <div className="auto-summary-box">
-                      <h5><Sparkles size={14} /> AI Paper Summary</h5>
-                      <div className="summary-content">
-                        {result.summary.split('\n').map((line, i) => {
-                          if (!line.trim()) return null;
-                          const formattedLine = line.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-                          return (
-                            <p key={i} dangerouslySetInnerHTML={{ __html: formattedLine }} />
-                          );
-                        })}
+              {results.length > 0 && (
+                <div className="results-list">
+                  {results.map((res, i) => (
+                    <div key={i} className={`result-item ${res.success ? 'success' : 'error'}`}>
+                      <div className="result-item-header">
+                        <strong>{res.file}</strong>
+                        {res.success ? (
+                          <span className="badge">Chunks: {res.data.chunks_count}</span>
+                        ) : (
+                          <span className="error-text">{res.error}</span>
+                        )}
                       </div>
+                      
+                      {res.success && res.data.summary && (
+                        <div className="auto-summary-box compact">
+                          <h5><Sparkles size={14} /> Summary</h5>
+                          <div className="summary-content">
+                            {res.data.summary.split('\n').map((line, j) => {
+                              if (!line.trim()) return null;
+                              const formattedLine = line.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                              return <p key={j} dangerouslySetInnerHTML={{ __html: formattedLine }} />;
+                            })}
+                          </div>
+                        </div>
+                      )}
                     </div>
-                  )}
-
-                  <button className="btn btn-secondary mt-3" onClick={() => setFile(null)}>Upload Another</button>
+                  ))}
                 </div>
+              )}
+
+              {(status === 'success' || status === 'error' || status === 'partial_success') && (
+                <button className="btn btn-secondary mt-3" onClick={() => { setFiles([]); setStatus('idle'); setResults([]); }}>
+                  Upload More Papers
+                </button>
               )}
             </div>
           </div>

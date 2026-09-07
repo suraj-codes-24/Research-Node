@@ -57,8 +57,11 @@ class Settings(BaseSettings):
     # --- Upload Limits ---
     max_upload_size_mb: int = 50
 
+    # --- Neon DB (Phase G) ---
+    neon_database_url: str = ""
+
     class Config:
-        env_file = ".env"
+        env_file = str(Path(__file__).resolve().parent / ".env")
         env_file_encoding = "utf-8"
 
 

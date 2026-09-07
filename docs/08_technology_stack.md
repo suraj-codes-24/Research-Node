@@ -49,6 +49,7 @@ ResearchNode uses a modern, open-source technology stack spanning backend proces
 |-----------|---------|------|---------|---------|
 | **Neo4j Community** | 5.x | Graph Database | Knowledge graph storage, Cypher queries | GPL v3 |
 | **Qdrant** | 1.10+ | Vector Database | Embedding storage, similarity search | Apache 2.0 |
+| **PostgreSQL (Neon)**| 15+ | Relational DB | Session history and node annotations | Open Source |
 
 ### 2.5 PDF Processing
 
@@ -61,10 +62,11 @@ ResearchNode uses a modern, open-source technology stack spanning backend proces
 
 | Technology | Version | Purpose | License |
 |-----------|---------|---------|---------|
-| **React** | 18+ | UI component framework | MIT |
+| **React + Vite** | 18+ | UI component framework with fast HMR | MIT |
 | **Cytoscape.js** | 3.28+ | Interactive graph visualization | MIT |
 | **Axios** | 1.7+ | HTTP client for API communication | MIT |
 | **React Router** | 6+ | Client-side routing | MIT |
+| **Neon-Glass CSS** | — | Custom premium glassmorphism styling | Custom |
 
 ### 2.7 Development Tools
 
@@ -104,6 +106,7 @@ graph TB
     subgraph "Databases"
         N4["Neo4j 5.x (Graph)"]
         QD["Qdrant (Vectors)"]
+        PG["PostgreSQL (Neon DB)"]
     end
 
     subgraph "External"
@@ -121,6 +124,7 @@ graph TB
     LC --> LLM
     FA --> N4
     FA --> QD
+    FA --> PG
     CY --> R
 ```
 
@@ -165,6 +169,15 @@ graph TB
 | Payload Filtering | Yes (paper_id, section, etc.) |
 | Python Client | `qdrant-client` (official) |
 
+### 5.3 PostgreSQL (Neon DB)
+
+| Property | Value |
+|----------|-------|
+| Deployment | Serverless Cloud (Neon) |
+| Driver | `psycopg2` |
+| Primary Use | Session persistence, Chat logs, Node Notes |
+| Schema Type | Relational |
+
 ---
 
 ## 6. API Specification
@@ -188,9 +201,10 @@ graph TB
 | Backend | FastAPI | Flask, Django | Async, auto-docs, type-safe, modern |
 | Graph DB | Neo4j | ArangoDB, JanusGraph | Best Python driver, Cypher is readable, desktop app |
 | Vector DB | Qdrant | ChromaDB, Pinecone, Weaviate | Fast (Rust), simple API, free self-hosted, metadata filtering |
+| Relational DB | PostgreSQL (Neon)| SQLite, MySQL | Serverless, zero config cloud persistence, scalable |
 | Embeddings | MiniLM-L6-v2 | Ada-002, BGE-large | Free, fast, 384-dim (lightweight), good quality |
 | PDF | PyMuPDF | PDFMiner, GROBID | Fastest, simplest API, reliable |
 | NLP | spaCy | NLTK, Stanza | Production-ready, fast, pre-trained models |
 | LLM Framework | LangChain | LlamaIndex, Haystack | Broadest integrations, active community, good documentation |
-| Frontend | React | Vue, Svelte, Angular | Largest ecosystem, most tutorials, best for SPAs |
+| Frontend | React + Vite | Create-React-App | Vite is significantly faster, modern tooling |
 | Graph Viz | Cytoscape.js | D3.js, vis.js, Sigma.js | Purpose-built for graph data, academic origin, excellent docs |

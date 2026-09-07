@@ -49,6 +49,7 @@ graph TD
     FE --> BE["FastAPI Backend"]
     BE --> NEO["Neo4j (Knowledge Graph)"]
     BE --> QD["Qdrant (Vector DB)"]
+    BE --> PG["PostgreSQL (Neon DB)"]
     BE --> LLM["LLM (Language Model)"]
     BE --> FS["File System (PDF Storage)"]
 ```
@@ -66,8 +67,10 @@ graph TD
 | F7 | Knowledge Graph Construction | Build and update Neo4j graph with extracted entities and relationships |
 | F8 | RAG Question Answering | Answer user questions using combined graph + vector retrieval |
 | F9 | Multi-Agent Analysis | Run specialized agents for literature discovery, contradiction detection, and experiment suggestion |
-| F10 | Graph Visualization | Display interactive knowledge graph in the browser |
+| F10 | Graph Visualization | Display interactive knowledge graph in the browser with Focus Mode and Venn Diagrams |
 | F11 | Research Gap Detection | Identify missing relationships in the knowledge graph |
+| F12 | Persistent Sessions | Save and load distinct chat sessions using PostgreSQL |
+| F13 | Node Annotations | Save custom notes and summaries to individual graph nodes |
 
 ### 2.3 User Characteristics
 
@@ -285,10 +288,23 @@ graph TD
 |-----------|-------|
 | **ID** | FR-12 |
 | **Title** | Interactive Knowledge Graph Visualization |
-| **Description** | The system shall display the knowledge graph as an interactive, zoomable, clickable visualization using Cytoscape.js |
+| **Description** | The system shall display the knowledge graph as an interactive, zoomable, clickable visualization using Cytoscape.js, featuring a Tabbed Sidebar (Details, Context, Notes), Focus Mode, and Venn Diagram multi-paper comparison. |
 | **Input** | Graph data (nodes and edges) from Neo4j |
 | **Output** | Interactive graph rendered in the browser |
 | **Priority** | High (MVP) |
+
+---
+
+#### FR-13: Persistent Sessions and Node Annotations
+
+| Attribute | Value |
+|-----------|-------|
+| **ID** | FR-13 |
+| **Title** | Session & Annotation Persistence |
+| **Description** | The system shall store chat history and user-authored node notes in a PostgreSQL database for persistent retrieval. |
+| **Input** | User text messages and node notes |
+| **Output** | Saved session and annotation records |
+| **Priority** | High |
 
 ---
 
@@ -360,15 +376,24 @@ The backend shall expose a RESTful API:
 | `GET` | `/api/graph/{paper_id}` | Get graph data for a paper |
 | `GET` | `/api/graph` | Get full knowledge graph data |
 | `GET` | `/api/papers` | List all uploaded papers |
+| `GET` | `/api/papers/{paper_id}/pdf` | Serve the PDF file for the split-screen viewer |
+| `GET` | `/api/sessions` | Fetch chat session history |
+| `GET` | `/api/sessions/{session_id}` | Fetch a specific chat session |
+| `GET` | `/api/compare` | Compare multiple papers (intersection and distinct entities) |
+| `POST` | `/api/graph/predict` | Run AI link prediction to suggest novel relationships |
 | `GET` | `/api/recommendations` | Get AI-generated recommendations |
 | `POST` | `/api/agents/literature` | Run literature discovery agent |
 | `POST` | `/api/agents/contradiction` | Run contradiction detection agent |
 | `POST` | `/api/agents/experiment` | Run experiment suggestion agent |
+| `POST` | `/api/export-report` | Synthesize a chat session into a markdown research report |
+| `GET` | `/api/nodes/{node_id}/annotations` | Fetch saved notes and AI summaries for a specific node |
+| `POST` | `/api/nodes/{node_id}/annotations` | Save or update custom notes for a node |
 
 ### 4.3 Database Interfaces
 
 - **Neo4j:** Bolt protocol on `bolt://localhost:7687`
 - **Qdrant:** REST API on `http://localhost:6333`
+- **PostgreSQL:** Remote Neon DB using `psycopg2` via `NEON_DATABASE_URL`
 
 ### 4.4 LLM Interface
 
@@ -395,11 +420,13 @@ graph TB
         GB["Graph Builder"]
         RAG["GraphRAG Engine"]
         AG["Multi-Agent System"]
+        SESS["Session Manager"]
     end
 
     subgraph Databases
         NEO["Neo4j"]
         QD["Qdrant"]
+        SQL["SQLite"]
     end
 
     subgraph External
@@ -420,4 +447,6 @@ graph TB
     RAG --> LLM
     AG --> RAG
     API --> GV
+    API --> SESS
+    SESS --> SQL
 ```

@@ -1,67 +1,94 @@
 .dashboard-container {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.75rem;
 }
 
+/* ── Stat Cards ── */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .stat-card {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
   padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
 }
 
+.stat-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  opacity: 0.05;
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.stat-card:nth-child(1)::after { background: #6366f1; }
+.stat-card:nth-child(2)::after { background: #22d3ee; }
+.stat-card:nth-child(3)::after { background: #a855f7; }
+
 .stat-icon-wrapper {
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
-.paper-icon { background: rgba(59, 130, 246, 0.15); color: #3b82f6; }
-.node-icon { background: rgba(16, 185, 129, 0.15); color: #10b981; }
-.edge-icon { background: rgba(168, 85, 247, 0.15); color: #a855f7; }
+.paper-icon { background: rgba(99, 102, 241, 0.12); color: #818cf8; }
+.node-icon { background: rgba(34, 211, 238, 0.12); color: #22d3ee; }
+.edge-icon { background: rgba(168, 85, 247, 0.12); color: #c084fc; }
 
 .stat-info h3 {
-  font-size: 1.8rem;
+  font-size: 1.75rem;
   font-weight: 700;
-  color: var(--text-primary);
   margin: 0;
+  background: linear-gradient(to right, #f1f5f9, #94a3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .stat-info p {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
+  font-size: 0.75rem;
+  color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   margin: 0;
+  font-weight: 500;
 }
 
-/* Health Section */
+/* ── Health Section ── */
 .health-section h2,
 .quick-actions-section h2,
 .feedback-stats-section h2 {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
-  color: var(--text-primary);
   display: flex;
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.8rem;
 }
 
 .health-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .health-card {
@@ -76,9 +103,8 @@
 }
 
 .health-name {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 600;
-  color: var(--text-primary);
   display: flex;
   align-items: center;
   gap: 0.3rem;
@@ -88,74 +114,63 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.75rem;
-  color: var(--text-secondary);
+  font-size: 0.72rem;
+  color: var(--text-muted);
 }
 
 .health-status {
-  padding: 0.15rem 0.4rem;
-  border-radius: 4px;
-  font-size: 0.68rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-
-.health-status.connected,
-.health-status.running {
-  background: rgba(16, 185, 129, 0.15);
-  color: #10b981;
-}
-
-.health-status.disconnected {
-  background: rgba(239, 68, 68, 0.15);
-  color: #ef4444;
-}
-
-/* Feedback Stats */
-.feedback-stats-card {
-  display: flex;
-  gap: 2rem;
-  padding: 1.25rem 1.5rem;
-}
-
-.feedback-stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.feedback-stat-number {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.feedback-stat-label {
-  font-size: 0.72rem;
-  color: var(--text-secondary);
+  padding: 0.15rem 0.45rem;
+  border-radius: 6px;
+  font-size: 0.65rem;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
-/* Quick Actions */
+.health-status.connected,
+.health-status.running {
+  background: rgba(34, 211, 238, 0.12);
+  color: #22d3ee;
+}
+
+.health-status.disconnected {
+  background: rgba(244, 63, 94, 0.12);
+  color: #f43f5e;
+}
+
+/* ── Quick Actions ── */
 .actions-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .action-card {
-  padding: 2rem;
+  padding: 1.75rem;
   cursor: pointer;
   text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.action-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.03), rgba(168, 85, 247, 0.03));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.action-card:hover::before {
+  opacity: 1;
 }
 
 .action-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px);
+  border-color: rgba(99, 102, 241, 0.2);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(99, 102, 241, 0.06);
 }
 
 .action-icon {
@@ -163,15 +178,17 @@
 }
 
 .action-card h3 {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
+  position: relative;
 }
 
 .action-card p {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
+  font-size: 0.82rem;
+  color: var(--text-muted);
   margin-bottom: 0;
+  position: relative;
 }
 
 .mt-3 { margin-top: 0.75rem; }

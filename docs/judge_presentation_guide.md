@@ -27,6 +27,11 @@ On top of this, we have **3 AI agents** that automatically:
 - Detect contradictions between papers
 - Suggest new experiments based on gaps in the graph
 
+We also added **Premium UI Features**:
+- **Persistent Sessions:** Powered by PostgreSQL to save chat histories and node notes.
+- **Venn Diagram Comparison:** Visually compare shared entities between multiple papers.
+- **Split-View PDF:** Click any citation in the chat to instantly open the source PDF side-by-side.
+
 ---
 
 ## 🔧 How It Works (Technical — Keep Short)
@@ -58,10 +63,11 @@ LLM generates answer with citations
 | Backend | Python + FastAPI | Fast, modern, auto-generates API docs |
 | Vector DB | Qdrant | Free, fast (written in Rust), great for semantic search |
 | Graph DB | Neo4j | Industry standard for knowledge graphs, uses Cypher query language |
+| Relational DB | PostgreSQL | Saves user chat sessions and node annotations reliably |
 | Embeddings | all-MiniLM-L6-v2 | Lightweight (384 dims), free, good quality |
 | NLP | spaCy + LangChain | Entity extraction + LLM orchestration |
-| LLM | Google Gemini API | Free tier available, good quality |
-| Frontend | React + Cytoscape.js | Interactive graph visualization |
+| LLM | Google Gemini + Ollama | Hybrid approach for API quality and local privacy |
+| Frontend | React + Vite + Cytoscape.js | Fast interactive graph visualization with Neon-Glass CSS |
 
 ---
 
@@ -140,6 +146,9 @@ This finds all papers that use BERT. We chose Neo4j because it's the most popula
 
 ### Q12: What is cosine similarity?
 **A:** It measures how similar two vectors are by calculating the cosine of the angle between them. Score ranges from 0 (completely different) to 1 (identical). We use it to find text chunks whose embeddings are closest to the question's embedding.
+
+### Q13: Why did you add PostgreSQL? Don't you have enough databases?
+**A:** Neo4j is for relationships. Qdrant is for semantic search. But we needed a reliable way to store standard relational data — like user chat session history and custom text annotations on graph nodes. PostgreSQL (hosted on Neon) handles this traditional CRUD data perfectly, allowing users to return to their previous research sessions.
 
 ---
 

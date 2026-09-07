@@ -3,7 +3,7 @@ import uuid
 import numpy as np
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from qdrant_client import QdrantClient
-from qdrant_client.http.models import Distance, PointStruct, VectorParams
+from qdrant_client.http.models import Distance, PointStruct, VectorParams, Filter, FieldCondition, MatchValue, FilterSelector
 from sentence_transformers import SentenceTransformer
 
 from backend.config import settings
@@ -29,6 +29,41 @@ class TextChunker:
         Returns list of chunk strings.
         """
         return self.splitter.split_text(text)
+
+    def chunk_pages(self, pages: list[dict], paper_id: str) -> list[dict]:
+        """
+        Splits text into paragraph-aware chunks, preserving page numbers and sections.
+        Returns a list of dicts: 
+        {text, page_number, section_name, chunk_id, paper_id}
+        """
+        import uuid
+        
+        chunks = []
+        current_section = "General"
+        
+        for page_data in pages:
+            page_num = page_data.get("page", 1)
+            text = page_data.get("text", "")
+            
+            # Simple heuristic for section names: ALL CAPS or Title Case lines < 50 chars
+            lines = text.split("\n")
+            for line in lines:
+                clean_line = line.strip()
+                if 2 < len(clean_line) < 50 and (clean_line.isupper() or clean_line.istitle()) and not clean_line.endswith('.'):
+                    current_section = clean_line
+            
+            page_chunks = self.splitter.split_text(text)
+            
+            for c in page_chunks:
+                chunks.append({
+                    "text": c,
+                    "page_number": page_num,
+                    "section_name": current_section,
+                    "chunk_id": str(uuid.uuid4()),
+                    "paper_id": paper_id
+                })
+                
+        return chunks
 
 
 class EmbeddingGenerator:
@@ -84,10 +119,22 @@ class VectorStoreManager:
         )
         return point_ids
 
-    def search(self, query_vector: np.ndarray, top_k=5) -> list[dict]:
+    def search(self, query_vector: np.ndarray, top_k=5, session_id: str = None) -> list[dict]:
+        query_filter = None
+        if session_id:
+            query_filter = Filter(
+                must=[
+                    FieldCondition(
+                        key="session_id",
+                        match=MatchValue(value=session_id)
+                    )
+                ]
+            )
+
         results = self.client.query_points(
             collection_name=self.collection_name,
             query=query_vector.tolist(),
+            query_filter=query_filter,
             limit=top_k
         )
         return [
@@ -97,6 +144,26 @@ class VectorStoreManager:
             }
             for point in results.points
         ]
+
+    def delete_by_paper(self, paper_id: str):
+        """Deletes all vector chunks associated with a given paper."""
+        try:
+            self.client.delete(
+                collection_name=self.collection_name,
+                points_selector=FilterSelector(
+                    filter=Filter(
+                        must=[
+                            FieldCondition(
+                                key="paper_id",
+                                match=MatchValue(value=paper_id)
+                            )
+                        ]
+                    )
+                )
+            )
+        except Exception as e:
+            print(f"Failed to delete vectors for paper {paper_id}: {e}")
+
 
 
 # --- Singletons ---

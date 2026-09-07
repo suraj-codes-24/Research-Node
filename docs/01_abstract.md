@@ -8,9 +8,9 @@ The exponential growth of scientific literature has created an urgent need for i
 
 The system employs three specialized AI agents — a **Literature Discovery Agent**, a **Contradiction Detection Agent**, and an **Experiment Suggestion Agent** — that collaboratively analyze the knowledge graph to surface insights that would be difficult for a human researcher to identify manually. These include research gaps (missing relationships in the graph), contradictions between findings across papers, and novel experimental directions.
 
-The platform is built with a **FastAPI** backend, a **React** frontend featuring an interactive knowledge graph visualization powered by Cytoscape.js, and uses **LangChain** for LLM orchestration. Users can upload PDF papers, ask natural language questions, and receive citation-backed answers enriched with graph-derived context.
+The platform is built with a **FastAPI** backend, a **React + Vite** frontend styled with premium neon-glassmorphism, an interactive knowledge graph visualization powered by Cytoscape.js, and uses **LangChain** alongside **Ollama** for LLM orchestration. Users can upload PDF papers, ask natural language questions, and receive citation-backed answers enriched with graph-derived context. Recent enhancements include **persistent chat sessions via PostgreSQL**, a robust **multi-paper comparison** module utilizing graph intersection algorithms, **AI-powered link prediction** within the graph, a **Tabbed Sidebar** for user annotations, and an integrated **split-screen PDF viewer** for seamless citation tracing.
 
-ResearchNode demonstrates that combining structured knowledge representation (graphs) with unstructured semantic search (vectors) and agentic reasoning produces significantly richer research insights than any single approach alone.
+ResearchNode demonstrates that combining structured knowledge representation (graphs) with unstructured semantic search (vectors), relational persistence (PostgreSQL), and agentic reasoning produces significantly richer research insights than any single approach alone.
 
 ---
 

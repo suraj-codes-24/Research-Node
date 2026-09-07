@@ -11,13 +11,16 @@ Endpoints:
 import time
 import uuid
 from pathlib import Path
+from typing import Optional
 
-from fastapi import APIRouter, File, HTTPException, UploadFile
+from fastapi import APIRouter, File, HTTPException, UploadFile, Form
+from fastapi.responses import FileResponse
 
 from backend.agents.summarizer import PaperSummarizer
 from backend.config import settings
 from backend.embeddings.embedder import TextChunker, get_embedder, get_vector_store
 from backend.graph.graph_builder import GraphBuilder
+from backend.graph.neo4j_service import get_neo4j_service
 from backend.pdf_processing.cleaner import TextCleaner
 from backend.pdf_processing.extractor import PDFExtractor
 
@@ -34,7 +37,7 @@ graph_builder = GraphBuilder()
 
 
 @router.post("/upload-paper")
-async def upload_paper(file: UploadFile = File(...)):
+async def upload_paper(file: UploadFile = File(...), session_id: str = Form(...)):
     """
     Upload a PDF research paper.
 
@@ -72,26 +75,40 @@ async def upload_paper(file: UploadFile = File(...)):
     summary = ""
     # Process the PDF
     try:
-        raw_text = extractor.extract(str(save_path))
+        raw_pages = extractor.extract_pages(str(save_path))
+        # Reconstruct raw_text for existing downstream functions (e.g. abstract extraction)
+        raw_text = "\n".join([p["text"] for p in raw_pages])
         metadata = extractor.extract_metadata(str(save_path))
+        
+        # Clean each page independently
+        cleaned_pages = [
+            {"page": p["page"], "text": cleaner.clean(p["text"])} 
+            for p in raw_pages
+        ]
         cleaned_text = cleaner.clean(raw_text)
-        chunks = chunker.chunk(cleaned_text)
+        
+        chunks = chunker.chunk_pages(cleaned_pages, paper_id)
         chunks_count = len(chunks)
         
         # Embed and store chunks
         if chunks_count > 0:
-            embeddings = get_embedder().embed_batch(chunks)
+            texts = [c["text"] for c in chunks]
+            embeddings = get_embedder().embed_batch(texts)
             paper_title = metadata.get("title") or file.filename.replace(".pdf", "")
-            metadata_list = [
-                {
-                    "paper_id": paper_id,
+            
+            metadata_list = []
+            for i, c in enumerate(chunks):
+                metadata_list.append({
+                    "paper_id": c["paper_id"],
+                    "session_id": session_id,
                     "paper_title": paper_title,
-                    "chunk_index": i,
-                    "chunk_text": chunk,
-                    "section": "General"  # simplified for MVP
-                }
-                for i, chunk in enumerate(chunks)
-            ]
+                    "chunk_id": c["chunk_id"],
+                    "chunk_index": i,  # Maintained for backward compatibility
+                    "chunk_text": c["text"],
+                    "page_number": c["page_number"],
+                    "section": c["section_name"]
+                })
+                
             get_vector_store().store(embeddings, metadata_list)
             
         # Extract and store graph entities
@@ -104,7 +121,8 @@ async def upload_paper(file: UploadFile = File(...)):
             paper_id=paper_id,
             title=metadata.get("title") or file.filename.replace(".pdf", ""),
             filename=file.filename,
-            abstract=abstract
+            abstract=abstract,
+            session_id=session_id
         )
         
         # Generate Auto-Summary
@@ -130,6 +148,7 @@ async def upload_paper(file: UploadFile = File(...)):
         "chunks_count": chunks_count,
         "page_count": metadata.get("page_count", 0) if status == "processed" else 0,
         "summary": summary,
+        "session_id": session_id,
     }
 
     return {
@@ -144,11 +163,15 @@ async def upload_paper(file: UploadFile = File(...)):
 
 
 @router.get("/papers")
-async def list_papers():
-    """List all uploaded papers. Matches: SRS endpoint GET /api/papers."""
+async def list_papers(session_id: Optional[str] = None):
+    """List all uploaded papers. Filters by session_id if provided."""
+    papers = list(papers_db.values())
+    if session_id:
+        papers = [p for p in papers if p.get("session_id") == session_id]
+        
     return {
-        "count": len(papers_db),
-        "papers": list(papers_db.values()),
+        "count": len(papers),
+        "papers": papers,
     }
 
 
@@ -162,7 +185,7 @@ async def get_paper(paper_id: str):
 
 @router.delete("/papers/{paper_id}")
 async def delete_paper(paper_id: str):
-    """Delete a paper and its file. Vector/graph cleanup added in later phases."""
+    """Delete a paper and its file, as well as its vector and graph data."""
     if paper_id not in papers_db:
         raise HTTPException(status_code=404, detail="Paper not found.")
 
@@ -171,7 +194,36 @@ async def delete_paper(paper_id: str):
     if file_path.exists():
         file_path.unlink()
 
+    # Clean up Vector Database (Qdrant)
+    try:
+        get_vector_store().delete_by_paper(paper_id)
+    except Exception as e:
+        print(f"Failed to clean up vectors: {e}")
+
+    # Clean up Knowledge Graph (Neo4j)
+    try:
+        get_neo4j_service().delete_paper(paper_id)
+    except Exception as e:
+        print(f"Failed to clean up graph: {e}")
+
     # Remove from store
     del papers_db[paper_id]
 
-    return {"message": f"Paper {paper_id} deleted.", "paper_id": paper_id}
+    return {"message": f"Paper {paper_id} and its associated data have been completely deleted.", "paper_id": paper_id}
+
+
+@router.get("/papers/{paper_id}/pdf")
+async def get_paper_pdf(paper_id: str):
+    """Serve the raw PDF file for a specific paper."""
+    if paper_id not in papers_db:
+        raise HTTPException(status_code=404, detail="Paper not found.")
+    
+    file_path = Path(papers_db[paper_id]["file_path"])
+    if not file_path.exists():
+        raise HTTPException(status_code=404, detail="PDF file not found on disk.")
+        
+    return FileResponse(
+        path=file_path, 
+        media_type="application/pdf", 
+        filename=papers_db[paper_id]["filename"]
+    )

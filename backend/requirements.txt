@@ -5,6 +5,7 @@ pymupdf
 langchain
 langchain-community
 pydantic-settings
+psycopg2-binary
 
 sentence-transformers
 qdrant-client

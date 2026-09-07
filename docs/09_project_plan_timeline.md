@@ -58,13 +58,13 @@ gantt
 
 | # | Task | Deliverable | Status |
 |---|------|------------|--------|
-| 1.1 | Create Python virtual environment | `researchnode-env/` | ⬜ |
-| 1.2 | Install all backend dependencies | `requirements.txt` | ⬜ |
-| 1.3 | Create project folder structure | All directories and `__init__.py` files | ⬜ |
-| 1.4 | Setup FastAPI with basic health check | `GET /health` returns `{"status": "ok"}` | ⬜ |
-| 1.5 | Implement PDF upload endpoint | `POST /api/upload-paper` accepts PDF | ⬜ |
-| 1.6 | Implement text extraction | `extractor.py` extracts text from PDF | ⬜ |
-| 1.7 | Implement text cleaning | `cleaner.py` normalizes extracted text | ⬜ |
+| 1.1 | Create Python virtual environment | `researchnode-env/` | `[x]` |
+| 1.2 | Install all backend dependencies | `requirements.txt` | `[x]` |
+| 1.3 | Create project folder structure | All directories and `__init__.py` files | `[x]` |
+| 1.4 | Setup FastAPI with basic health check | `GET /health` returns `{"status": "ok"}` | `[x]` |
+| 1.5 | Implement PDF upload endpoint | `POST /api/upload-paper` accepts PDF | `[x]` |
+| 1.6 | Implement text extraction | `extractor.py` extracts text from PDF | `[x]` |
+| 1.7 | Implement text cleaning | `cleaner.py` normalizes extracted text | `[x]` |
 
 **Milestone:** User can upload a PDF and the system extracts clean text.
 

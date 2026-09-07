@@ -11,12 +11,21 @@ Full Pipeline:
 Guide Reference: §22, §23, §24, §25, §26, §31
 """
 
+import asyncio
+import spacy
+
 from backend.config import settings
 from backend.embeddings.embedder import get_embedder, get_vector_store
 from backend.graph.neo4j_service import get_neo4j_service
 from backend.rag.query_rewriter import QueryRewriter
 from backend.rag.reranker import LLMReranker
 
+# Load spaCy model for entity extraction
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    print("Warning: spaCy en_core_web_sm model not found. Run: python -m spacy download en_core_web_sm")
+    nlp = None
 
 class HybridRetriever:
     """
@@ -34,31 +43,37 @@ class HybridRetriever:
         # Retrieve more candidates than needed so re-ranking has material to work with
         self.initial_retrieve_k = max(settings.rag_top_k * 3, 15)
 
-    def retrieve(self, query: str, top_k: int = None) -> dict:
+    async def retrieve(self, query: str, top_k: int = None, session_id: str = None) -> dict:
         """
         Retrieve relevant context for a question using the full production pipeline.
+        Runs vector search and targeted graph retrieval concurrently.
 
         Args:
             query: The user's question.
             top_k: Number of final chunks to return (defaults to settings.rag_top_k).
 
         Returns:
-            dict with keys:
-                - vector_chunks: list of raw search results (score + payload)
-                - graph_context: enriched context from knowledge graph
-                - combined_context: formatted string for the LLM prompt
-                - citations: list of detailed citation dicts
-                - rewritten_query: the search-optimized version of the query
-                - retrieval_stats: retrieval quality metrics
+            dict with context, citations, and stats.
         """
         k = top_k or self.top_k
 
         # === Step 1: Query Rewriting ===
         rewritten_query = self.rewriter.rewrite(query)
+        
+        # === Step 1.5: Entity Extraction ===
+        entities = []
+        if nlp:
+            doc = nlp(rewritten_query)
+            entities = [ent.text for ent in doc.ents] + [token.text for token in doc if token.pos_ in ("NOUN", "PROPN")]
 
-        # === Step 2: Embed & Vector Search (retrieve extra candidates) ===
+        # === Step 2: Embed & Concurrent Search ===
         query_vector = self.embedder.embed(rewritten_query)
-        vector_results = self.vector_store.search(query_vector, top_k=self.initial_retrieve_k)
+        
+        # Run Qdrant search and Neo4j targeted search concurrently
+        vector_results, targeted_graph_context = await asyncio.gather(
+            asyncio.to_thread(self.vector_store.search, query_vector, self.initial_retrieve_k, session_id),
+            asyncio.to_thread(self.neo4j.get_targeted_graph_context, entities, session_id)
+        )
 
         # === Step 3: Re-Rank (LLM scores each chunk, keeps top-k) ===
         reranked_results = self.reranker.rerank(rewritten_query, vector_results, final_top_k=k)
@@ -99,7 +114,8 @@ class HybridRetriever:
         combined_context = "\n\n---\n\n".join(context_parts) if context_parts else ""
 
         # === Step 5: Graph Context (Neo4j) ===
-        graph_context = self.neo4j.get_graph_context_for_rag(list(paper_titles))
+        graph_context_generic = await asyncio.to_thread(self.neo4j.get_graph_context_for_rag, list(paper_titles), session_id)
+        combined_graph_context = f"Targeted Relationships:\n{targeted_graph_context}\n\nGeneral Paper Context:\n{graph_context_generic}".strip()
 
         # === Step 6: Retrieval Statistics ===
         avg_vector_score = (
@@ -117,7 +133,7 @@ class HybridRetriever:
 
         return {
             "vector_chunks": reranked_results,
-            "graph_context": graph_context,
+            "graph_context": combined_graph_context,
             "combined_context": combined_context,
             "citations": citations,
             "rewritten_query": rewritten_query,

@@ -22,6 +22,7 @@
 | Embedding Model | all-MiniLM-L6-v2 (384 dims) | 2026-07-27 |
 | Vector Database | Qdrant (local) | 2026-07-27 |
 | Graph Database | Neo4j (add later, not required for initial phases) | 2026-07-27 |
+| Relational Database| PostgreSQL (Neon DB for sessions/notes)| 2026-09-07 |
 | Frontend Framework | React + Vite | 2026-07-27 |
 | Backend Framework | FastAPI + Uvicorn | 2026-07-27 |
 | Build Approach | Step-by-step, educational | 2026-07-27 |
@@ -30,29 +31,40 @@
 ## Build Order
 
 ```
-Phase A: Backend Foundation          ← CURRENT
+Phase A: Backend Foundation          ← COMPLETED
   ① Project setup + FastAPI skeleton
   ② PDF upload + text extraction
   ③ Text chunking
 
-Phase B: Embeddings + Vector Search
+Phase B: Embeddings + Vector Search  ← COMPLETED
   ④ Embedding generation (Sentence Transformers)
   ⑤ Qdrant setup + vector storage/search
 
-Phase C: RAG Pipeline
+Phase C: RAG Pipeline                ← COMPLETED
   ⑥ Ollama API integration
   ⑦ Basic RAG (question → retrieve → LLM answer)
 
-Phase D: Knowledge Graph
+Phase D: Knowledge Graph             ← COMPLETED
   ⑧ Neo4j setup + entity extraction
   ⑨ Graph builder + GraphRAG (hybrid retrieval)
 
-Phase E: Frontend
+Phase E: Frontend                    ← COMPLETED
   ⑩ React + Vite app
   ⑪ Upload page, Chat page, Graph visualization
 
-Phase F: Agents
+Phase F: Agents                      ← COMPLETED
   ⑫ Literature, Contradiction, Experiment agents
+  
+Phase G: Advanced Features           ← COMPLETED
+  ⑬ Persistent Chat Sessions (SQLite)
+  ⑭ Multi-Paper Comparison (Venn Diagram)
+  ⑮ Interactive Knowledge Graph (Link Prediction)
+  ⑯ Clickable PDF Citations (Split-View)
+
+Phase H: Engineering Optimizations   ← COMPLETED
+  ⑰ Robust LLM JSON Extraction (Pydantic schema + Retry)
+  ⑱ Scientific Document Chunking (Page numbers + Section tracking)
+  ⑲ Targeted Graph Retrieval (Concurrent Vector + Cypher search)
 ```
 
 ## Current Progress
@@ -64,6 +76,8 @@ Phase F: Agents
 - [x] Phase D: Knowledge Graph
 - [x] Phase E: Frontend
 - [x] Phase F: Agents
+- [x] Phase G: Advanced Features (Persistent Sessions, Multi-Paper Compare, Graph Sidebar, Clickable Citations)
+- [x] Phase H: Engineering Optimizations (Robust JSON, Scientific Chunking, Targeted Retrieval)
 
 ## Environment
 
@@ -82,7 +96,7 @@ Phase F: Agents
 RAG-Project/
 ├── .agents/
 │   └── AGENTS.md              ← THIS FILE (project memory)
-├── docs/                       ← Pre-documents (frozen, for submission — DO NOT MODIFY)
+├── docs/                       ← Academic project documents (finalized)
 │   ├── 00_predocuments_index.md
 │   ├── 01_abstract.md
 │   ├── 02_problem_statement.md
@@ -155,6 +169,8 @@ RAG-Project/
 | `POST` | `/api/agents/contradiction` | Contradiction Detection Agent | F |
 | `POST` | `/api/agents/experiment` | Experiment Suggestion Agent | F |
 | `GET` | `/api/recommendations` | AI-generated research recommendations | F |
+| `GET/POST`| `/api/sessions` | Create and list persistent chat sessions | G |
+| `GET/POST`| `/api/nodes/{id}/annotations` | Save user notes and AI context for a node | G |
 
 ---
 
@@ -366,7 +382,6 @@ Provide a detailed answer with citations to specific papers.
 
 - Build backend first, test via Swagger UI (`/docs`), then add frontend
 - Qdrant before Neo4j — vector search alone gives a working RAG chatbot
-- Pre-docs in docs/ are for academic submission — do NOT modify them
 - Use `python-multipart` for file uploads in FastAPI
 - CORS must be enabled for `http://localhost:5173` (Vite default port)
 - API keys go in env vars, never in code — use `pydantic-settings` for config

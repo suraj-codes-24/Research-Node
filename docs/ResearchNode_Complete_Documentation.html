@@ -1,0 +1,6891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>ResearchNode Complete Documentation</title>
+    <!-- Mermaid.js for Diagrams -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --border-color: #e2e8f0;
+            --code-bg: #f8fafc;
+        }
+        body { 
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+            line-height: 1.6; 
+            color: var(--text-color); 
+            background: #f1f5f9;
+            margin: 0; 
+            padding: 2rem; 
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--bg-color);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        h1, h2, h3, h4, h5 { 
+            color: var(--primary-color); 
+            margin-top: 2.5rem; 
+            font-weight: 600;
+        }
+        h1 { border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem; font-size: 2.5rem; }
+        h2 { border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
+        table { 
+            border-collapse: collapse; 
+            width: 100%; 
+            margin: 1.5rem 0; 
+            font-size: 0.95rem;
+        }
+        table, th, td { border: 1px solid var(--border-color); }
+        th, td { padding: 12px 16px; text-align: left; }
+        th { background-color: var(--code-bg); font-weight: 600; }
+        tr:nth-child(even) { background-color: #f8fafc; }
+        code { 
+            background: var(--code-bg); 
+            padding: 0.2em 0.4em; 
+            border-radius: 4px; 
+            font-family: 'Consolas', 'Monaco', monospace; 
+            font-size: 0.9em; 
+            color: #e83e8c;
+        }
+        pre { 
+            background: var(--primary-color); 
+            color: #f8fafc;
+            padding: 1.5rem; 
+            border-radius: 6px; 
+            overflow-x: auto; 
+        }
+        pre code { 
+            background: none; 
+            padding: 0; 
+            color: inherit;
+        }
+        blockquote { 
+            border-left: 4px solid var(--accent-color); 
+            margin: 1.5rem 0; 
+            padding: 1rem 1.5rem; 
+            color: #475569; 
+            background: #f0f9ff; 
+            border-radius: 0 4px 4px 0; 
+        }
+        .mermaid { 
+            text-align: center; 
+            margin: 2.5rem 0; 
+            padding: 1rem;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+        .page-break { 
+            border: 0; 
+            height: 2px; 
+            background: var(--border-color);
+            margin: 4rem 0; 
+        }
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; padding: 0; max-width: 100%; }
+            .page-break { page-break-after: always; border: none; margin: 0; visibility: hidden; }
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ResearchNode — Pre-Documents Index</h1>
+<h2>Complete Project Documentation Package</h2>
+<p><strong>Project:</strong> ResearchNode: A GraphRAG Reasoning Engine for Scientific Literature<br />
+<strong>Date:</strong> July 2026<br />
+<strong>Total Documents:</strong> 11</p>
+<hr />
+<h2>Document List</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Document</th>
+<th>File</th>
+<th>Pages (est.)</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Abstract</strong></td>
+<td><a href="file:///C:/Users/suraj/.gemini/antigravity-ide/brain/6002d056-b68a-4f77-aac7-6c48c62af177/01_abstract.md">01_abstract.md</a></td>
+<td>1</td>
+<td>Project summary, keywords, and domain classification</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Problem Statement</strong></td>
+<td><a href="file:///C:/Users/suraj/.gemini/antigravity-ide/brain/6002d056-b68a-4f77-aac7-6c48c62af177/02_problem_statement.md">02_problem_statement.md</a></td>
+<td>3</td>
+<td>Background, problem definition, scope, expected outcomes</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Literature Survey</strong></td>
+<td><a href="file:///C:/Users/suraj/.gemini/antigravity-ide/brain/6002d056-b68a-4f77-aac7-6c48c62af177/03_literature_survey.md">03_literature_survey.md</a></td>
+<td>5</td>
+<td>Survey of RAG, knowledge graphs, GraphRAG, multi-agent AI, NLP</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>System Requirements Specification</strong></td>
+<td><a href="file:///C:/Users/suraj/.gemini/antigravity-ide/brain/6002d056-b68a-4f77-aac7-6c48c62af177/04_system_requirements_specification.md">04_system_requirements_specification.md</a></td>
+<td>6</td>
+<td>12 functional + 5 non-functional requirements, architecture</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>System Design Document</strong></td>
+<td><a href="file:///C:/Users/suraj/.gemini/antigravity-ide/brain/6002d056-b68a-4f77-aac7-6c48c62af177/05_system_design_document.md">05_system_design_document.md</a></td>
+<td>7</td>
+<td>Architecture, DFDs, module design, database schemas, API spec</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Feasibility Study</strong></td>
+<td><a href="file:///C:/Users/suraj/.gemini/antigravity-ide/brain/6002d056-b68a-4f77-aac7-6c48c62af177/06_feasibility_study.md">06_feasibility_study.md</a></td>
+<td>4</td>
+<td>Technical, economic, operational, schedule, legal feasibility</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Module Description</strong></td>
+<td><a href="file:///C:/Users/suraj/.gemini/antigravity-ide/brain/6002d056-b68a-4f77-aac7-6c48c62af177/07_module_description.md">07_module_description.md</a></td>
+<td>8</td>
+<td>Detailed description of all 8 modules with pseudo-code</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Technology Stack</strong></td>
+<td><a href="file:///C:/Users/suraj/.gemini/antigravity-ide/brain/6002d056-b68a-4f77-aac7-6c48c62af177/08_technology_stack.md">08_technology_stack.md</a></td>
+<td>3</td>
+<td>All tools, libraries, databases with versions and justification</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>Project Plan &amp; Timeline</strong></td>
+<td><a href="file:///C:/Users/suraj/.gemini/antigravity-ide/brain/6002d056-b68a-4f77-aac7-6c48c62af177/09_project_plan_timeline.md">09_project_plan_timeline.md</a></td>
+<td>4</td>
+<td>6-week Gantt chart, weekly tasks, milestones, risk management</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>UML Diagrams</strong></td>
+<td><a href="file:///C:/Users/suraj/.gemini/antigravity-ide/brain/6002d056-b68a-4f77-aac7-6c48c62af177/10_uml_diagrams.md">10_uml_diagrams.md</a></td>
+<td>5</td>
+<td>Use case, class, sequence, activity, ER, component, deployment</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>Testing Plan</strong></td>
+<td><a href="file:///C:/Users/suraj/.gemini/antigravity-ide/brain/6002d056-b68a-4f77-aac7-6c48c62af177/11_testing_plan.md">11_testing_plan.md</a></td>
+<td>5</td>
+<td>21 test cases, test data, results template</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Suggested Submission Order</h2>
+<p>For academic submission, combine documents in this order:</p>
+<ol>
+<li>Abstract</li>
+<li>Problem Statement</li>
+<li>Literature Survey</li>
+<li>Feasibility Study</li>
+<li>System Requirements Specification</li>
+<li>System Design Document</li>
+<li>UML Diagrams</li>
+<li>Module Description</li>
+<li>Technology Stack</li>
+<li>Project Plan &amp; Timeline</li>
+<li>Testing Plan</li>
+</ol>
+<hr />
+<h2>What Each Document Covers</h2>
+<div class="mermaid">
+graph TD
+    A["01. Abstract"] --> B["What is the project?"]
+    C["02. Problem Statement"] --> D["Why is it needed?"]
+    E["03. Literature Survey"] --> F["What exists already?"]
+    G["06. Feasibility Study"] --> H["Can we build it?"]
+    I["04. SRS"] --> J["What should it do?"]
+    K["05. System Design"] --> L["How is it architected?"]
+    M["10. UML Diagrams"] --> N["How do components interact?"]
+    O["07. Module Description"] --> P["What does each part do?"]
+    Q["08. Technology Stack"] --> R["What tools do we use?"]
+    S["09. Project Plan"] --> T["When do we build it?"]
+    U["11. Testing Plan"] --> V["How do we verify it?"]
+
+</div>
+
+<hr />
+<h2>Notes</h2>
+<blockquote>
+<p>[!TIP]
+All documents are in <strong>Markdown</strong> format with <strong>Mermaid diagrams</strong>. To convert to PDF/DOCX for submission:
+- Use <strong>VS Code</strong> with the <strong>Markdown PDF</strong> extension
+- Use <strong>Pandoc</strong>: <code>pandoc file.md -o file.pdf</code>
+- Use <strong>Typora</strong> for WYSIWYG editing and export
+- Copy into <strong>Google Docs</strong> or <strong>Word</strong> and format manually</p>
+<p>[!IMPORTANT]
+The Mermaid diagrams will render automatically in GitHub, VS Code (with Mermaid extension), or Typora. For Word/PDF export, you may need to screenshot the rendered diagrams and paste them as images.</p>
+</blockquote>
+<hr class='page-break'>
+
+<h1>ResearchNode: A GraphRAG Reasoning Engine for Scientific Literature</h1>
+<h2>Abstract</h2>
+<p>The exponential growth of scientific literature has created an urgent need for intelligent systems that can not only retrieve relevant research papers but also understand and reason over the complex relationships between scientific concepts, methodologies, datasets, and findings. Traditional keyword-based search engines and even modern semantic search tools treat papers as isolated documents, failing to capture the rich interconnections that define scientific knowledge.</p>
+<p><strong>ResearchNode</strong> is a novel research intelligence platform that combines <strong>Graph-based Retrieval-Augmented Generation (GraphRAG)</strong> with <strong>multi-agent reasoning</strong> to transform scientific papers into a connected knowledge graph. Unlike conventional literature review tools, ResearchNode extracts entities (models, datasets, methods, tasks) from uploaded research papers, constructs a Neo4j knowledge graph capturing their relationships, and stores semantic embeddings in a Qdrant vector database for similarity search.</p>
+<p>The system employs three specialized AI agents — a <strong>Literature Discovery Agent</strong>, a <strong>Contradiction Detection Agent</strong>, and an <strong>Experiment Suggestion Agent</strong> — that collaboratively analyze the knowledge graph to surface insights that would be difficult for a human researcher to identify manually. These include research gaps (missing relationships in the graph), contradictions between findings across papers, and novel experimental directions.</p>
+<p>The platform is built with a <strong>FastAPI</strong> backend, a <strong>React + Vite</strong> frontend styled with premium neon-glassmorphism, an interactive knowledge graph visualization powered by Cytoscape.js, and uses <strong>LangChain</strong> alongside <strong>Ollama</strong> for LLM orchestration. Users can upload PDF papers, ask natural language questions, and receive citation-backed answers enriched with graph-derived context. Recent enhancements include <strong>persistent chat sessions via PostgreSQL</strong>, a robust <strong>multi-paper comparison</strong> module utilizing graph intersection algorithms, <strong>AI-powered link prediction</strong> within the graph, a <strong>Tabbed Sidebar</strong> for user annotations, and an integrated <strong>split-screen PDF viewer</strong> for seamless citation tracing.</p>
+<p>ResearchNode demonstrates that combining structured knowledge representation (graphs) with unstructured semantic search (vectors), relational persistence (PostgreSQL), and agentic reasoning produces significantly richer research insights than any single approach alone.</p>
+<hr />
+<p><strong>Keywords:</strong> GraphRAG, Knowledge Graph, Neo4j, Retrieval-Augmented Generation, Multi-Agent Systems, Natural Language Processing, Scientific Literature Analysis, Vector Search, Qdrant, LangChain</p>
+<p><strong>Domain:</strong> Artificial Intelligence, Natural Language Processing, Information Retrieval</p>
+<p><strong>Project Type:</strong> College Mini Project</p>
+<p><strong>Team Size:</strong> Individual / Team (as applicable)</p>
+<hr class='page-break'>
+
+<h1>Problem Statement</h1>
+<h2>ResearchNode: A GraphRAG Reasoning Engine for Scientific Literature</h2>
+<hr />
+<h2>1. Background</h2>
+<p>Scientific research output has grown at an unprecedented rate. Over <strong>2.5 million</strong> new research papers are published annually across journals, conferences, and preprint servers. Researchers, especially students and early-career academics, face an overwhelming challenge: not just <em>finding</em> relevant papers, but <em>understanding</em> how they connect to the broader scientific landscape.</p>
+<p>Current tools available to researchers include:</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Capability</th>
+<th>Limitation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Google Scholar</td>
+<td>Keyword search, citation count</td>
+<td>No semantic understanding</td>
+</tr>
+<tr>
+<td>Semantic Scholar</td>
+<td>AI-based relevance ranking</td>
+<td>Treats papers as isolated units</td>
+</tr>
+<tr>
+<td>Connected Papers</td>
+<td>Visual citation graphs</td>
+<td>Only citation links, no concept relationships</td>
+</tr>
+<tr>
+<td>Elicit</td>
+<td>AI-assisted literature review</td>
+<td>No knowledge graph, no contradiction detection</td>
+</tr>
+<tr>
+<td>ChatGPT / Perplexity</td>
+<td>General Q&amp;A with web search</td>
+<td>No structured knowledge, hallucination risk</td>
+</tr>
+</tbody>
+</table>
+<p>None of these tools build a <strong>structured knowledge graph</strong> of scientific concepts, detect <strong>contradictions</strong> between findings, or suggest <strong>research gaps</strong> based on missing relationships.</p>
+<hr />
+<h2>2. Problem Definition</h2>
+<blockquote>
+<p><strong>How can we build an intelligent system that transforms unstructured research papers into a connected knowledge graph and uses graph-augmented retrieval with multi-agent reasoning to help researchers discover relationships, contradictions, and gaps in scientific literature?</strong></p>
+</blockquote>
+<h3>Specific Problems Addressed</h3>
+<h3>2.1 Information Overload</h3>
+<p>Researchers spend an estimated <strong>50+ hours</strong> per literature review. Manual reading cannot scale to the volume of published work. An automated system that extracts and connects key concepts would dramatically reduce this burden.</p>
+<h3>2.2 Isolated Document Treatment</h3>
+<p>Existing search engines rank papers individually. They do not capture that:
+- Paper A's <strong>method</strong> was applied to Paper B's <strong>dataset</strong>
+- Paper C's <strong>findings</strong> contradict Paper D's <strong>conclusions</strong>
+- No paper has yet combined <strong>Model X</strong> with <strong>Dataset Y</strong> (a research gap)</p>
+<h3>2.3 Lack of Cross-Paper Reasoning</h3>
+<p>Current AI assistants answer questions about individual papers but cannot reason across a corpus. Questions like <em>"Which methods have been tried for task X but not for task Y?"</em> require graph-level reasoning that flat retrieval cannot provide.</p>
+<h3>2.4 Missed Research Opportunities</h3>
+<p>Research gaps — combinations of methods, datasets, and tasks that have not yet been explored — are invisible in traditional search. A knowledge graph where nodes are concepts and edges are relationships makes these gaps structurally detectable as <strong>missing edges</strong>.</p>
+<hr />
+<h2>3. Proposed Solution</h2>
+<p><strong>ResearchNode</strong> addresses these problems by:</p>
+<ol>
+<li><strong>Extracting structured entities</strong> (models, datasets, methods, tasks, authors) from uploaded PDF papers using NLP</li>
+<li><strong>Building a Neo4j knowledge graph</strong> where entities are nodes and their relationships (USES, APPLIED_TO, COMPARED_WITH, CITES) are edges</li>
+<li><strong>Storing semantic embeddings</strong> of paper chunks in Qdrant for similarity-based retrieval</li>
+<li><strong>Combining graph traversal with vector search</strong> (GraphRAG) to retrieve contextually rich, relationship-aware answers</li>
+<li><strong>Deploying multi-agent reasoning</strong> where specialized agents analyze the graph for literature connections, contradictions, and experimental suggestions</li>
+</ol>
+<hr />
+<h2>4. Scope</h2>
+<h3>In Scope (MVP)</h3>
+<ul>
+<li>PDF upload and text extraction</li>
+<li>Text chunking and embedding generation</li>
+<li>Vector storage and semantic search (Qdrant)</li>
+<li>Knowledge graph construction (Neo4j)</li>
+<li>Entity and relationship extraction from papers</li>
+<li>RAG-based question answering with graph context</li>
+<li>React web interface with graph visualization</li>
+<li>Basic multi-agent system (literature, contradiction, experiment agents)</li>
+</ul>
+<h3>Out of Scope (Future Work)</h3>
+<ul>
+<li>Real-time paper ingestion from arXiv/PubMed APIs</li>
+<li>Multi-language paper support</li>
+<li>Collaborative multi-user workspaces</li>
+<li>Fine-tuned domain-specific LLMs</li>
+<li>Automated full paper summarization</li>
+<li>Integration with reference managers (Zotero, Mendeley)</li>
+</ul>
+<hr />
+<h2>5. Expected Outcome</h2>
+<p>A functional web application where a user can:</p>
+<ol>
+<li><strong>Upload</strong> one or more research papers (PDF)</li>
+<li><strong>View</strong> an automatically generated knowledge graph of extracted concepts</li>
+<li><strong>Ask</strong> natural language questions and receive answers backed by specific paper citations</li>
+<li><strong>Discover</strong> research gaps, contradictions, and related work through AI agents</li>
+<li><strong>Visualize</strong> the relationships between papers, methods, datasets, and tasks</li>
+</ol>
+<hr />
+<h2>6. Significance</h2>
+<p>This project demonstrates the practical application of several cutting-edge AI concepts:</p>
+<ul>
+<li><strong>GraphRAG</strong> — an emerging paradigm that enhances RAG with structured knowledge</li>
+<li><strong>Multi-Agent Systems</strong> — autonomous AI agents collaborating on complex reasoning tasks</li>
+<li><strong>Knowledge Graphs</strong> — structured representation of domain knowledge</li>
+<li><strong>Vector Databases</strong> — modern approach to semantic information retrieval</li>
+</ul>
+<p>ResearchNode proves that combining these technologies creates a research tool qualitatively superior to any single approach, making it a meaningful contribution for a college mini project.</p>
+<hr class='page-break'>
+
+<h1>Literature Survey</h1>
+<h2>ResearchNode: A GraphRAG Reasoning Engine for Scientific Literature</h2>
+<hr />
+<h2>1. Introduction</h2>
+<p>This literature survey examines existing work across five key domains that form the foundation of ResearchNode: (1) Retrieval-Augmented Generation, (2) Knowledge Graphs for Scientific Literature, (3) Graph-based RAG systems, (4) Multi-Agent AI Systems, and (5) Scientific Document Processing. The survey identifies the strengths and limitations of current approaches and establishes the motivation for our integrated solution.</p>
+<hr />
+<h2>2. Retrieval-Augmented Generation (RAG)</h2>
+<h3>2.1 Foundation</h3>
+<p>Lewis et al. (2020) introduced <strong>Retrieval-Augmented Generation (RAG)</strong> in their seminal paper <em>"Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks"</em>. The core idea is to augment a language model's generation with relevant documents retrieved from an external knowledge base, reducing hallucination and grounding responses in factual sources.</p>
+<blockquote>
+<p><strong>Reference:</strong> Lewis, P., Perez, E., Piktus, A., et al. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. <em>NeurIPS 2020</em>.</p>
+</blockquote>
+<h3>2.2 Vector-Based Retrieval</h3>
+<p>Modern RAG systems use dense vector embeddings to retrieve semantically similar documents. Key embedding models include:</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Dimensions</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>all-MiniLM-L6-v2</td>
+<td>384</td>
+<td>General-purpose, lightweight</td>
+</tr>
+<tr>
+<td>text-embedding-ada-002</td>
+<td>1536</td>
+<td>OpenAI's commercial offering</td>
+</tr>
+<tr>
+<td>BGE-large-en</td>
+<td>1024</td>
+<td>Open-source, high quality</td>
+</tr>
+<tr>
+<td>e5-large-v2</td>
+<td>1024</td>
+<td>Multilingual support</td>
+</tr>
+</tbody>
+</table>
+<p>Vector databases such as <strong>Qdrant</strong>, <strong>Pinecone</strong>, <strong>Weaviate</strong>, and <strong>ChromaDB</strong> provide efficient approximate nearest neighbor (ANN) search for retrieval.</p>
+<blockquote>
+<p><strong>Reference:</strong> Reimers, N. &amp; Gurevych, I. (2019). Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks. <em>EMNLP 2019</em>.</p>
+</blockquote>
+<h3>2.3 Limitations of Standard RAG</h3>
+<p>Standard RAG has notable limitations:
+- <strong>No structural awareness</strong> — treats all documents as flat text chunks
+- <strong>Context window limits</strong> — cannot reason over hundreds of papers simultaneously
+- <strong>No relationship reasoning</strong> — cannot answer "how does X relate to Y across papers?"
+- <strong>Retrieval noise</strong> — semantically similar but irrelevant chunks may be retrieved</p>
+<p>These limitations directly motivate the GraphRAG approach used in ResearchNode.</p>
+<hr />
+<h2>3. Knowledge Graphs in Scientific Literature</h2>
+<h3>3.1 Microsoft Academic Knowledge Graph</h3>
+<p>The <strong>Microsoft Academic Knowledge Graph (MAKG)</strong> represents over 200 million academic publications with entities such as papers, authors, institutions, fields of study, and venues, connected by relationships like <em>authored-by</em>, <em>published-in</em>, and <em>cites</em>.</p>
+<blockquote>
+<p><strong>Reference:</strong> Färber, M., Bartscherer, F., Menne, C., &amp; Rettinger, A. (2018). Linked Data for Science and Education. <em>Semantic Web Journal</em>.</p>
+</blockquote>
+<h3>3.2 Open Research Knowledge Graph (ORKG)</h3>
+<p>The <strong>ORKG</strong> project by TIB Hannover aims to create a scholarly knowledge graph where research contributions are represented as structured, comparable, and machine-readable data. Papers are decomposed into problems, methods, results, and materials.</p>
+<blockquote>
+<p><strong>Reference:</strong> Jaradeh, M.Y., Oelen, A., Farfar, K.E., et al. (2019). Open Research Knowledge Graph: Next Generation Infrastructure for Semantic Scholarly Knowledge. <em>K-CAP 2019</em>.</p>
+</blockquote>
+<h3>3.3 SciGraph by Springer Nature</h3>
+<p><strong>SciGraph</strong> aggregates data from Springer Nature publications, grants, conferences, and affiliations into a linked open data knowledge graph, enabling exploration of the research landscape.</p>
+<blockquote>
+<p><strong>Reference:</strong> Springer Nature SciGraph. (2017). Linked Open Data Platform for Scholarly Information.</p>
+</blockquote>
+<h3>3.4 Limitations of Existing Scientific KGs</h3>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Limitation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MAKG</td>
+<td>Metadata only, no content-level concepts</td>
+</tr>
+<tr>
+<td>ORKG</td>
+<td>Requires manual curation, not automated</td>
+</tr>
+<tr>
+<td>SciGraph</td>
+<td>Publisher-specific, closed ecosystem</td>
+</tr>
+</tbody>
+</table>
+<p>ResearchNode addresses these by <strong>automatically</strong> extracting content-level entities (methods, models, datasets, tasks) from uploaded papers and building the graph programmatically.</p>
+<hr />
+<h2>4. GraphRAG — Graph-Enhanced Retrieval-Augmented Generation</h2>
+<h3>4.1 Microsoft GraphRAG</h3>
+<p>Microsoft Research introduced <strong>GraphRAG</strong> (2024), which constructs a knowledge graph from a text corpus using LLM-based entity and relationship extraction, then uses graph community detection to create hierarchical summaries. Queries are answered by combining graph-structural context with text retrieval.</p>
+<blockquote>
+<p><strong>Reference:</strong> Edge, D., Trinh, H., Cheng, N., et al. (2024). From Local to Global: A Graph RAG Approach to Query-Focused Summarization. <em>Microsoft Research</em>.</p>
+</blockquote>
+<h3>4.2 LlamaIndex Knowledge Graph RAG</h3>
+<p><strong>LlamaIndex</strong> provides a <code>KnowledgeGraphIndex</code> that constructs a knowledge graph from documents and uses it as a retrieval source. It supports Neo4j, Nebula Graph, and in-memory graph stores.</p>
+<blockquote>
+<p><strong>Reference:</strong> Liu, J. (2022). LlamaIndex: Data Framework for LLM Applications. <em>GitHub</em>.</p>
+</blockquote>
+<h3>4.3 Neo4j + LangChain Integration</h3>
+<p><strong>LangChain</strong> provides <code>Neo4jGraph</code> and <code>GraphCypherQAChain</code> components that enable natural language queries to be translated into Cypher queries, executed against a Neo4j database, and the results used as context for LLM generation.</p>
+<blockquote>
+<p><strong>Reference:</strong> Chase, H. (2022). LangChain: Building Applications with LLMs through Composability. <em>GitHub</em>.</p>
+</blockquote>
+<h3>4.4 Comparison</h3>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Graph Construction</th>
+<th>Query Method</th>
+<th>Limitation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Microsoft GraphRAG</td>
+<td>LLM-extracted entities</td>
+<td>Community summaries</td>
+<td>High token cost, batch-only</td>
+</tr>
+<tr>
+<td>LlamaIndex KG</td>
+<td>Triplet extraction</td>
+<td>Graph traversal</td>
+<td>Simple triplets, no agents</td>
+</tr>
+<tr>
+<td>Neo4j + LangChain</td>
+<td>Manual or LLM</td>
+<td>Cypher translation</td>
+<td>No vector search integration</td>
+</tr>
+<tr>
+<td><strong>ResearchNode</strong></td>
+<td><strong>NLP + LLM hybrid</strong></td>
+<td><strong>Graph + Vector + Agents</strong></td>
+<td><strong>MVP scope</strong></td>
+</tr>
+</tbody>
+</table>
+<p>ResearchNode combines the strengths of all three: automated graph construction, hybrid graph+vector retrieval, and multi-agent reasoning.</p>
+<hr />
+<h2>5. Multi-Agent AI Systems</h2>
+<h3>5.1 AutoGen (Microsoft)</h3>
+<p><strong>AutoGen</strong> enables building multi-agent conversation systems where specialized agents collaborate to solve complex tasks. Agents can be configured with different LLMs, tools, and roles.</p>
+<blockquote>
+<p><strong>Reference:</strong> Wu, Q., Bansal, G., Zhang, J., et al. (2023). AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation. <em>Microsoft Research</em>.</p>
+</blockquote>
+<h3>5.2 CrewAI</h3>
+<p><strong>CrewAI</strong> provides a framework for orchestrating role-playing AI agents that work together on complex tasks. Each agent has a defined role, goal, and backstory, and they collaborate through a structured workflow.</p>
+<blockquote>
+<p><strong>Reference:</strong> Moura, J. (2024). CrewAI: Framework for Orchestrating Role-Playing AI Agents. <em>GitHub</em>.</p>
+</blockquote>
+<h3>5.3 LangGraph</h3>
+<p><strong>LangGraph</strong> by LangChain enables building stateful, multi-actor applications with LLMs. It models agent workflows as graphs where nodes are computation steps and edges define the flow.</p>
+<blockquote>
+<p><strong>Reference:</strong> LangChain. (2024). LangGraph: Building Stateful Multi-Agent Applications. <em>GitHub</em>.</p>
+</blockquote>
+<h3>5.4 Application to Scientific Reasoning</h3>
+<p>Multi-agent systems have been applied to scientific reasoning in:
+- <strong>ChemCrow</strong> — agents for chemistry tasks (synthesis planning, safety assessment)
+- <strong>SciAgents</strong> — collaborative agents for hypothesis generation
+- <strong>ResearchAgent</strong> — automated literature review with agent collaboration</p>
+<p>ResearchNode adapts this paradigm with three domain-specific agents: Literature Discovery, Contradiction Detection, and Experiment Suggestion.</p>
+<hr />
+<h2>6. Scientific Document Processing</h2>
+<h3>6.1 PDF Text Extraction</h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Method</th>
+<th>Quality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PyMuPDF (fitz)</td>
+<td>Direct text extraction</td>
+<td>High for text-based PDFs</td>
+</tr>
+<tr>
+<td>PDFMiner</td>
+<td>Layout-aware extraction</td>
+<td>Good for complex layouts</td>
+</tr>
+<tr>
+<td>GROBID</td>
+<td>ML-based scholarly parsing</td>
+<td>Best for academic papers</td>
+</tr>
+<tr>
+<td>Nougat (Meta)</td>
+<td>OCR + Vision Transformer</td>
+<td>Best for math-heavy papers</td>
+</tr>
+</tbody>
+</table>
+<h3>6.2 Named Entity Recognition for Science</h3>
+<p>Scientific NER has been addressed by:
+- <strong>SciBERT</strong> — BERT pretrained on scientific text (Beltagy et al., 2019)
+- <strong>SciSpaCy</strong> — spaCy models trained on biomedical/scientific text
+- <strong>ChatGPT/LLM-based extraction</strong> — using prompts to extract entities</p>
+<blockquote>
+<p><strong>Reference:</strong> Beltagy, I., Lo, K., &amp; Cohan, A. (2019). SciBERT: A Pretrained Language Model for Scientific Text. <em>EMNLP 2019</em>.</p>
+</blockquote>
+<h3>6.3 Chunking Strategies</h3>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>Description</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fixed-size</td>
+<td>Split at character count</td>
+<td>Simple, fast</td>
+</tr>
+<tr>
+<td>Recursive</td>
+<td>Split at natural boundaries</td>
+<td>General purpose (used in ResearchNode)</td>
+</tr>
+<tr>
+<td>Semantic</td>
+<td>Split by topic coherence</td>
+<td>High quality, slower</td>
+</tr>
+<tr>
+<td>Section-based</td>
+<td>Split by paper sections</td>
+<td>Academic papers</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>7. Summary of Gaps in Existing Work</h2>
+<table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>Description</th>
+<th>How ResearchNode Addresses It</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No integrated Graph+Vector RAG for uploaded papers</td>
+<td>Existing tools use either graphs OR vectors, not both</td>
+<td>Combines Neo4j knowledge graph with Qdrant vector search</td>
+</tr>
+<tr>
+<td>No automated contradiction detection</td>
+<td>No tool systematically finds conflicting findings</td>
+<td>Contradiction Detection Agent analyzes graph for conflicting edges</td>
+</tr>
+<tr>
+<td>No research gap detection from graph structure</td>
+<td>Missing relationships are invisible in flat search</td>
+<td>Graph analysis identifies missing edges as potential research opportunities</td>
+</tr>
+<tr>
+<td>No multi-agent reasoning over scientific KGs</td>
+<td>Agents exist for general tasks but not KG-based science</td>
+<td>Three specialized agents reason over the knowledge graph</td>
+</tr>
+<tr>
+<td>No user-uploadable, auto-graphed paper system</td>
+<td>Existing KGs require manual curation or API access</td>
+<td>Users upload PDFs; the system auto-extracts and builds the graph</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>8. References</h2>
+<ol>
+<li>Lewis, P., et al. (2020). <em>Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks.</em> NeurIPS 2020.</li>
+<li>Reimers, N. &amp; Gurevych, I. (2019). <em>Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks.</em> EMNLP 2019.</li>
+<li>Färber, M., et al. (2018). <em>Linked Data for Science and Education.</em> Semantic Web Journal.</li>
+<li>Jaradeh, M.Y., et al. (2019). <em>Open Research Knowledge Graph.</em> K-CAP 2019.</li>
+<li>Edge, D., et al. (2024). <em>From Local to Global: A Graph RAG Approach to Query-Focused Summarization.</em> Microsoft Research.</li>
+<li>Liu, J. (2022). <em>LlamaIndex: Data Framework for LLM Applications.</em> GitHub.</li>
+<li>Chase, H. (2022). <em>LangChain: Building Applications with LLMs through Composability.</em> GitHub.</li>
+<li>Wu, Q., et al. (2023). <em>AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation.</em> Microsoft Research.</li>
+<li>Moura, J. (2024). <em>CrewAI: Framework for Orchestrating Role-Playing AI Agents.</em> GitHub.</li>
+<li>Beltagy, I., Lo, K., &amp; Cohan, A. (2019). <em>SciBERT: A Pretrained Language Model for Scientific Text.</em> EMNLP 2019.</li>
+<li>LangChain. (2024). <em>LangGraph: Building Stateful Multi-Agent Applications.</em> GitHub.</li>
+<li>Springer Nature. (2017). <em>SciGraph: Linked Open Data Platform for Scholarly Information.</em></li>
+</ol>
+<hr class='page-break'>
+
+<h1>Software Requirements Specification (SRS)</h1>
+<h2>ResearchNode: A GraphRAG Reasoning Engine for Scientific Literature</h2>
+<p><strong>Version:</strong> 1.0<br />
+<strong>Date:</strong> July 2026  </p>
+<hr />
+<h2>1. Introduction</h2>
+<h3>1.1 Purpose</h3>
+<p>This document specifies the software requirements for <strong>ResearchNode</strong>, a web-based research intelligence platform that combines GraphRAG and multi-agent reasoning to analyze scientific literature. It is intended for the development team, project evaluators, and stakeholders.</p>
+<h3>1.2 Scope</h3>
+<p>ResearchNode is a full-stack web application that allows users to upload research papers (PDF), automatically builds a knowledge graph of scientific concepts and relationships, stores semantic embeddings for similarity search, and provides an AI-powered question-answering interface with citation-backed responses and research insight discovery.</p>
+<h3>1.3 Definitions and Acronyms</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RAG</td>
+<td>Retrieval-Augmented Generation</td>
+</tr>
+<tr>
+<td>GraphRAG</td>
+<td>Graph-enhanced Retrieval-Augmented Generation</td>
+</tr>
+<tr>
+<td>KG</td>
+<td>Knowledge Graph</td>
+</tr>
+<tr>
+<td>NER</td>
+<td>Named Entity Recognition</td>
+</tr>
+<tr>
+<td>NLP</td>
+<td>Natural Language Processing</td>
+</tr>
+<tr>
+<td>LLM</td>
+<td>Large Language Model</td>
+</tr>
+<tr>
+<td>API</td>
+<td>Application Programming Interface</td>
+</tr>
+<tr>
+<td>CRUD</td>
+<td>Create, Read, Update, Delete</td>
+</tr>
+<tr>
+<td>ANN</td>
+<td>Approximate Nearest Neighbor</td>
+</tr>
+<tr>
+<td>PDF</td>
+<td>Portable Document Format</td>
+</tr>
+</tbody>
+</table>
+<h3>1.4 References</h3>
+<ul>
+<li>IEEE Std 830-1998: IEEE Recommended Practice for Software Requirements Specifications</li>
+<li>Project Abstract and Problem Statement documents</li>
+<li>Literature Survey document</li>
+</ul>
+<hr />
+<h2>2. Overall Description</h2>
+<h3>2.1 Product Perspective</h3>
+<p>ResearchNode is a standalone web application with the following context:</p>
+<div class="mermaid">
+graph TD
+    U["User (Researcher)"] --> FE["React Frontend"]
+    FE --> BE["FastAPI Backend"]
+    BE --> NEO["Neo4j (Knowledge Graph)"]
+    BE --> QD["Qdrant (Vector DB)"]
+    BE --> PG["PostgreSQL (Neon DB)"]
+    BE --> LLM["LLM (Language Model)"]
+    BE --> FS["File System (PDF Storage)"]
+
+</div>
+
+<h3>2.2 Product Functions (High-Level)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1</td>
+<td>Paper Upload</td>
+<td>Upload PDF research papers to the system</td>
+</tr>
+<tr>
+<td>F2</td>
+<td>Text Extraction</td>
+<td>Extract and clean text from uploaded PDFs</td>
+</tr>
+<tr>
+<td>F3</td>
+<td>Text Chunking</td>
+<td>Split extracted text into manageable chunks</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>Embedding Generation</td>
+<td>Generate vector embeddings for text chunks</td>
+</tr>
+<tr>
+<td>F5</td>
+<td>Vector Storage</td>
+<td>Store and retrieve embeddings from Qdrant</td>
+</tr>
+<tr>
+<td>F6</td>
+<td>Entity Extraction</td>
+<td>Extract scientific entities (models, datasets, methods, tasks)</td>
+</tr>
+<tr>
+<td>F7</td>
+<td>Knowledge Graph Construction</td>
+<td>Build and update Neo4j graph with extracted entities and relationships</td>
+</tr>
+<tr>
+<td>F8</td>
+<td>RAG Question Answering</td>
+<td>Answer user questions using combined graph + vector retrieval</td>
+</tr>
+<tr>
+<td>F9</td>
+<td>Multi-Agent Analysis</td>
+<td>Run specialized agents for literature discovery, contradiction detection, and experiment suggestion</td>
+</tr>
+<tr>
+<td>F10</td>
+<td>Graph Visualization</td>
+<td>Display interactive knowledge graph in the browser with Focus Mode and Venn Diagrams</td>
+</tr>
+<tr>
+<td>F11</td>
+<td>Research Gap Detection</td>
+<td>Identify missing relationships in the knowledge graph</td>
+</tr>
+<tr>
+<td>F12</td>
+<td>Persistent Sessions</td>
+<td>Save and load distinct chat sessions using PostgreSQL</td>
+</tr>
+<tr>
+<td>F13</td>
+<td>Node Annotations</td>
+<td>Save custom notes and summaries to individual graph nodes</td>
+</tr>
+</tbody>
+</table>
+<h3>2.3 User Characteristics</h3>
+<table>
+<thead>
+<tr>
+<th>User Type</th>
+<th>Description</th>
+<th>Technical Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Researcher</td>
+<td>Academic researcher conducting literature review</td>
+<td>Moderate</td>
+</tr>
+<tr>
+<td>Student</td>
+<td>Graduate/undergraduate student exploring a research area</td>
+<td>Basic to Moderate</td>
+</tr>
+<tr>
+<td>Evaluator</td>
+<td>Project evaluator assessing the system</td>
+<td>Basic</td>
+</tr>
+</tbody>
+</table>
+<h3>2.4 Constraints</h3>
+<ul>
+<li>The system is designed as a single-user application (no authentication required for MVP)</li>
+<li>PDF text extraction quality depends on the PDF format (text-based PDFs only; scanned PDFs not supported in MVP)</li>
+<li>LLM API costs may limit the number of queries in a free-tier deployment</li>
+<li>Neo4j Community Edition limitations (single database)</li>
+<li>Internet connectivity required for LLM API calls</li>
+</ul>
+<h3>2.5 Assumptions and Dependencies</h3>
+<ul>
+<li>Python 3.12 is installed on the development machine</li>
+<li>Node.js 18+ is installed for the React frontend</li>
+<li>Neo4j Desktop or Neo4j Community Server is installed and running</li>
+<li>Qdrant is running locally (Docker or standalone)</li>
+<li>An LLM API key is available (e.g., Google Gemini, OpenAI, or local Ollama)</li>
+</ul>
+<hr />
+<h2>3. Specific Requirements</h2>
+<h3>3.1 Functional Requirements</h3>
+<hr />
+<h4>FR-01: Paper Upload</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>FR-01</td>
+</tr>
+<tr>
+<td><strong>Title</strong></td>
+<td>Paper Upload</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>The system shall allow users to upload research papers in PDF format through a web interface</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td>PDF file (max 50 MB)</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td>Confirmation message with paper ID and metadata</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High (MVP)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Acceptance Criteria:</strong>
+1. User can select and upload a PDF file via the web interface
+2. System validates the file is a valid PDF
+3. System stores the PDF in the local file system under <code>papers/</code> directory
+4. System returns a unique paper ID and extracted metadata (title, page count)</p>
+<hr />
+<h4>FR-02: Text Extraction</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>FR-02</td>
+</tr>
+<tr>
+<td><strong>Title</strong></td>
+<td>Text Extraction from PDF</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>The system shall extract raw text content from uploaded PDF files using PyMuPDF</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td>PDF file path</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td>Extracted text string</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High (MVP)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Acceptance Criteria:</strong>
+1. Text is extracted from all pages of the PDF
+2. Extraction handles multi-column layouts reasonably
+3. Non-text content (images, tables) is skipped gracefully
+4. Extracted text is cleaned of excessive whitespace and formatting artifacts</p>
+<hr />
+<h4>FR-03: Text Chunking</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>FR-03</td>
+</tr>
+<tr>
+<td><strong>Title</strong></td>
+<td>Text Chunking</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>The system shall split extracted text into overlapping chunks suitable for embedding and retrieval</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td>Raw text string</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td>List of text chunks with metadata</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High (MVP)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Parameters:</strong>
+- Chunk size: 1000 characters
+- Chunk overlap: 200 characters
+- Splitter: LangChain <code>RecursiveCharacterTextSplitter</code></p>
+<hr />
+<h4>FR-04: Embedding Generation</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>FR-04</td>
+</tr>
+<tr>
+<td><strong>Title</strong></td>
+<td>Embedding Generation</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>The system shall generate dense vector embeddings for each text chunk using a sentence transformer model</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td>Text chunk</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td>384-dimensional float vector</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High (MVP)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Model:</strong> <code>all-MiniLM-L6-v2</code> (Sentence Transformers)</p>
+<hr />
+<h4>FR-05: Vector Storage and Search</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>FR-05</td>
+</tr>
+<tr>
+<td><strong>Title</strong></td>
+<td>Vector Storage and Similarity Search</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>The system shall store embeddings in Qdrant and retrieve the most similar chunks given a query embedding</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td>Query embedding vector</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td>Top-k similar chunks with scores and metadata</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High (MVP)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4>FR-06: Entity Extraction</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>FR-06</td>
+</tr>
+<tr>
+<td><strong>Title</strong></td>
+<td>Scientific Entity Extraction</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>The system shall extract scientific entities from paper text, including models, methods, datasets, tasks, and authors</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td>Paper text</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td>List of entities with types and attributes</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High (MVP)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Entity Types:</strong>
+- <code>Paper</code> — title, authors, year, abstract
+- <code>Model</code> — model/architecture name
+- <code>Method</code> — technique or approach
+- <code>Dataset</code> — dataset name
+- <code>Task</code> — NLP/ML task
+- <code>Author</code> — author name, affiliation</p>
+<hr />
+<h4>FR-07: Knowledge Graph Construction</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>FR-07</td>
+</tr>
+<tr>
+<td><strong>Title</strong></td>
+<td>Knowledge Graph Construction</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>The system shall create nodes and relationships in Neo4j based on extracted entities</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td>Extracted entities and relationships</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td>Updated Neo4j graph</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High (MVP)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Relationship Types:</strong>
+- <code>USES</code> — Paper uses a Model/Method
+- <code>APPLIED_TO</code> — Method applied to a Task
+- <code>EVALUATED_ON</code> — Model evaluated on a Dataset
+- <code>CITES</code> — Paper cites another Paper
+- <code>AUTHORED_BY</code> — Paper authored by an Author
+- <code>COMPARED_WITH</code> — Model compared with another Model</p>
+<hr />
+<h4>FR-08: RAG Question Answering</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>FR-08</td>
+</tr>
+<tr>
+<td><strong>Title</strong></td>
+<td>GraphRAG Question Answering</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>The system shall answer user questions by combining vector-retrieved chunks with graph-traversed context and generating a response via LLM</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td>Natural language question</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td>Answer with citations and graph context</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High (MVP)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4>FR-09: Literature Discovery Agent</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>FR-09</td>
+</tr>
+<tr>
+<td><strong>Title</strong></td>
+<td>Literature Discovery Agent</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>An AI agent that finds related papers and connections given a research topic</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td>Research topic or keyword</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td>List of related papers with relationship explanations</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4>FR-10: Contradiction Detection Agent</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>FR-10</td>
+</tr>
+<tr>
+<td><strong>Title</strong></td>
+<td>Contradiction Detection Agent</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>An AI agent that identifies conflicting findings across papers in the knowledge graph</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td>Knowledge graph state</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td>List of detected contradictions with evidence</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4>FR-11: Experiment Suggestion Agent</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>FR-11</td>
+</tr>
+<tr>
+<td><strong>Title</strong></td>
+<td>Experiment Suggestion Agent</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>An AI agent that suggests novel experimental directions based on gaps in the knowledge graph</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td>Knowledge graph state</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td>List of suggested experiments with rationale</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4>FR-12: Knowledge Graph Visualization</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>FR-12</td>
+</tr>
+<tr>
+<td><strong>Title</strong></td>
+<td>Interactive Knowledge Graph Visualization</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>The system shall display the knowledge graph as an interactive, zoomable, clickable visualization using Cytoscape.js, featuring a Tabbed Sidebar (Details, Context, Notes), Focus Mode, and Venn Diagram multi-paper comparison.</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td>Graph data (nodes and edges) from Neo4j</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td>Interactive graph rendered in the browser</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High (MVP)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4>FR-13: Persistent Sessions and Node Annotations</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>FR-13</td>
+</tr>
+<tr>
+<td><strong>Title</strong></td>
+<td>Session &amp; Annotation Persistence</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>The system shall store chat history and user-authored node notes in a PostgreSQL database for persistent retrieval.</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td>User text messages and node notes</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td>Saved session and annotation records</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>3.2 Non-Functional Requirements</h3>
+<h4>NFR-01: Performance</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PDF Processing</td>
+<td>Extract text from a 20-page PDF in &lt; 5 seconds</td>
+</tr>
+<tr>
+<td>Embedding Generation</td>
+<td>Generate embeddings for 50 chunks in &lt; 10 seconds</td>
+</tr>
+<tr>
+<td>Vector Search</td>
+<td>Return top-10 results in &lt; 500 ms</td>
+</tr>
+<tr>
+<td>Graph Query</td>
+<td>Execute Cypher query and return results in &lt; 2 seconds</td>
+</tr>
+<tr>
+<td>RAG Response</td>
+<td>Generate a complete answer in &lt; 15 seconds</td>
+</tr>
+</tbody>
+</table>
+<h4>NFR-02: Usability</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Learning Curve</td>
+<td>A new user should be able to upload a paper and ask a question within 2 minutes</td>
+</tr>
+<tr>
+<td>Error Messages</td>
+<td>All errors should display user-friendly messages with suggested actions</td>
+</tr>
+<tr>
+<td>Responsiveness</td>
+<td>The UI should be responsive on screens 1024px and wider</td>
+</tr>
+</tbody>
+</table>
+<h4>NFR-03: Reliability</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Uptime</td>
+<td>System should function reliably during demonstration</td>
+</tr>
+<tr>
+<td>Data Persistence</td>
+<td>Uploaded papers and graph data should persist across server restarts</td>
+</tr>
+<tr>
+<td>Error Handling</td>
+<td>System should handle invalid PDFs, empty queries, and database connection failures gracefully</td>
+</tr>
+</tbody>
+</table>
+<h4>NFR-04: Scalability</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Papers</td>
+<td>MVP should handle up to 50 uploaded papers</td>
+</tr>
+<tr>
+<td>Graph Nodes</td>
+<td>Knowledge graph should perform well with up to 1,000 nodes</td>
+</tr>
+<tr>
+<td>Vector Collection</td>
+<td>Qdrant should handle up to 10,000 vectors</td>
+</tr>
+</tbody>
+</table>
+<h4>NFR-05: Security</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>File Validation</td>
+<td>Only PDF files should be accepted for upload</td>
+</tr>
+<tr>
+<td>Input Sanitization</td>
+<td>All user inputs should be sanitized before database queries</td>
+</tr>
+<tr>
+<td>API Key Protection</td>
+<td>LLM API keys should be stored in environment variables, not in source code</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. External Interface Requirements</h2>
+<h3>4.1 User Interface</h3>
+<p>The web application shall consist of four main screens:</p>
+<ol>
+<li><strong>Dashboard</strong> — Overview of uploaded papers and system status</li>
+<li><strong>Upload Page</strong> — PDF file upload with progress indicator</li>
+<li><strong>Chat Interface</strong> — Natural language Q&amp;A with citation display</li>
+<li><strong>Graph View</strong> — Interactive knowledge graph visualization</li>
+</ol>
+<h3>4.2 API Interface</h3>
+<p>The backend shall expose a RESTful API:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/upload-paper</code></td>
+<td>Upload a PDF paper</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/query</code></td>
+<td>Ask a question</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/graph/{paper_id}</code></td>
+<td>Get graph data for a paper</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/graph</code></td>
+<td>Get full knowledge graph data</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/papers</code></td>
+<td>List all uploaded papers</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/papers/{paper_id}/pdf</code></td>
+<td>Serve the PDF file for the split-screen viewer</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/sessions</code></td>
+<td>Fetch chat session history</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/sessions/{session_id}</code></td>
+<td>Fetch a specific chat session</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/compare</code></td>
+<td>Compare multiple papers (intersection and distinct entities)</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/graph/predict</code></td>
+<td>Run AI link prediction to suggest novel relationships</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/recommendations</code></td>
+<td>Get AI-generated recommendations</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/agents/literature</code></td>
+<td>Run literature discovery agent</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/agents/contradiction</code></td>
+<td>Run contradiction detection agent</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/agents/experiment</code></td>
+<td>Run experiment suggestion agent</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/export-report</code></td>
+<td>Synthesize a chat session into a markdown research report</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/nodes/{node_id}/annotations</code></td>
+<td>Fetch saved notes and AI summaries for a specific node</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/nodes/{node_id}/annotations</code></td>
+<td>Save or update custom notes for a node</td>
+</tr>
+</tbody>
+</table>
+<h3>4.3 Database Interfaces</h3>
+<ul>
+<li><strong>Neo4j:</strong> Bolt protocol on <code>bolt://localhost:7687</code></li>
+<li><strong>Qdrant:</strong> REST API on <code>http://localhost:6333</code></li>
+<li><strong>PostgreSQL:</strong> Remote Neon DB using <code>psycopg2</code> via <code>NEON_DATABASE_URL</code></li>
+</ul>
+<h3>4.4 LLM Interface</h3>
+<ul>
+<li>LLM API accessed via LangChain abstraction</li>
+<li>Supports Google Gemini, OpenAI, or local Ollama models</li>
+<li>Configuration via environment variables</li>
+</ul>
+<hr />
+<h2>5. System Architecture</h2>
+<div class="mermaid">
+graph TB
+    subgraph Frontend
+        UI["React App"]
+        GV["Cytoscape.js Graph"]
+    end
+
+    subgraph Backend
+        API["FastAPI Server"]
+        PDF["PDF Processor"]
+        EMB["Embedding Generator"]
+        ENT["Entity Extractor"]
+        GB["Graph Builder"]
+        RAG["GraphRAG Engine"]
+        AG["Multi-Agent System"]
+        SESS["Session Manager"]
+    end
+
+    subgraph Databases
+        NEO["Neo4j"]
+        QD["Qdrant"]
+        SQL["SQLite"]
+    end
+
+    subgraph External
+        LLM["LLM API"]
+    end
+
+    UI --> API
+    API --> PDF
+    API --> RAG
+    API --> AG
+    PDF --> EMB
+    PDF --> ENT
+    EMB --> QD
+    ENT --> GB
+    GB --> NEO
+    RAG --> QD
+    RAG --> NEO
+    RAG --> LLM
+    AG --> RAG
+    API --> GV
+    API --> SESS
+    SESS --> SQL
+
+</div>
+
+<hr class='page-break'>
+
+<h1>System Design Document</h1>
+<h2>ResearchNode: A GraphRAG Reasoning Engine for Scientific Literature</h2>
+<p><strong>Version:</strong> 1.0<br />
+<strong>Date:</strong> July 2026</p>
+<hr />
+<h2>1. Introduction</h2>
+<p>This document describes the architectural design of ResearchNode, covering the system's high-level architecture, data flow, module design, database schemas, API design, and component interactions. It serves as the blueprint for implementation.</p>
+<hr />
+<h2>2. High-Level Architecture</h2>
+<div class="mermaid">
+graph TB
+    subgraph "Presentation Layer"
+        A["React Web App"]
+        B["Cytoscape.js Graph Viewer"]
+    end
+
+    subgraph "API Layer"
+        C["FastAPI Server"]
+        D["REST Endpoints"]
+        E["WebSocket (optional)"]
+    end
+
+    subgraph "Business Logic Layer"
+        F["PDF Processing Module"]
+        G["Embedding Module"]
+        H["Entity Extraction Module"]
+        I["Graph Builder Module"]
+        J["GraphRAG Engine"]
+        K["Multi-Agent System"]
+    end
+
+    subgraph "Data Layer"
+        L["Neo4j Graph Database"]
+        M["Qdrant Vector Database"]
+        N["File System (PDFs)"]
+        P["PostgreSQL (Neon DB)"]
+    end
+
+    subgraph "External Services"
+        O["LLM API (Gemini / OpenAI / Ollama)"]
+    end
+
+    A --> C
+    B --> C
+    C --> F
+    C --> J
+    C --> K
+    F --> G
+    F --> H
+    G --> M
+    H --> I
+    I --> L
+    J --> L
+    J --> M
+    J --> O
+    K --> J
+    C --> N
+
+</div>
+
+<h3>Architectural Pattern</h3>
+<p>ResearchNode follows a <strong>layered architecture</strong> with clear separation of concerns:</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Components</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Presentation</td>
+<td>React, Cytoscape.js</td>
+<td>User interface, graph visualization</td>
+</tr>
+<tr>
+<td>API</td>
+<td>FastAPI, REST endpoints</td>
+<td>Request routing, validation, response formatting</td>
+</tr>
+<tr>
+<td>Business Logic</td>
+<td>PDF processor, embedder, graph builder, RAG engine, agents</td>
+<td>Core application logic</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>Neo4j, Qdrant, file system</td>
+<td>Persistent storage and retrieval</td>
+</tr>
+<tr>
+<td>External</td>
+<td>LLM API</td>
+<td>Natural language generation</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3. Data Flow Diagrams</h2>
+<h3>3.1 Level 0 — Context Diagram</h3>
+<div class="mermaid">
+graph LR
+    User["👤 User"] -- "Upload PDF / Ask Question" --> RN["ResearchNode System"]
+    RN -- "Answer + Graph Visualization" --> User
+    RN -- "API Calls" --> LLM["LLM Service"]
+    LLM -- "Generated Text" --> RN
+
+</div>
+
+<h3>3.2 Level 1 — System DFD</h3>
+<div class="mermaid">
+graph TD
+    User["👤 User"] --> P1["1.0 Upload Paper"]
+    User --> P2["2.0 Ask Question"]
+    User --> P3["3.0 View Graph"]
+    User --> P4["4.0 Run Agent Analysis"]
+
+    P1 --> DS1["📁 File System"]
+    P1 --> P5["1.1 Extract Text"]
+    P5 --> P6["1.2 Chunk Text"]
+    P6 --> P7["1.3 Generate Embeddings"]
+    P7 --> DS2["🔷 Qdrant"]
+    P5 --> P8["1.4 Extract Entities"]
+    P8 --> P9["1.5 Build Graph"]
+    P9 --> DS3["🔶 Neo4j"]
+
+    P2 --> P10["2.1 Embed Query"]
+    P10 --> DS2
+    P2 --> P11["2.2 Search Graph"]
+    P11 --> DS3
+    P10 --> P12["2.3 Combine Context"]
+    P11 --> P12
+    P12 --> P13["2.4 Generate Answer"]
+    P13 --> LLM["🤖 LLM"]
+    P13 --> User
+
+    P3 --> DS3
+    P4 --> P12
+
+</div>
+
+<h3>3.3 Level 2 — Paper Upload Process</h3>
+<div class="mermaid">
+graph TD
+    A["Receive PDF File"] --> B["Validate File Type and Size"]
+    B --> C["Save to File System"]
+    C --> D["Extract Text (PyMuPDF)"]
+    D --> E["Clean Text (remove artifacts)"]
+    E --> F["Split into Chunks (LangChain)"]
+    F --> G["Generate Embeddings (SentenceTransformer)"]
+    G --> H["Store in Qdrant with Metadata"]
+    E --> I["Extract Entities (spaCy + LLM)"]
+    I --> J["Identify Relationships"]
+    J --> K["Create/Update Neo4j Nodes and Edges"]
+    K --> L["Return Processing Result"]
+    H --> L
+
+</div>
+
+<h3>3.4 Level 2 — Query Processing</h3>
+<div class="mermaid">
+graph TD
+    A["Receive User Question"] --> B["Generate Query Embedding"]
+    B --> C["Vector Search in Qdrant (Top-K Chunks)"]
+    A --> D["Parse Question for Graph Entities"]
+    D --> E["Cypher Query on Neo4j"]
+    C --> F["Merge Vector + Graph Context"]
+    E --> F
+    F --> G["Construct LLM Prompt with Context"]
+    G --> H["LLM Generates Answer"]
+    H --> I["Format Response with Citations"]
+    I --> J["Return to User"]
+
+</div>
+
+<hr />
+<h2>4. Module Design</h2>
+<h3>4.1 PDF Processing Module</h3>
+<pre><code>backend/pdf_processing/
+├── extractor.py    — PDF text extraction using PyMuPDF
+└── cleaner.py      — Text cleaning and normalization
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Input</th>
+<th>Output</th>
+<th>Library</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>extract_pdf()</code></td>
+<td>PDF file path</td>
+<td>Raw text string</td>
+<td>PyMuPDF (fitz)</td>
+</tr>
+<tr>
+<td><code>clean_text()</code></td>
+<td>Raw text</td>
+<td>Cleaned text</td>
+<td>regex, string</td>
+</tr>
+<tr>
+<td><code>split_into_sections()</code></td>
+<td>Cleaned text</td>
+<td>Dict of sections</td>
+<td>regex</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cleaning Operations:</strong>
+- Remove excessive whitespace and newlines
+- Fix hyphenated words at line breaks
+- Remove page numbers and headers/footers
+- Normalize Unicode characters</p>
+<hr />
+<h3>4.2 Embedding Module</h3>
+<pre><code>backend/embeddings/
+└── embedder.py     — Text-to-vector embedding generation
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Input</th>
+<th>Output</th>
+<th>Library</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EmbeddingService.__init__()</code></td>
+<td>Model name</td>
+<td>Loaded model</td>
+<td>sentence-transformers</td>
+</tr>
+<tr>
+<td><code>embed_text()</code></td>
+<td>Single text string</td>
+<td>384-dim vector</td>
+<td>sentence-transformers</td>
+</tr>
+<tr>
+<td><code>embed_batch()</code></td>
+<td>List of text strings</td>
+<td>List of vectors</td>
+<td>sentence-transformers</td>
+</tr>
+<tr>
+<td><code>store_embeddings()</code></td>
+<td>Vectors + metadata</td>
+<td>Qdrant point IDs</td>
+<td>qdrant-client</td>
+</tr>
+<tr>
+<td><code>search_similar()</code></td>
+<td>Query vector, top_k</td>
+<td>Similar chunks + scores</td>
+<td>qdrant-client</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>4.3 Entity Extraction Module</h3>
+<pre><code>backend/graph/
+└── graph_builder.py — Entity and relationship extraction
+</code></pre>
+<p><strong>Entity Types and Extraction Strategy:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Entity Type</th>
+<th>Extraction Method</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Paper</td>
+<td>Metadata parsing</td>
+<td>"Attention Is All You Need"</td>
+</tr>
+<tr>
+<td>Model</td>
+<td>NER + pattern matching</td>
+<td>BERT, GPT, ResNet</td>
+</tr>
+<tr>
+<td>Method</td>
+<td>LLM-assisted extraction</td>
+<td>Self-attention, backpropagation</td>
+</tr>
+<tr>
+<td>Dataset</td>
+<td>NER + keyword detection</td>
+<td>ImageNet, GLUE, SQuAD</td>
+</tr>
+<tr>
+<td>Task</td>
+<td>LLM-assisted extraction</td>
+<td>Sentiment analysis, object detection</td>
+</tr>
+<tr>
+<td>Author</td>
+<td>Metadata parsing</td>
+<td>Vaswani et al.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Relationship Types:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Relationship</th>
+<th>From</th>
+<th>To</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>USES</code></td>
+<td>Paper</td>
+<td>Model/Method</td>
+<td>Paper uses a model or method</td>
+</tr>
+<tr>
+<td><code>EVALUATED_ON</code></td>
+<td>Model</td>
+<td>Dataset</td>
+<td>Model is tested on a dataset</td>
+</tr>
+<tr>
+<td><code>APPLIED_TO</code></td>
+<td>Method</td>
+<td>Task</td>
+<td>Method is used for a task</td>
+</tr>
+<tr>
+<td><code>CITES</code></td>
+<td>Paper</td>
+<td>Paper</td>
+<td>Citation relationship</td>
+</tr>
+<tr>
+<td><code>AUTHORED_BY</code></td>
+<td>Paper</td>
+<td>Author</td>
+<td>Authorship</td>
+</tr>
+<tr>
+<td><code>COMPARED_WITH</code></td>
+<td>Model</td>
+<td>Model</td>
+<td>Comparative study</td>
+</tr>
+<tr>
+<td><code>IMPROVES_ON</code></td>
+<td>Model</td>
+<td>Model</td>
+<td>One model improves another</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>4.4 Knowledge Graph Module</h3>
+<pre><code>backend/graph/
+└── neo4j.py        — Neo4j database operations
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Input</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Neo4jService.__init__()</code></td>
+<td>URI, credentials</td>
+<td>Connected driver</td>
+</tr>
+<tr>
+<td><code>create_paper_node()</code></td>
+<td>Paper metadata</td>
+<td>Node ID</td>
+</tr>
+<tr>
+<td><code>create_entity_node()</code></td>
+<td>Entity type + attributes</td>
+<td>Node ID</td>
+</tr>
+<tr>
+<td><code>create_relationship()</code></td>
+<td>Source, target, rel_type</td>
+<td>Relationship ID</td>
+</tr>
+<tr>
+<td><code>query_graph()</code></td>
+<td>Cypher query string</td>
+<td>Query results</td>
+</tr>
+<tr>
+<td><code>get_paper_subgraph()</code></td>
+<td>Paper ID</td>
+<td>Nodes + edges JSON</td>
+</tr>
+<tr>
+<td><code>get_full_graph()</code></td>
+<td>—</td>
+<td>Complete graph JSON</td>
+</tr>
+<tr>
+<td><code>find_missing_edges()</code></td>
+<td>—</td>
+<td>Potential research gaps</td>
+</tr>
+<tr>
+<td><code>compare_papers()</code></td>
+<td>List of Paper IDs</td>
+<td>Shared and distinct entities</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Neo4j Schema:</strong></p>
+<pre><code class="language-cypher">// Node constraints
+CREATE CONSTRAINT paper_name IF NOT EXISTS
+  FOR (p:Paper) REQUIRE p.name IS UNIQUE;
+
+CREATE CONSTRAINT model_name IF NOT EXISTS
+  FOR (m:Model) REQUIRE m.name IS UNIQUE;
+
+CREATE CONSTRAINT dataset_name IF NOT EXISTS
+  FOR (d:Dataset) REQUIRE d.name IS UNIQUE;
+
+CREATE CONSTRAINT method_name IF NOT EXISTS
+  FOR (mt:Method) REQUIRE mt.name IS UNIQUE;
+
+CREATE CONSTRAINT task_name IF NOT EXISTS
+  FOR (t:Task) REQUIRE t.name IS UNIQUE;
+
+CREATE CONSTRAINT author_name IF NOT EXISTS
+  FOR (a:Author) REQUIRE a.name IS UNIQUE;
+</code></pre>
+<hr />
+<h3>4.5 GraphRAG Engine</h3>
+<pre><code>backend/rag/
+├── retriever.py    — Hybrid retrieval (vector + graph)
+└── generator.py    — LLM-based answer generation
+</code></pre>
+<p><strong>Retrieval Pipeline:</strong></p>
+<div class="mermaid">
+graph LR
+    Q["User Query"] --> VR["Vector Retriever"]
+    Q --> GR["Graph Retriever"]
+    VR --> MC["Context Merger"]
+    GR --> MC
+    MC --> PT["Prompt Template"]
+    PT --> LLM["LLM"]
+    LLM --> ANS["Formatted Answer"]
+
+</div>
+
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VectorRetriever</code></td>
+<td>Embeds query, searches Qdrant, returns top-k chunks</td>
+</tr>
+<tr>
+<td><code>GraphRetriever</code></td>
+<td>Extracts entities from query, runs Cypher, returns graph context</td>
+</tr>
+<tr>
+<td><code>ContextMerger</code></td>
+<td>Combines vector chunks + graph paths into a single context string</td>
+</tr>
+<tr>
+<td><code>PromptTemplate</code></td>
+<td>Structures context + question into LLM prompt</td>
+</tr>
+<tr>
+<td><code>AnswerGenerator</code></td>
+<td>Calls LLM, parses response, adds citations</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>4.6 Multi-Agent System</h3>
+<pre><code>backend/agents/
+├── literature.py      — Literature Discovery Agent
+├── contradiction.py   — Contradiction Detection Agent
+└── experiment.py      — Experiment Suggestion Agent
+</code></pre>
+<p><strong>Agent Architecture:</strong></p>
+<div class="mermaid">
+graph TD
+    O["Agent Orchestrator"] --> LA["Literature Agent"]
+    O --> CA["Contradiction Agent"]
+    O --> EA["Experiment Agent"]
+
+    LA --> RAG["GraphRAG Engine"]
+    CA --> RAG
+    EA --> RAG
+
+    RAG --> NEO["Neo4j"]
+    RAG --> QD["Qdrant"]
+    RAG --> LLM["LLM"]
+
+</div>
+
+<table>
+<thead>
+<tr>
+<th>Agent</th>
+<th>Input</th>
+<th>Processing</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Literature Agent</td>
+<td>Research topic</td>
+<td>Graph traversal + vector search</td>
+<td>Related papers with relationships</td>
+</tr>
+<tr>
+<td>Contradiction Agent</td>
+<td>Knowledge graph</td>
+<td>Compare findings across papers</td>
+<td>List of contradictions with evidence</td>
+</tr>
+<tr>
+<td>Experiment Agent</td>
+<td>Knowledge graph</td>
+<td>Identify missing edges/nodes</td>
+<td>Suggested experiments with rationale</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>4.7 API Interface Module</h3>
+<pre><code>backend/api/
+├── upload.py       — File upload endpoints
+├── query.py        — Search, reasoning, graph, agents, and compare endpoints
+├── sessions.py     — PostgreSQL session management endpoints
+└── nodes.py        — Node annotations and contextual AI summaries
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Input</th>
+<th>Output</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>upload_paper()</code></td>
+<td>PDF file</td>
+<td><code>{"paper_id": "...", "status": "success"}</code></td>
+<td>Handles upload</td>
+</tr>
+<tr>
+<td><code>ask_question()</code></td>
+<td>Query text</td>
+<td>Streamed answer string</td>
+<td>Hybrid RAG</td>
+</tr>
+<tr>
+<td><code>get_paper_graph()</code></td>
+<td>Paper ID</td>
+<td>Subgraph JSON</td>
+<td>Fetch local graph</td>
+</tr>
+<tr>
+<td><code>get_full_graph()</code></td>
+<td>—</td>
+<td>Complete graph JSON</td>
+<td>Fetch all graph</td>
+</tr>
+<tr>
+<td><code>compare_papers()</code></td>
+<td>List of Paper IDs</td>
+<td>Intersection/Distinct JSON</td>
+<td>Multi-paper overlap</td>
+</tr>
+<tr>
+<td><code>predict_graph_links()</code></td>
+<td>—</td>
+<td>List of predicted links</td>
+<td>AI node relationships</td>
+</tr>
+<tr>
+<td><code>get_node_annotations()</code></td>
+<td>Node ID</td>
+<td>Notes and AI Summary</td>
+<td>Fetch node metadata</td>
+</tr>
+<tr>
+<td><code>save_node_annotations()</code></td>
+<td>Note text</td>
+<td>Status success</td>
+<td>Save user notes</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>4.8 Frontend</h3>
+<pre><code>frontend/src/
+├── components/
+│   ├── Upload.jsx       — Paper upload form
+│   ├── Chat.jsx         — Question-answer interface
+│   ├── Graph.jsx        — Knowledge graph visualization
+│   ├── Dashboard.jsx    — Overview and navigation
+│   ├── Compare.jsx      — Multi-paper comparison diagram
+│   └── Agents.jsx       — Multi-agent execution dashboard
+├── App.jsx
+└── index.js
+</code></pre>
+<p><strong>Component Hierarchy:</strong></p>
+<div class="mermaid">
+graph TD
+    App["App.jsx"] --> Nav["Navigation Bar"]
+    App --> Dash["Dashboard"]
+    App --> Upload["Upload Page"]
+    App --> Chat["Chat Page"]
+    App --> Graph["Graph View"]
+    App --> Compare["Compare View"]
+    App --> Agents["Agents Dashboard"]
+
+    Dash --> PaperList["Paper List"]
+    Dash --> Stats["System Stats"]
+
+    Chat --> Input["Question Input"]
+    Chat --> Response["Answer Display"]
+    Chat --> Citations["Citation Cards"]
+
+    Graph --> Cytoscape["Cytoscape.js Canvas"]
+    Graph --> Legend["Graph Legend"]
+    Graph --> Filters["Node/Edge Filters"]
+
+</div>
+
+<hr />
+<h2>5. Database Design</h2>
+<h3>5.1 Neo4j Graph Schema</h3>
+<div class="mermaid">
+graph LR
+    P["Paper"] -- USES --> Mo["Model"]
+    P -- USES --> Me["Method"]
+    P -- AUTHORED_BY --> A["Author"]
+    P -- CITES --> P2["Paper"]
+    Mo -- EVALUATED_ON --> D["Dataset"]
+    Me -- APPLIED_TO --> T["Task"]
+    Mo -- COMPARED_WITH --> Mo2["Model"]
+    Mo -- IMPROVES_ON --> Mo3["Model"]
+
+</div>
+
+<p><strong>Node Properties:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Node Type</th>
+<th>Properties</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Paper</td>
+<td><code>name</code>, <code>title</code>, <code>year</code>, <code>abstract</code>, <code>source_file</code>, <code>upload_date</code></td>
+</tr>
+<tr>
+<td>Model</td>
+<td><code>name</code>, <code>type</code>, <code>parameters</code>, <code>year_introduced</code></td>
+</tr>
+<tr>
+<td>Method</td>
+<td><code>name</code>, <code>category</code>, <code>description</code></td>
+</tr>
+<tr>
+<td>Dataset</td>
+<td><code>name</code>, <code>domain</code>, <code>size</code>, <code>task_type</code></td>
+</tr>
+<tr>
+<td>Task</td>
+<td><code>name</code>, <code>domain</code>, <code>description</code></td>
+</tr>
+<tr>
+<td>Author</td>
+<td><code>name</code>, <code>affiliation</code>, <code>email</code></td>
+</tr>
+</tbody>
+</table>
+<h3>5.2 Qdrant Vector Schema</h3>
+<p><strong>Collection:</strong> <code>research_chunks</code></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>UUID</td>
+<td>Unique chunk identifier</td>
+</tr>
+<tr>
+<td><code>vector</code></td>
+<td>float[384]</td>
+<td>Embedding from all-MiniLM-L6-v2</td>
+</tr>
+<tr>
+<td><code>payload.paper_id</code></td>
+<td>string</td>
+<td>Reference to source paper</td>
+</tr>
+<tr>
+<td><code>payload.paper_title</code></td>
+<td>string</td>
+<td>Paper title</td>
+</tr>
+<tr>
+<td><code>payload.chunk_index</code></td>
+<td>integer</td>
+<td>Position in the paper</td>
+</tr>
+<tr>
+<td><code>payload.chunk_text</code></td>
+<td>string</td>
+<td>Original text content</td>
+</tr>
+<tr>
+<td><code>payload.section</code></td>
+<td>string</td>
+<td>Paper section (abstract, method, etc.)</td>
+</tr>
+</tbody>
+</table>
+<h3>5.3 PostgreSQL Relational Schema</h3>
+<p><strong>Table:</strong> <code>sessions</code>
+| Field | Type | Description |
+|-------|------|-------------|
+| <code>id</code> | TEXT (UUID) | Session identifier |
+| <code>title</code> | TEXT | Chat title |
+| <code>created_at</code> | TIMESTAMP | Creation time |</p>
+<p><strong>Table:</strong> <code>messages</code>
+| Field | Type | Description |
+|-------|------|-------------|
+| <code>id</code> | INTEGER | Message ID |
+| <code>session_id</code> | TEXT (FK) | Reference to <code>sessions</code> |
+| <code>role</code> | TEXT | 'user' or 'ai' |
+| <code>content</code> | TEXT | Message body |</p>
+<p><strong>Table:</strong> <code>node_annotations</code>
+| Field | Type | Description |
+|-------|------|-------------|
+| <code>node_id</code> | TEXT | Corresponds to Neo4j Node ID |
+| <code>notes</code> | TEXT | User-authored notes |
+| <code>ai_summary</code> | TEXT | Cached Mini-RAG summary |</p>
+<hr />
+<h2>6. Technology Justification</h2>
+<table>
+<thead>
+<tr>
+<th>Technology</th>
+<th>Choice</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Backend Framework</td>
+<td>FastAPI</td>
+<td>Async support, auto-documentation, type validation, high performance</td>
+</tr>
+<tr>
+<td>Frontend Framework</td>
+<td>React + Vite</td>
+<td>Fast HMR, component-based, large ecosystem. UI styled with Neon-Glassmorphism CSS</td>
+</tr>
+<tr>
+<td>Graph Database</td>
+<td>Neo4j</td>
+<td>Industry standard for graph data, Cypher query language, Python driver</td>
+</tr>
+<tr>
+<td>Vector Database</td>
+<td>Qdrant</td>
+<td>Rust-based (fast), simple API, metadata filtering, open-source</td>
+</tr>
+<tr>
+<td>Relational DB</td>
+<td>PostgreSQL (Neon)</td>
+<td>Robust persistence for chat sessions, messages, and node annotations</td>
+</tr>
+<tr>
+<td>Embedding Model</td>
+<td>all-MiniLM-L6-v2</td>
+<td>Good quality/speed tradeoff, 384 dims (memory efficient), free</td>
+</tr>
+<tr>
+<td>PDF Extraction</td>
+<td>PyMuPDF</td>
+<td>Fast, reliable, handles most PDF formats, pure Python</td>
+</tr>
+<tr>
+<td>NLP</td>
+<td>spaCy</td>
+<td>Pre-trained NER models, fast, production-ready</td>
+</tr>
+<tr>
+<td>LLM Orchestration</td>
+<td>LangChain</td>
+<td>Abstracts LLM providers, text splitters, prompt templates, chain composition</td>
+</tr>
+<tr>
+<td>Graph Visualization</td>
+<td>Cytoscape.js</td>
+<td>Mature, performant, extensive styling options, academic origin</td>
+</tr>
+<tr>
+<td>Local LLM</td>
+<td>Ollama</td>
+<td>Runs local AI models for contextual summaries without API costs</td>
+</tr>
+</tbody>
+</table>
+<hr class='page-break'>
+
+<h1>Feasibility Study</h1>
+<h2>ResearchNode: A GraphRAG Reasoning Engine for Scientific Literature</h2>
+<p><strong>Date:</strong> July 2026</p>
+<hr />
+<h2>1. Introduction</h2>
+<p>This document evaluates the feasibility of developing ResearchNode across five dimensions: technical, economic, operational, schedule, and legal. The purpose is to confirm that the project can be successfully completed within the constraints of a college mini project.</p>
+<hr />
+<h2>2. Technical Feasibility</h2>
+<h3>2.1 Programming Language</h3>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Assessment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Language</td>
+<td>Python 3.12</td>
+</tr>
+<tr>
+<td>Team Familiarity</td>
+<td>✅ High — Python is the primary language taught in curriculum</td>
+</tr>
+<tr>
+<td>Library Support</td>
+<td>✅ Excellent — all required libraries available via pip</td>
+</tr>
+<tr>
+<td>AI/ML Ecosystem</td>
+<td>✅ Best-in-class — PyTorch, Transformers, LangChain all Python-native</td>
+</tr>
+</tbody>
+</table>
+<h3>2.2 Frameworks and Libraries</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Library</th>
+<th>Availability</th>
+<th>Maturity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Web Backend</td>
+<td>FastAPI 0.100+</td>
+<td>✅ pip install</td>
+<td>Production-ready</td>
+</tr>
+<tr>
+<td>PDF Processing</td>
+<td>PyMuPDF 1.24+</td>
+<td>✅ pip install</td>
+<td>Stable, widely used</td>
+</tr>
+<tr>
+<td>Text Splitting</td>
+<td>LangChain 0.2+</td>
+<td>✅ pip install</td>
+<td>Active development</td>
+</tr>
+<tr>
+<td>Embeddings</td>
+<td>sentence-transformers</td>
+<td>✅ pip install</td>
+<td>Stable, well-documented</td>
+</tr>
+<tr>
+<td>NLP/NER</td>
+<td>spaCy 3.7+</td>
+<td>✅ pip install</td>
+<td>Production-ready</td>
+</tr>
+<tr>
+<td>Frontend</td>
+<td>React 18+</td>
+<td>✅ npm install</td>
+<td>Industry standard</td>
+</tr>
+<tr>
+<td>Graph Viz</td>
+<td>Cytoscape.js 3.28+</td>
+<td>✅ npm install</td>
+<td>Mature, academic-focused</td>
+</tr>
+</tbody>
+</table>
+<h3>2.3 Databases</h3>
+<table>
+<thead>
+<tr>
+<th>Database</th>
+<th>Type</th>
+<th>Installation</th>
+<th>Learning Curve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Neo4j Community</td>
+<td>Graph</td>
+<td>✅ Desktop installer available</td>
+<td>Medium — Cypher is intuitive</td>
+</tr>
+<tr>
+<td>Qdrant</td>
+<td>Vector</td>
+<td>✅ Docker or standalone binary</td>
+<td>Low — simple REST API</td>
+</tr>
+</tbody>
+</table>
+<h3>2.4 LLM Access</h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Cost</th>
+<th>Setup Complexity</th>
+<th>Quality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Google Gemini API (free tier)</td>
+<td>Free (rate limited)</td>
+<td>Low</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Ollama (local LLM)</td>
+<td>Free</td>
+<td>Medium (requires GPU)</td>
+<td>Medium-High</td>
+</tr>
+<tr>
+<td>OpenAI API</td>
+<td>Paid (~$0.01/query)</td>
+<td>Low</td>
+<td>Very High</td>
+</tr>
+<tr>
+<td>Groq API (free tier)</td>
+<td>Free (rate limited)</td>
+<td>Low</td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>[!TIP]
+For a mini project demo, <strong>Google Gemini free tier</strong> or <strong>Ollama with Llama 3</strong> provides sufficient quality at zero cost.</p>
+</blockquote>
+<h3>2.5 Hardware Requirements</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Minimum</th>
+<th>Recommended</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU</td>
+<td>Intel i5 / AMD Ryzen 5</td>
+<td>Intel i7 / AMD Ryzen 7</td>
+</tr>
+<tr>
+<td>RAM</td>
+<td>8 GB</td>
+<td>16 GB</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>10 GB free</td>
+<td>20 GB free</td>
+</tr>
+<tr>
+<td>GPU</td>
+<td>Not required (CPU embedding)</td>
+<td>NVIDIA GPU (faster embedding)</td>
+</tr>
+<tr>
+<td>OS</td>
+<td>Windows 10/11, Ubuntu 20.04+</td>
+<td>Any modern OS</td>
+</tr>
+</tbody>
+</table>
+<h3>2.6 Technical Feasibility Verdict</h3>
+<blockquote>
+<p>✅ <strong>FEASIBLE</strong> — All required technologies are mature, free/open-source, well-documented, and compatible with standard development hardware.</p>
+</blockquote>
+<hr />
+<h2>3. Economic Feasibility</h2>
+<h3>3.1 Development Cost</h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python</td>
+<td>Free (open-source)</td>
+</tr>
+<tr>
+<td>FastAPI</td>
+<td>Free (MIT license)</td>
+</tr>
+<tr>
+<td>React</td>
+<td>Free (MIT license)</td>
+</tr>
+<tr>
+<td>Neo4j Community Edition</td>
+<td>Free</td>
+</tr>
+<tr>
+<td>Qdrant (self-hosted)</td>
+<td>Free (Apache 2.0)</td>
+</tr>
+<tr>
+<td>sentence-transformers</td>
+<td>Free (Apache 2.0)</td>
+</tr>
+<tr>
+<td>spaCy</td>
+<td>Free (MIT license)</td>
+</tr>
+<tr>
+<td>PyMuPDF</td>
+<td>Free (AGPL / commercial)</td>
+</tr>
+<tr>
+<td>LangChain</td>
+<td>Free (MIT license)</td>
+</tr>
+<tr>
+<td>Cytoscape.js</td>
+<td>Free (MIT license)</td>
+</tr>
+<tr>
+<td>VS Code</td>
+<td>Free</td>
+</tr>
+<tr>
+<td>Git</td>
+<td>Free</td>
+</tr>
+<tr>
+<td>LLM API (Gemini free tier)</td>
+<td>Free</td>
+</tr>
+</tbody>
+</table>
+<h3>3.2 Infrastructure Cost</h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Development machine</td>
+<td>Already available (student laptop)</td>
+</tr>
+<tr>
+<td>Cloud hosting</td>
+<td>Not required (local development for demo)</td>
+</tr>
+<tr>
+<td>Domain name</td>
+<td>Not required</td>
+</tr>
+<tr>
+<td>SSL certificate</td>
+<td>Not required</td>
+</tr>
+</tbody>
+</table>
+<h3>3.3 Total Cost</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Software licenses</td>
+<td>₹0</td>
+</tr>
+<tr>
+<td>Hardware</td>
+<td>₹0 (existing)</td>
+</tr>
+<tr>
+<td>Cloud services</td>
+<td>₹0</td>
+</tr>
+<tr>
+<td>LLM API</td>
+<td>₹0 (free tier)</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>₹0</strong></td>
+</tr>
+</tbody>
+</table>
+<h3>3.4 Economic Feasibility Verdict</h3>
+<blockquote>
+<p>✅ <strong>FEASIBLE</strong> — The entire project can be developed at zero cost using open-source tools and free-tier services.</p>
+</blockquote>
+<hr />
+<h2>4. Operational Feasibility</h2>
+<h3>4.1 User Acceptance</h3>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Assessment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Target users understand PDF upload</td>
+<td>✅ Familiar interaction</td>
+</tr>
+<tr>
+<td>Target users can type questions</td>
+<td>✅ Chat-based interface is intuitive</td>
+</tr>
+<tr>
+<td>Graph visualization adds value</td>
+<td>✅ Visual learners benefit greatly</td>
+</tr>
+<tr>
+<td>No training required</td>
+<td>✅ Self-explanatory UI</td>
+</tr>
+</tbody>
+</table>
+<h3>4.2 Deployment</h3>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Assessment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Can run on student laptop</td>
+<td>✅ Yes</td>
+</tr>
+<tr>
+<td>Can demonstrate in 10-15 minutes</td>
+<td>✅ Yes — upload paper, ask question, show graph</td>
+</tr>
+<tr>
+<td>Requires internet</td>
+<td>⚠️ Only for LLM API (can use Ollama offline)</td>
+</tr>
+<tr>
+<td>Database setup</td>
+<td>⚠️ Neo4j and Qdrant need to be running</td>
+</tr>
+</tbody>
+</table>
+<h3>4.3 Maintenance</h3>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Assessment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No ongoing server costs</td>
+<td>✅ Local deployment</td>
+</tr>
+<tr>
+<td>No user management needed</td>
+<td>✅ Single-user system</td>
+</tr>
+<tr>
+<td>Data persists in Neo4j/Qdrant</td>
+<td>✅ Survives restarts</td>
+</tr>
+</tbody>
+</table>
+<h3>4.4 Operational Feasibility Verdict</h3>
+<blockquote>
+<p>✅ <strong>FEASIBLE</strong> — The system is straightforward to use, demonstrate, and maintain.</p>
+</blockquote>
+<hr />
+<h2>5. Schedule Feasibility</h2>
+<h3>5.1 Development Timeline</h3>
+<table>
+<thead>
+<tr>
+<th>Week</th>
+<th>Tasks</th>
+<th>Risk Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Week 1</td>
+<td>Environment setup, PDF upload/extraction</td>
+<td>🟢 Low</td>
+</tr>
+<tr>
+<td>Week 2</td>
+<td>Chunking, embeddings, Qdrant integration</td>
+<td>🟢 Low</td>
+</tr>
+<tr>
+<td>Week 3</td>
+<td>Neo4j graph, entity extraction</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Week 4</td>
+<td>RAG chatbot, React UI</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Week 5</td>
+<td>Multi-agent system, gap detection</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Week 6</td>
+<td>Testing, documentation, presentation</td>
+<td>🟢 Low</td>
+</tr>
+</tbody>
+</table>
+<h3>5.2 Risk Assessment</h3>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Probability</th>
+<th>Impact</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LLM API rate limits</td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Use Ollama as fallback</td>
+</tr>
+<tr>
+<td>Neo4j learning curve</td>
+<td>Medium</td>
+<td>Low</td>
+<td>Extensive documentation available</td>
+</tr>
+<tr>
+<td>Entity extraction quality</td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Start with simple patterns, improve iteratively</td>
+</tr>
+<tr>
+<td>Time overrun</td>
+<td>Low</td>
+<td>Medium</td>
+<td>MVP-first approach ensures core features are completed</td>
+</tr>
+</tbody>
+</table>
+<h3>5.3 Schedule Feasibility Verdict</h3>
+<blockquote>
+<p>✅ <strong>FEASIBLE</strong> — The 6-week timeline is realistic with an MVP-first approach that ensures core deliverables are completed even if advanced features are deferred.</p>
+</blockquote>
+<hr />
+<h2>6. Legal Feasibility</h2>
+<h3>6.1 Software Licenses</h3>
+<table>
+<thead>
+<tr>
+<th>Software</th>
+<th>License</th>
+<th>Commercial Use</th>
+<th>Modification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python</td>
+<td>PSF License</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>FastAPI</td>
+<td>MIT</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>React</td>
+<td>MIT</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Neo4j Community</td>
+<td>GPL v3</td>
+<td>✅ (with conditions)</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Qdrant</td>
+<td>Apache 2.0</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>LangChain</td>
+<td>MIT</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>sentence-transformers</td>
+<td>Apache 2.0</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>spaCy</td>
+<td>MIT</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>PyMuPDF</td>
+<td>AGPL v3</td>
+<td>⚠️ (AGPL requires source disclosure)</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Cytoscape.js</td>
+<td>MIT</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<h3>6.2 Data and Privacy</h3>
+<ul>
+<li>Users upload their own papers — no third-party data collection</li>
+<li>No personal data is stored beyond paper metadata</li>
+<li>System runs locally — no data leaves the user's machine (except LLM API calls)</li>
+</ul>
+<h3>6.3 Legal Feasibility Verdict</h3>
+<blockquote>
+<p>✅ <strong>FEASIBLE</strong> — All components use permissive open-source licenses suitable for an academic project.</p>
+</blockquote>
+<hr />
+<h2>7. Overall Feasibility Conclusion</h2>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Status</th>
+<th>Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Technical</td>
+<td>✅ Feasible</td>
+<td>All technologies are mature and available</td>
+</tr>
+<tr>
+<td>Economic</td>
+<td>✅ Feasible</td>
+<td>Zero cost with open-source tools</td>
+</tr>
+<tr>
+<td>Operational</td>
+<td>✅ Feasible</td>
+<td>Easy to use and demonstrate</td>
+</tr>
+<tr>
+<td>Schedule</td>
+<td>✅ Feasible</td>
+<td>6-week timeline is realistic</td>
+</tr>
+<tr>
+<td>Legal</td>
+<td>✅ Feasible</td>
+<td>All licenses are permissive</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>[!IMPORTANT]
+<strong>The project is feasible on all dimensions and is approved to proceed to the implementation phase.</strong></p>
+</blockquote>
+<hr class='page-break'>
+
+<h1>Module Description</h1>
+<h2>ResearchNode: A GraphRAG Reasoning Engine for Scientific Literature</h2>
+<p><strong>Version:</strong> 1.0<br />
+<strong>Date:</strong> July 2026</p>
+<hr />
+<h2>1. Module Overview</h2>
+<p>ResearchNode consists of <strong>8 modules</strong> organized in a pipeline architecture:</p>
+<div class="mermaid">
+graph LR
+    M1["Module 1: PDF Processing"] --> M2["Module 2: Embedding Engine"]
+    M1 --> M3["Module 3: Entity Extraction"]
+    M3 --> M4["Module 4: Knowledge Graph"]
+    M2 --> M5["Module 5: GraphRAG Engine"]
+    M4 --> M5
+    M5 --> M6["Module 6: Multi-Agent System"]
+    M5 --> M7["Module 7: API Layer"]
+    M6 --> M7
+    M7 --> M8["Module 8: Frontend"]
+    M7 --> M9["Module 9: Sessions & Nodes (PostgreSQL)"]
+
+</div>
+
+<hr />
+<h2>2. Module 1 — PDF Processing</h2>
+<h3>Purpose</h3>
+<p>Extract and prepare text from uploaded PDF research papers for downstream processing.</p>
+<h3>Location</h3>
+<pre><code>backend/pdf_processing/
+├── extractor.py
+└── cleaner.py
+</code></pre>
+<h3>Sub-components</h3>
+<h4>2.1 PDF Extractor (<code>extractor.py</code>)</h4>
+<p><strong>Input:</strong> PDF file path (<code>str</code>)<br />
+<strong>Output:</strong> Raw text content (<code>str</code>)</p>
+<pre><code class="language-python"># Pseudo-code
+class PDFExtractor:
+
+    def extract(self, file_path: str) -&gt; str:
+        &quot;&quot;&quot;
+        Opens PDF using PyMuPDF (fitz).
+        Iterates through all pages.
+        Concatenates text from each page.
+        Returns complete raw text.
+        &quot;&quot;&quot;
+
+    def extract_metadata(self, file_path: str) -&gt; dict:
+        &quot;&quot;&quot;
+        Extracts PDF metadata:
+        - title, author, subject, page_count
+        - creation_date, modification_date
+        Returns metadata dictionary.
+        &quot;&quot;&quot;
+</code></pre>
+<h4>2.2 Text Cleaner (<code>cleaner.py</code>)</h4>
+<p><strong>Input:</strong> Raw extracted text (<code>str</code>)<br />
+<strong>Output:</strong> Cleaned, normalized text (<code>str</code>)</p>
+<pre><code class="language-python"># Pseudo-code
+class TextCleaner:
+
+    def clean(self, raw_text: str) -&gt; str:
+        &quot;&quot;&quot;
+        Operations:
+        1. Remove excessive whitespace and blank lines
+        2. Fix hyphenated words at line breaks (e.g., &quot;trans-\nformer&quot; → &quot;transformer&quot;)
+        3. Remove page numbers and running headers/footers
+        4. Normalize Unicode characters
+        5. Remove reference section markers
+        Returns cleaned text.
+        &quot;&quot;&quot;
+
+    def split_sections(self, text: str) -&gt; dict:
+        &quot;&quot;&quot;
+        Attempts to identify paper sections:
+        Abstract, Introduction, Related Work,
+        Methodology, Results, Conclusion, References.
+        Returns dict mapping section names to content.
+        &quot;&quot;&quot;
+</code></pre>
+<h3>Dependencies</h3>
+<ul>
+<li><code>PyMuPDF (fitz)</code> — PDF reading</li>
+<li><code>re</code> — Regular expressions for cleaning</li>
+</ul>
+<hr />
+<h2>3. Module 2 — Embedding Engine</h2>
+<h3>Purpose</h3>
+<p>Convert text chunks into dense vector embeddings and manage vector storage/retrieval in Qdrant.</p>
+<h3>Location</h3>
+<pre><code>backend/embeddings/
+└── embedder.py
+</code></pre>
+<h3>Sub-components</h3>
+<h4>3.1 Chunker</h4>
+<p><strong>Input:</strong> Cleaned text (<code>str</code>)<br />
+<strong>Output:</strong> List of text chunks (<code>list[str]</code>)</p>
+<pre><code class="language-python"># Pseudo-code
+class TextChunker:
+
+    def __init__(self, chunk_size=1000, chunk_overlap=200):
+        &quot;&quot;&quot;
+        Initializes LangChain RecursiveCharacterTextSplitter
+        with specified chunk_size and chunk_overlap.
+        &quot;&quot;&quot;
+
+    def chunk(self, text: str) -&gt; list[str]:
+        &quot;&quot;&quot;
+        Splits text into overlapping chunks.
+        Each chunk is approximately chunk_size characters.
+        Overlap ensures context is preserved across boundaries.
+        Returns list of chunk strings.
+        &quot;&quot;&quot;
+</code></pre>
+<h4>3.2 Embedding Generator</h4>
+<p><strong>Input:</strong> Text string or list of strings<br />
+<strong>Output:</strong> NumPy array of shape <code>(n, 384)</code></p>
+<pre><code class="language-python"># Pseudo-code
+class EmbeddingGenerator:
+
+    def __init__(self, model_name=&quot;all-MiniLM-L6-v2&quot;):
+        &quot;&quot;&quot;
+        Loads the SentenceTransformer model.
+        Model is cached after first load.
+        &quot;&quot;&quot;
+
+    def embed(self, text: str) -&gt; np.ndarray:
+        &quot;&quot;&quot;
+        Generates a 384-dimensional embedding
+        for a single text string.
+        &quot;&quot;&quot;
+
+    def embed_batch(self, texts: list[str]) -&gt; np.ndarray:
+        &quot;&quot;&quot;
+        Generates embeddings for multiple texts
+        in a single batch for efficiency.
+        &quot;&quot;&quot;
+</code></pre>
+<h4>3.3 Vector Store Manager</h4>
+<p><strong>Input:</strong> Embeddings + metadata<br />
+<strong>Output:</strong> Qdrant point IDs / search results</p>
+<pre><code class="language-python"># Pseudo-code
+class VectorStoreManager:
+
+    def __init__(self, host=&quot;localhost&quot;, port=6333, collection=&quot;research_chunks&quot;):
+        &quot;&quot;&quot;
+        Connects to Qdrant server.
+        Creates collection if it doesn't exist.
+        Collection uses Cosine distance, 384 dimensions.
+        &quot;&quot;&quot;
+
+    def store(self, embeddings, metadata_list) -&gt; list[str]:
+        &quot;&quot;&quot;
+        Upserts embedding vectors with associated metadata
+        (paper_id, paper_title, chunk_index, chunk_text, section).
+        Returns list of generated point IDs.
+        &quot;&quot;&quot;
+
+    def search(self, query_vector, top_k=5) -&gt; list[dict]:
+        &quot;&quot;&quot;
+        Finds the top_k most similar vectors in the collection.
+        Returns list of {score, chunk_text, paper_title, section}.
+        &quot;&quot;&quot;
+</code></pre>
+<h3>Dependencies</h3>
+<ul>
+<li><code>sentence-transformers</code> — Embedding model</li>
+<li><code>qdrant-client</code> — Vector database client</li>
+<li><code>langchain</code> — Text splitter</li>
+</ul>
+<hr />
+<h2>4. Module 3 — Entity Extraction</h2>
+<h3>Purpose</h3>
+<p>Extract scientific entities (models, methods, datasets, tasks, authors) from paper text using a hybrid NLP + LLM approach.</p>
+<h3>Location</h3>
+<pre><code>backend/graph/
+└── graph_builder.py  (entity extraction portion)
+</code></pre>
+<h3>Sub-components</h3>
+<h4>4.1 NER-Based Extractor</h4>
+<pre><code class="language-python"># Pseudo-code
+class NERExtractor:
+
+    def __init__(self):
+        &quot;&quot;&quot;
+        Loads spaCy model (en_core_web_sm).
+        Defines custom entity patterns for scientific terms.
+        &quot;&quot;&quot;
+
+    def extract_entities(self, text: str) -&gt; list[dict]:
+        &quot;&quot;&quot;
+        Runs spaCy NER pipeline on text.
+        Extracts: PERSON (authors), ORG (institutions),
+        PRODUCT (models/tools), and custom patterns.
+        Returns list of {text, label, start, end}.
+        &quot;&quot;&quot;
+</code></pre>
+<h4>4.2 LLM-Based Extractor</h4>
+<pre><code class="language-python"># Pseudo-code
+class LLMEntityExtractor:
+
+    def extract_structured(self, text: str) -&gt; dict:
+        &quot;&quot;&quot;
+        Sends text to LLM with a structured prompt:
+
+        &quot;From the following research paper text,
+         extract the following entities:
+         - Models/Architectures used
+         - Methods/Techniques described
+         - Datasets mentioned
+         - Tasks/Applications addressed
+         - Key findings/results
+
+         Return as JSON.&quot;
+
+        Parses LLM response into structured entities.
+        &quot;&quot;&quot;
+</code></pre>
+<h4>4.3 Relationship Identifier</h4>
+<pre><code class="language-python"># Pseudo-code
+class RelationshipIdentifier:
+
+    def identify(self, entities: list[dict], text: str) -&gt; list[dict]:
+        &quot;&quot;&quot;
+        Given extracted entities, identifies relationships:
+        - Paper USES Model/Method
+        - Model EVALUATED_ON Dataset
+        - Method APPLIED_TO Task
+        - Model COMPARED_WITH Model
+        - Model IMPROVES_ON Model
+
+        Uses both rule-based patterns and LLM-assisted extraction.
+        Returns list of {source, target, relationship_type}.
+        &quot;&quot;&quot;
+</code></pre>
+<h3>Dependencies</h3>
+<ul>
+<li><code>spacy</code> — Named Entity Recognition</li>
+<li>LLM API — Structured entity extraction</li>
+</ul>
+<hr />
+<h2>5. Module 4 — Knowledge Graph</h2>
+<h3>Purpose</h3>
+<p>Manage the Neo4j knowledge graph — create nodes, relationships, and execute queries.</p>
+<h3>Location</h3>
+<pre><code>backend/graph/
+└── neo4j.py
+</code></pre>
+<h3>Sub-components</h3>
+<pre><code class="language-python"># Pseudo-code
+class Neo4jService:
+
+    def __init__(self, uri, username, password):
+        &quot;&quot;&quot;
+        Establishes connection to Neo4j using Bolt protocol.
+        Verifies connectivity.
+        Creates uniqueness constraints if they don't exist.
+        &quot;&quot;&quot;
+
+    def create_paper_node(self, paper_data: dict) -&gt; str:
+        &quot;&quot;&quot;
+        Creates a Paper node with properties:
+        name, title, year, abstract, source_file, upload_date.
+        Uses MERGE to avoid duplicates.
+        &quot;&quot;&quot;
+
+    def create_entity_node(self, entity_type: str, properties: dict) -&gt; str:
+        &quot;&quot;&quot;
+        Creates a node of the specified type
+        (Model, Method, Dataset, Task, Author).
+        Uses MERGE to avoid duplicates.
+        &quot;&quot;&quot;
+
+    def create_relationship(self, source_type, source_name,
+                            target_type, target_name,
+                            rel_type, properties=None) -&gt; None:
+        &quot;&quot;&quot;
+        Creates a relationship between two existing nodes.
+        Example: (Paper)-[:USES]-&gt;(Model)
+        &quot;&quot;&quot;
+
+    def get_paper_subgraph(self, paper_id: str) -&gt; dict:
+        &quot;&quot;&quot;
+        Returns all nodes and relationships connected to a paper.
+        Depth: 2 hops from the paper node.
+        Returns {nodes: [...], edges: [...]}.
+        &quot;&quot;&quot;
+
+    def get_full_graph(self) -&gt; dict:
+        &quot;&quot;&quot;
+        Returns the entire knowledge graph.
+        Format suitable for Cytoscape.js rendering.
+        &quot;&quot;&quot;
+
+    def query(self, cypher: str, params: dict = None) -&gt; list:
+        &quot;&quot;&quot;
+        Executes a raw Cypher query.
+        Returns list of records.
+        &quot;&quot;&quot;
+
+    def find_research_gaps(self) -&gt; list:
+        &quot;&quot;&quot;
+        Identifies potential research gaps by finding:
+        - Models not yet applied to certain Tasks
+        - Methods not yet evaluated on certain Datasets
+        - Tasks with few associated methods
+        Returns list of gap descriptions.
+        &quot;&quot;&quot;
+
+    def close(self):
+        &quot;&quot;&quot;Closes the Neo4j driver connection.&quot;&quot;&quot;
+</code></pre>
+<h3>Dependencies</h3>
+<ul>
+<li><code>neo4j</code> — Official Python driver</li>
+</ul>
+<hr />
+<h2>6. Module 5 — GraphRAG Engine</h2>
+<h3>Purpose</h3>
+<p>The core intelligence module that combines vector retrieval, graph context, and LLM generation to answer user questions with citation-backed responses.</p>
+<h3>Location</h3>
+<pre><code>backend/rag/
+├── retriever.py
+└── generator.py
+</code></pre>
+<h3>Sub-components</h3>
+<h4>6.1 Hybrid Retriever (<code>retriever.py</code>)</h4>
+<pre><code class="language-python"># Pseudo-code
+class HybridRetriever:
+
+    def __init__(self, vector_store, neo4j_service):
+        &quot;&quot;&quot;
+        Initializes with references to both Qdrant and Neo4j services.
+        &quot;&quot;&quot;
+
+    def retrieve(self, query: str, top_k: int = 5) -&gt; dict:
+        &quot;&quot;&quot;
+        Pipeline:
+        1. Embed the query using EmbeddingGenerator
+        2. Search Qdrant for top_k similar chunks
+        3. Extract key terms from query
+        4. Run Cypher queries on Neo4j for related graph paths
+        5. Combine vector results + graph results into context
+
+        Returns {
+            vector_chunks: [...],
+            graph_context: [...],
+            combined_context: str
+        }
+        &quot;&quot;&quot;
+</code></pre>
+<h4>6.2 Answer Generator (<code>generator.py</code>)</h4>
+<pre><code class="language-python"># Pseudo-code
+class AnswerGenerator:
+
+    def __init__(self, llm_client):
+        &quot;&quot;&quot;
+        Initializes with LLM client (via LangChain).
+        Loads prompt templates.
+        &quot;&quot;&quot;
+
+    def generate(self, question: str, context: dict) -&gt; dict:
+        &quot;&quot;&quot;
+        Constructs a prompt:
+
+        &quot;You are a research assistant. Based on the following context
+         from research papers, answer the question.
+
+         Vector Search Context:
+         {context.vector_chunks}
+
+         Knowledge Graph Context:
+         {context.graph_context}
+
+         Question: {question}
+
+         Provide a detailed answer with citations to specific papers.&quot;
+
+        Calls LLM, parses response.
+
+        Returns {
+            answer: str,
+            citations: [{paper_title, relevant_quote}],
+            confidence: float
+        }
+        &quot;&quot;&quot;
+</code></pre>
+<h3>Dependencies</h3>
+<ul>
+<li>Module 2 (Embedding Engine)</li>
+<li>Module 4 (Knowledge Graph)</li>
+<li><code>langchain</code> — LLM orchestration</li>
+</ul>
+<hr />
+<h2>7. Module 6 — Multi-Agent System</h2>
+<h3>Purpose</h3>
+<p>Three specialized AI agents that analyze the knowledge graph to provide advanced research insights.</p>
+<h3>Location</h3>
+<pre><code>backend/agents/
+├── literature.py
+├── contradiction.py
+└── experiment.py
+</code></pre>
+<h3>Sub-components</h3>
+<h4>7.1 Literature Discovery Agent (<code>literature.py</code>)</h4>
+<pre><code class="language-python"># Pseudo-code
+class LiteratureAgent:
+
+    def run(self, topic: str) -&gt; dict:
+        &quot;&quot;&quot;
+        Input: Research topic (e.g., &quot;CNN for medical imaging&quot;)
+
+        Process:
+        1. Search Qdrant for papers related to the topic
+        2. Traverse Neo4j to find connected papers via shared
+           methods, datasets, or tasks
+        3. Rank papers by relevance (vector similarity + graph centrality)
+        4. Use LLM to summarize how papers relate to each other
+
+        Output: {
+            related_papers: [{title, relevance_score, connection_type}],
+            relationship_summary: str,
+            suggested_reading_order: [str]
+        }
+        &quot;&quot;&quot;
+</code></pre>
+<h4>7.2 Contradiction Detection Agent (<code>contradiction.py</code>)</h4>
+<pre><code class="language-python"># Pseudo-code
+class ContradictionAgent:
+
+    def run(self) -&gt; dict:
+        &quot;&quot;&quot;
+        Input: Current knowledge graph state
+
+        Process:
+        1. Find pairs of papers that study the same topic/task
+        2. Extract their findings/conclusions from stored chunks
+        3. Use LLM to compare findings and identify contradictions
+        4. Score contradiction severity
+
+        Output: {
+            contradictions: [{
+                paper_a: str,
+                paper_b: str,
+                claim_a: str,
+                claim_b: str,
+                explanation: str,
+                severity: &quot;high&quot; | &quot;medium&quot; | &quot;low&quot;
+            }]
+        }
+        &quot;&quot;&quot;
+</code></pre>
+<h4>7.3 Experiment Suggestion Agent (<code>experiment.py</code>)</h4>
+<pre><code class="language-python"># Pseudo-code
+class ExperimentAgent:
+
+    def run(self) -&gt; dict:
+        &quot;&quot;&quot;
+        Input: Current knowledge graph state
+
+        Process:
+        1. Analyze graph structure for missing edges
+           (e.g., Model X never evaluated on Dataset Y)
+        2. Identify under-explored combinations
+        3. Use LLM to generate feasible experiment proposals
+        4. Rank by novelty and feasibility
+
+        Output: {
+            suggestions: [{
+                experiment: str,
+                rationale: str,
+                required_resources: [str],
+                novelty_score: float,
+                based_on: [str]  # papers that inspired this
+            }]
+        }
+        &quot;&quot;&quot;
+</code></pre>
+<h3>Dependencies</h3>
+<ul>
+<li>Module 5 (GraphRAG Engine)</li>
+<li>Module 4 (Knowledge Graph)</li>
+<li>LLM API</li>
+</ul>
+<hr />
+<h2>8. Module 7 — API Layer</h2>
+<h3>Purpose</h3>
+<p>Expose all backend functionality as RESTful API endpoints using FastAPI.</p>
+<h3>Location</h3>
+<pre><code>backend/
+├── main.py          — FastAPI app initialization, CORS, startup/shutdown
+├── config.py        — Configuration and environment variables
+└── api/
+    ├── upload.py    — Paper upload endpoints
+    ├── query.py     — Query and agent endpoints
+    ├── sessions.py  — PostgreSQL session endpoints
+    └── nodes.py     — Node notes and AI summary endpoints
+</code></pre>
+<h3>Sub-components</h3>
+<h4>8.1 Application Setup (<code>main.py</code>)</h4>
+<pre><code class="language-python"># Pseudo-code
+app = FastAPI(title=&quot;ResearchNode API&quot;)
+
+# CORS middleware for React frontend
+# Startup event: initialize Neo4j, Qdrant, Embedding model
+# Shutdown event: close connections
+
+# Include routers from api/upload.py and api/query.py
+</code></pre>
+<h4>8.2 Upload Router (<code>api/upload.py</code>)</h4>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/api/upload-paper</code></td>
+<td>POST</td>
+<td>Accept PDF, process, build graph, store embeddings</td>
+</tr>
+<tr>
+<td><code>/api/papers</code></td>
+<td>GET</td>
+<td>List all uploaded papers with metadata</td>
+</tr>
+<tr>
+<td><code>/api/papers/{id}</code></td>
+<td>GET</td>
+<td>Get details of a specific paper</td>
+</tr>
+<tr>
+<td><code>/api/papers/{id}</code></td>
+<td>DELETE</td>
+<td>Remove a paper and its graph/vector data</td>
+</tr>
+</tbody>
+</table>
+<h4>8.3 Query Router (<code>api/query.py</code>)</h4>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/api/query</code></td>
+<td>POST</td>
+<td>Ask a question, get GraphRAG answer</td>
+</tr>
+<tr>
+<td><code>/api/graph</code></td>
+<td>GET</td>
+<td>Get full knowledge graph for visualization</td>
+</tr>
+<tr>
+<td><code>/api/graph/{paper_id}</code></td>
+<td>GET</td>
+<td>Get subgraph for a specific paper</td>
+</tr>
+<tr>
+<td><code>/api/agents/literature</code></td>
+<td>POST</td>
+<td>Run literature discovery agent</td>
+</tr>
+<tr>
+<td><code>/api/agents/contradiction</code></td>
+<td>POST</td>
+<td>Run contradiction detection</td>
+</tr>
+<tr>
+<td><code>/api/agents/experiment</code></td>
+<td>POST</td>
+<td>Run experiment suggestion</td>
+</tr>
+<tr>
+<td><code>/api/recommendations</code></td>
+<td>GET</td>
+<td>Get AI-generated research recommendations</td>
+</tr>
+</tbody>
+</table>
+<h4>8.4 Sessions &amp; Nodes Router (<code>api/sessions.py</code> &amp; <code>api/nodes.py</code>)</h4>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/api/sessions</code></td>
+<td>POST, GET</td>
+<td>Create/list chat sessions</td>
+</tr>
+<tr>
+<td><code>/api/sessions/{id}</code></td>
+<td>GET</td>
+<td>Retrieve session messages</td>
+</tr>
+<tr>
+<td><code>/api/nodes/{id}/annotations</code></td>
+<td>GET, POST</td>
+<td>Manage user notes and AI context per node</td>
+</tr>
+</tbody>
+</table>
+<h3>Dependencies</h3>
+<ul>
+<li><code>fastapi</code> — Web framework</li>
+<li><code>uvicorn</code> — ASGI server</li>
+<li><code>psycopg2</code> — PostgreSQL driver for sessions</li>
+<li>All business logic modules (2–6)</li>
+</ul>
+<hr />
+<h2>9. Module 8 — Frontend</h2>
+<h3>Purpose</h3>
+<p>Provide a modern, intuitive web interface for interacting with ResearchNode.</p>
+<h3>Location</h3>
+<pre><code>frontend/src/
+├── App.jsx
+├── index.js
+├── index.css
+└── components/
+    ├── Dashboard.jsx
+    ├── Upload.jsx
+    ├── Chat.jsx
+    ├── Graph.jsx
+    ├── Compare.jsx
+    └── SplitView.jsx
+</code></pre>
+<h3>Sub-components</h3>
+<h4>9.1 Dashboard (<code>Dashboard.jsx</code>)</h4>
+<ul>
+<li>Displays system overview: number of papers, graph statistics</li>
+<li>Quick actions: upload paper, start chat</li>
+<li>Recent activity feed</li>
+</ul>
+<h4>9.2 Upload Component (<code>Upload.jsx</code>)</h4>
+<ul>
+<li>Drag-and-drop PDF upload area</li>
+<li>File validation (PDF only, size limit)</li>
+<li>Upload progress bar</li>
+<li>Processing status indicator (extracting → chunking → embedding → graphing)</li>
+<li>Success/error feedback</li>
+</ul>
+<h4>9.3 Chat Component (<code>Chat.jsx</code>)</h4>
+<ul>
+<li>Chat message history (user questions + AI responses)</li>
+<li>Text input with send button</li>
+<li>Citation cards displayed alongside answers</li>
+<li>Loading indicator during LLM processing</li>
+<li>Agent results display (literature, contradictions, experiments)</li>
+</ul>
+<h4>9.4 Graph Visualization (<code>Graph.jsx</code>)</h4>
+<ul>
+<li>Interactive Cytoscape.js canvas</li>
+<li>Node types distinguished by color and shape:</li>
+<li>Paper: 🔵 Blue circle</li>
+<li>Model: 🟢 Green diamond</li>
+<li>Method: 🟡 Yellow triangle</li>
+<li>Dataset: 🟠 Orange square</li>
+<li>Task: 🟣 Purple hexagon</li>
+<li>Author: ⚪ Gray circle</li>
+<li>Tabbed Sidebar: View Node Details, AI Context, and User Notes</li>
+<li>Focus Mode: Isolate subgraph when clicking a node</li>
+<li>Venn Diagram (<code>Compare.jsx</code>): Compare entity overlap between multiple papers</li>
+<li>Split-View (<code>SplitView.jsx</code>): View source PDF citations side-by-side with chat</li>
+</ul>
+<h3>Dependencies</h3>
+<ul>
+<li><code>react</code> — UI framework</li>
+<li><code>cytoscape</code> — Graph visualization</li>
+<li><code>axios</code> — HTTP client for API calls</li>
+<li><code>react-router-dom</code> — Client-side routing</li>
+</ul>
+<hr />
+<h2>10. Module Interaction Summary</h2>
+<div class="mermaid">
+sequenceDiagram
+    participant User
+    participant Frontend
+    participant API
+    participant PDFProc as PDF Processing
+    participant Embedder as Embedding Engine
+    participant EntityExt as Entity Extraction
+    participant Neo4j as Knowledge Graph
+    participant Qdrant as Vector Store
+    participant RAG as GraphRAG Engine
+    participant Agents as Multi-Agent System
+    participant LLM
+
+    Note over User, LLM: Paper Upload Flow
+    User->>Frontend: Upload PDF
+    Frontend->>API: POST /api/upload-paper
+    API->>PDFProc: Extract & clean text
+    PDFProc->>Embedder: Send cleaned text
+    Embedder->>Qdrant: Store embeddings
+    PDFProc->>EntityExt: Send cleaned text
+    EntityExt->>LLM: Extract entities
+    EntityExt->>Neo4j: Create nodes & edges
+    API->>Frontend: Upload success
+
+    Note over User, LLM: Query Flow
+    User->>Frontend: Ask question
+    Frontend->>API: POST /api/query
+    API->>RAG: Process question
+    RAG->>Qdrant: Vector search
+    RAG->>Neo4j: Graph traversal
+    RAG->>LLM: Generate answer
+    RAG->>API: Answer + citations
+    API->>Frontend: Display response
+
+</div>
+
+<hr class='page-break'>
+
+<h1>Technology Stack</h1>
+<h2>ResearchNode: A GraphRAG Reasoning Engine for Scientific Literature</h2>
+<p><strong>Date:</strong> July 2026</p>
+<hr />
+<h2>1. Overview</h2>
+<p>ResearchNode uses a modern, open-source technology stack spanning backend processing, AI/ML, graph and vector databases, and a reactive frontend. Every technology choice prioritizes <strong>zero cost</strong>, <strong>strong community support</strong>, and <strong>educational value</strong> for a college mini project.</p>
+<hr />
+<h2>2. Complete Technology Stack</h2>
+<h3>2.1 Backend — Core</h3>
+<table>
+<thead>
+<tr>
+<th>Technology</th>
+<th>Version</th>
+<th>Purpose</th>
+<th>License</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Python</strong></td>
+<td>3.12</td>
+<td>Primary programming language</td>
+<td>PSF</td>
+</tr>
+<tr>
+<td><strong>FastAPI</strong></td>
+<td>0.115+</td>
+<td>Web framework for REST API</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td><strong>Uvicorn</strong></td>
+<td>0.30+</td>
+<td>ASGI server for FastAPI</td>
+<td>BSD</td>
+</tr>
+<tr>
+<td><strong>Pydantic</strong></td>
+<td>2.0+</td>
+<td>Data validation and serialization</td>
+<td>MIT</td>
+</tr>
+</tbody>
+</table>
+<h3>2.2 Backend — NLP &amp; AI</h3>
+<table>
+<thead>
+<tr>
+<th>Technology</th>
+<th>Version</th>
+<th>Purpose</th>
+<th>License</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LangChain</strong></td>
+<td>0.2+</td>
+<td>LLM orchestration, text splitting, prompt templates</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td><strong>LangChain Community</strong></td>
+<td>0.2+</td>
+<td>Community integrations (Neo4j, Qdrant)</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td><strong>spaCy</strong></td>
+<td>3.7+</td>
+<td>Named Entity Recognition (NER)</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td><strong>en_core_web_sm</strong></td>
+<td>3.7+</td>
+<td>spaCy English NER model</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td><strong>Sentence Transformers</strong></td>
+<td>3.0+</td>
+<td>Text embedding generation</td>
+<td>Apache 2.0</td>
+</tr>
+<tr>
+<td><strong>all-MiniLM-L6-v2</strong></td>
+<td>—</td>
+<td>Embedding model (384 dimensions)</td>
+<td>Apache 2.0</td>
+</tr>
+</tbody>
+</table>
+<h3>2.3 Backend — LLM</h3>
+<table>
+<thead>
+<tr>
+<th>Technology</th>
+<th>Purpose</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Google Gemini API</strong> (Primary)</td>
+<td>LLM for answer generation, entity extraction</td>
+<td>Free tier available</td>
+</tr>
+<tr>
+<td><strong>Ollama</strong> (Fallback)</td>
+<td>Local LLM inference (Llama 3, Mistral)</td>
+<td>Free (local)</td>
+</tr>
+<tr>
+<td><strong>OpenAI API</strong> (Alternative)</td>
+<td>GPT-4o for high-quality generation</td>
+<td>Paid</td>
+</tr>
+<tr>
+<td><strong>Groq API</strong> (Alternative)</td>
+<td>Fast inference with open models</td>
+<td>Free tier available</td>
+</tr>
+</tbody>
+</table>
+<h3>2.4 Databases</h3>
+<table>
+<thead>
+<tr>
+<th>Technology</th>
+<th>Version</th>
+<th>Type</th>
+<th>Purpose</th>
+<th>License</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Neo4j Community</strong></td>
+<td>5.x</td>
+<td>Graph Database</td>
+<td>Knowledge graph storage, Cypher queries</td>
+<td>GPL v3</td>
+</tr>
+<tr>
+<td><strong>Qdrant</strong></td>
+<td>1.10+</td>
+<td>Vector Database</td>
+<td>Embedding storage, similarity search</td>
+<td>Apache 2.0</td>
+</tr>
+<tr>
+<td><strong>PostgreSQL (Neon)</strong></td>
+<td>15+</td>
+<td>Relational DB</td>
+<td>Session history and node annotations</td>
+<td>Open Source</td>
+</tr>
+</tbody>
+</table>
+<h3>2.5 PDF Processing</h3>
+<table>
+<thead>
+<tr>
+<th>Technology</th>
+<th>Version</th>
+<th>Purpose</th>
+<th>License</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PyMuPDF (fitz)</strong></td>
+<td>1.24+</td>
+<td>PDF text extraction</td>
+<td>AGPL v3</td>
+</tr>
+<tr>
+<td><strong>pandas</strong></td>
+<td>2.2+</td>
+<td>Data manipulation and analysis</td>
+<td>BSD</td>
+</tr>
+</tbody>
+</table>
+<h3>2.6 Frontend</h3>
+<table>
+<thead>
+<tr>
+<th>Technology</th>
+<th>Version</th>
+<th>Purpose</th>
+<th>License</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>React + Vite</strong></td>
+<td>18+</td>
+<td>UI component framework with fast HMR</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td><strong>Cytoscape.js</strong></td>
+<td>3.28+</td>
+<td>Interactive graph visualization</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td><strong>Axios</strong></td>
+<td>1.7+</td>
+<td>HTTP client for API communication</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td><strong>React Router</strong></td>
+<td>6+</td>
+<td>Client-side routing</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td><strong>Neon-Glass CSS</strong></td>
+<td>—</td>
+<td>Custom premium glassmorphism styling</td>
+<td>Custom</td>
+</tr>
+</tbody>
+</table>
+<h3>2.7 Development Tools</h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>VS Code</strong></td>
+<td>Primary IDE</td>
+</tr>
+<tr>
+<td><strong>Git</strong></td>
+<td>Version control</td>
+</tr>
+<tr>
+<td><strong>GitHub</strong></td>
+<td>Repository hosting</td>
+</tr>
+<tr>
+<td><strong>Docker</strong> (optional)</td>
+<td>Containerized Qdrant deployment</td>
+</tr>
+<tr>
+<td><strong>Postman</strong></td>
+<td>API testing</td>
+</tr>
+<tr>
+<td><strong>Neo4j Browser</strong></td>
+<td>Graph database UI</td>
+</tr>
+<tr>
+<td><strong>npm / Node.js</strong></td>
+<td>Frontend build tooling</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3. Architecture Diagram with Technologies</h2>
+<div class="mermaid">
+graph TB
+    subgraph "Frontend (React 18)"
+        R["React Components"]
+        CY["Cytoscape.js"]
+        AX["Axios HTTP Client"]
+    end
+
+    subgraph "API Layer (FastAPI)"
+        FA["FastAPI Server"]
+        UV["Uvicorn ASGI"]
+    end
+
+    subgraph "NLP Pipeline"
+        SP["spaCy NER"]
+        LC["LangChain"]
+        ST["Sentence Transformers"]
+    end
+
+    subgraph "Databases"
+        N4["Neo4j 5.x (Graph)"]
+        QD["Qdrant (Vectors)"]
+        PG["PostgreSQL (Neon DB)"]
+    end
+
+    subgraph "External"
+        LLM["Gemini / Ollama / OpenAI"]
+    end
+
+    R --> AX
+    AX --> FA
+    FA --> UV
+    FA --> SP
+    FA --> LC
+    FA --> ST
+    ST --> QD
+    SP --> N4
+    LC --> LLM
+    FA --> N4
+    FA --> QD
+    FA --> PG
+    CY --> R
+
+</div>
+
+<hr />
+<h2>4. Embedding Model Specifications</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model Name</td>
+<td><code>all-MiniLM-L6-v2</code></td>
+</tr>
+<tr>
+<td>Architecture</td>
+<td>MiniLM (distilled from BERT)</td>
+</tr>
+<tr>
+<td>Dimensions</td>
+<td>384</td>
+</tr>
+<tr>
+<td>Max Sequence Length</td>
+<td>256 tokens</td>
+</tr>
+<tr>
+<td>Speed</td>
+<td>~14,000 sentences/sec on GPU</td>
+</tr>
+<tr>
+<td>Size</td>
+<td>~80 MB</td>
+</tr>
+<tr>
+<td>Training Data</td>
+<td>1 billion+ sentence pairs</td>
+</tr>
+<tr>
+<td>Similarity Metric</td>
+<td>Cosine similarity</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. Database Specifications</h2>
+<h3>5.1 Neo4j</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Edition</td>
+<td>Community (free)</td>
+</tr>
+<tr>
+<td>Protocol</td>
+<td>Bolt (port 7687)</td>
+</tr>
+<tr>
+<td>Query Language</td>
+<td>Cypher</td>
+</tr>
+<tr>
+<td>Python Driver</td>
+<td><code>neo4j</code> (official)</td>
+</tr>
+<tr>
+<td>Max Nodes (practical)</td>
+<td>Millions (well within our needs)</td>
+</tr>
+<tr>
+<td>Visualization</td>
+<td>Neo4j Browser (built-in)</td>
+</tr>
+</tbody>
+</table>
+<h3>5.2 Qdrant</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deployment</td>
+<td>Self-hosted (Docker or binary)</td>
+</tr>
+<tr>
+<td>Protocol</td>
+<td>REST API (port 6333) / gRPC (port 6334)</td>
+</tr>
+<tr>
+<td>Distance Metric</td>
+<td>Cosine</td>
+</tr>
+<tr>
+<td>Vector Dimensions</td>
+<td>384</td>
+</tr>
+<tr>
+<td>Payload Filtering</td>
+<td>Yes (paper_id, section, etc.)</td>
+</tr>
+<tr>
+<td>Python Client</td>
+<td><code>qdrant-client</code> (official)</td>
+</tr>
+</tbody>
+</table>
+<h3>5.3 PostgreSQL (Neon DB)</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deployment</td>
+<td>Serverless Cloud (Neon)</td>
+</tr>
+<tr>
+<td>Driver</td>
+<td><code>psycopg2</code></td>
+</tr>
+<tr>
+<td>Primary Use</td>
+<td>Session persistence, Chat logs, Node Notes</td>
+</tr>
+<tr>
+<td>Schema Type</td>
+<td>Relational</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>6. API Specification</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Framework</td>
+<td>FastAPI</td>
+</tr>
+<tr>
+<td>Protocol</td>
+<td>HTTP/REST</td>
+</tr>
+<tr>
+<td>Port</td>
+<td>8000 (default)</td>
+</tr>
+<tr>
+<td>Documentation</td>
+<td>Auto-generated Swagger UI at <code>/docs</code></td>
+</tr>
+<tr>
+<td>Serialization</td>
+<td>JSON</td>
+</tr>
+<tr>
+<td>Validation</td>
+<td>Pydantic models</td>
+</tr>
+<tr>
+<td>CORS</td>
+<td>Enabled for frontend origin</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>7. Why These Technologies?</h2>
+<table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>Chosen</th>
+<th>Alternative Considered</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Backend</td>
+<td>FastAPI</td>
+<td>Flask, Django</td>
+<td>Async, auto-docs, type-safe, modern</td>
+</tr>
+<tr>
+<td>Graph DB</td>
+<td>Neo4j</td>
+<td>ArangoDB, JanusGraph</td>
+<td>Best Python driver, Cypher is readable, desktop app</td>
+</tr>
+<tr>
+<td>Vector DB</td>
+<td>Qdrant</td>
+<td>ChromaDB, Pinecone, Weaviate</td>
+<td>Fast (Rust), simple API, free self-hosted, metadata filtering</td>
+</tr>
+<tr>
+<td>Relational DB</td>
+<td>PostgreSQL (Neon)</td>
+<td>SQLite, MySQL</td>
+<td>Serverless, zero config cloud persistence, scalable</td>
+</tr>
+<tr>
+<td>Embeddings</td>
+<td>MiniLM-L6-v2</td>
+<td>Ada-002, BGE-large</td>
+<td>Free, fast, 384-dim (lightweight), good quality</td>
+</tr>
+<tr>
+<td>PDF</td>
+<td>PyMuPDF</td>
+<td>PDFMiner, GROBID</td>
+<td>Fastest, simplest API, reliable</td>
+</tr>
+<tr>
+<td>NLP</td>
+<td>spaCy</td>
+<td>NLTK, Stanza</td>
+<td>Production-ready, fast, pre-trained models</td>
+</tr>
+<tr>
+<td>LLM Framework</td>
+<td>LangChain</td>
+<td>LlamaIndex, Haystack</td>
+<td>Broadest integrations, active community, good documentation</td>
+</tr>
+<tr>
+<td>Frontend</td>
+<td>React + Vite</td>
+<td>Create-React-App</td>
+<td>Vite is significantly faster, modern tooling</td>
+</tr>
+<tr>
+<td>Graph Viz</td>
+<td>Cytoscape.js</td>
+<td>D3.js, vis.js, Sigma.js</td>
+<td>Purpose-built for graph data, academic origin, excellent docs</td>
+</tr>
+</tbody>
+</table>
+<hr class='page-break'>
+
+<h1>Project Plan &amp; Timeline</h1>
+<h2>ResearchNode: A GraphRAG Reasoning Engine for Scientific Literature</h2>
+<p><strong>Date:</strong> July 2026<br />
+<strong>Duration:</strong> 6 Weeks</p>
+<hr />
+<h2>1. Gantt Chart</h2>
+<div class="mermaid">
+gantt
+    title ResearchNode Development Timeline
+    dateFormat  YYYY-MM-DD
+    axisFormat  %b %d
+
+    section Week 1 - Setup
+    Environment Setup           :w1a, 2026-07-28, 2d
+    Project Structure            :w1b, after w1a, 1d
+    PDF Upload Endpoint          :w1c, after w1b, 2d
+    Text Extraction              :w1d, after w1b, 2d
+
+    section Week 2 - Pipeline
+    Text Chunking               :w2a, 2026-08-04, 2d
+    Embedding Generation        :w2b, after w2a, 2d
+    Qdrant Setup & Integration  :w2c, after w2b, 3d
+
+    section Week 3 - Graph
+    Neo4j Setup                 :w3a, 2026-08-11, 1d
+    Entity Extraction           :w3b, after w3a, 3d
+    Knowledge Graph Builder     :w3c, after w3b, 3d
+
+    section Week 4 - RAG & UI
+    GraphRAG Retriever          :w4a, 2026-08-18, 3d
+    Answer Generator            :w4b, after w4a, 2d
+    React UI (Upload + Chat)    :w4c, 2026-08-18, 5d
+
+    section Week 5 - Agents
+    Literature Agent            :w5a, 2026-08-25, 2d
+    Contradiction Agent         :w5b, after w5a, 2d
+    Experiment Agent            :w5c, after w5b, 2d
+    Graph Visualization         :w5d, 2026-08-25, 3d
+
+    section Week 6 - Polish
+    Integration Testing         :w6a, 2026-09-01, 2d
+    Bug Fixes                   :w6b, after w6a, 2d
+    Documentation               :w6c, 2026-09-01, 3d
+    PPT Preparation             :w6d, after w6c, 2d
+    Demo Rehearsal              :w6e, after w6d, 1d
+
+</div>
+
+<hr />
+<h2>2. Weekly Breakdown</h2>
+<h3>Week 1 — Foundation (July 28 – August 3)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Task</th>
+<th>Deliverable</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.1</td>
+<td>Create Python virtual environment</td>
+<td><code>researchnode-env/</code></td>
+<td><code>[x]</code></td>
+</tr>
+<tr>
+<td>1.2</td>
+<td>Install all backend dependencies</td>
+<td><code>requirements.txt</code></td>
+<td><code>[x]</code></td>
+</tr>
+<tr>
+<td>1.3</td>
+<td>Create project folder structure</td>
+<td>All directories and <code>__init__.py</code> files</td>
+<td><code>[x]</code></td>
+</tr>
+<tr>
+<td>1.4</td>
+<td>Setup FastAPI with basic health check</td>
+<td><code>GET /health</code> returns <code>{"status": "ok"}</code></td>
+<td><code>[x]</code></td>
+</tr>
+<tr>
+<td>1.5</td>
+<td>Implement PDF upload endpoint</td>
+<td><code>POST /api/upload-paper</code> accepts PDF</td>
+<td><code>[x]</code></td>
+</tr>
+<tr>
+<td>1.6</td>
+<td>Implement text extraction</td>
+<td><code>extractor.py</code> extracts text from PDF</td>
+<td><code>[x]</code></td>
+</tr>
+<tr>
+<td>1.7</td>
+<td>Implement text cleaning</td>
+<td><code>cleaner.py</code> normalizes extracted text</td>
+<td><code>[x]</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Milestone:</strong> User can upload a PDF and the system extracts clean text.</p>
+<hr />
+<h3>Week 2 — Embedding Pipeline (August 4 – August 10)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Task</th>
+<th>Deliverable</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.1</td>
+<td>Implement text chunking</td>
+<td><code>RecursiveCharacterTextSplitter</code> integration</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>2.2</td>
+<td>Implement embedding generation</td>
+<td><code>all-MiniLM-L6-v2</code> encoding</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>2.3</td>
+<td>Setup Qdrant (Docker or binary)</td>
+<td>Qdrant running on <code>localhost:6333</code></td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>2.4</td>
+<td>Implement vector storage</td>
+<td>Chunks + embeddings stored in Qdrant</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>2.5</td>
+<td>Implement similarity search</td>
+<td>Query returns top-k similar chunks</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>2.6</td>
+<td>End-to-end test: upload → chunks → vectors</td>
+<td>Verify full pipeline</td>
+<td>⬜</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Milestone:</strong> Uploaded papers are chunked, embedded, and searchable via vector similarity.</p>
+<hr />
+<h3>Week 3 — Knowledge Graph (August 11 – August 17)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Task</th>
+<th>Deliverable</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3.1</td>
+<td>Install and configure Neo4j Desktop</td>
+<td>Database <code>researchnode</code> created</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>3.2</td>
+<td>Implement Neo4j connection service</td>
+<td><code>neo4j.py</code> with driver management</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>3.3</td>
+<td>Implement entity extraction (spaCy)</td>
+<td>Basic NER for papers</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>3.4</td>
+<td>Implement LLM entity extraction</td>
+<td>Structured extraction prompt</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>3.5</td>
+<td>Implement graph builder</td>
+<td>Create nodes + relationships in Neo4j</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>3.6</td>
+<td>Implement graph query endpoints</td>
+<td><code>GET /api/graph</code> returns nodes + edges</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>3.7</td>
+<td>Test with 3-5 sample papers</td>
+<td>Verify graph quality</td>
+<td>⬜</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Milestone:</strong> Uploaded papers produce a knowledge graph viewable in Neo4j Browser.</p>
+<hr />
+<h3>Week 4 — RAG &amp; Frontend (August 18 – August 24)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Task</th>
+<th>Deliverable</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4.1</td>
+<td>Implement hybrid retriever</td>
+<td>Vector + graph context retrieval</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>4.2</td>
+<td>Implement answer generator</td>
+<td>LLM generates cited answers</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>4.3</td>
+<td>Setup React project</td>
+<td><code>create-react-app</code> or Vite</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>4.4</td>
+<td>Build Upload page</td>
+<td>PDF upload with progress</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>4.5</td>
+<td>Build Chat page</td>
+<td>Q&amp;A interface with response display</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>4.6</td>
+<td>Build Dashboard page</td>
+<td>Overview with paper list</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>4.7</td>
+<td>Connect frontend to backend API</td>
+<td>Axios integration</td>
+<td>⬜</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Milestone:</strong> Working end-to-end: upload PDF → ask question → get answer with citations.</p>
+<hr />
+<h3>Week 5 — Agents &amp; Graph Viz (August 25 – August 31)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Task</th>
+<th>Deliverable</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5.1</td>
+<td>Implement Literature Discovery Agent</td>
+<td>Find related papers</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>5.2</td>
+<td>Implement Contradiction Detection Agent</td>
+<td>Detect conflicting findings</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>5.3</td>
+<td>Implement Experiment Suggestion Agent</td>
+<td>Suggest new experiments</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>5.4</td>
+<td>Build Graph Visualization page</td>
+<td>Cytoscape.js rendering</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>5.5</td>
+<td>Add node filtering and search</td>
+<td>Interactive graph controls</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>5.6</td>
+<td>Integrate agents into UI</td>
+<td>Agent results in chat</td>
+<td>⬜</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Milestone:</strong> All three agents functional; interactive knowledge graph in the browser.</p>
+<hr />
+<h3>Week 6 — Testing &amp; Documentation (September 1 – September 7)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Task</th>
+<th>Deliverable</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6.1</td>
+<td>Integration testing (all endpoints)</td>
+<td>Test results document</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>6.2</td>
+<td>Bug fixes and edge cases</td>
+<td>Stable application</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>6.3</td>
+<td>Write user documentation</td>
+<td>README.md</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>6.4</td>
+<td>Write technical documentation</td>
+<td>Architecture docs</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>6.5</td>
+<td>Prepare demo script</td>
+<td>Step-by-step demo flow</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>6.6</td>
+<td>Create presentation (PPT)</td>
+<td>15-20 slides</td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>6.7</td>
+<td>Demo rehearsal</td>
+<td>Smooth 10-minute demo</td>
+<td>⬜</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Milestone:</strong> Project ready for submission and demonstration.</p>
+<hr />
+<h2>3. Milestones Summary</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Milestone</th>
+<th>Target Date</th>
+<th>Dependencies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M1</td>
+<td>PDF Upload &amp; Extraction</td>
+<td>Aug 3</td>
+<td>—</td>
+</tr>
+<tr>
+<td>M2</td>
+<td>Embedding Pipeline</td>
+<td>Aug 10</td>
+<td>M1</td>
+</tr>
+<tr>
+<td>M3</td>
+<td>Knowledge Graph</td>
+<td>Aug 17</td>
+<td>M1</td>
+</tr>
+<tr>
+<td>M4</td>
+<td>RAG Q&amp;A + React UI</td>
+<td>Aug 24</td>
+<td>M2, M3</td>
+</tr>
+<tr>
+<td>M5</td>
+<td>Multi-Agent System + Graph Viz</td>
+<td>Aug 31</td>
+<td>M4</td>
+</tr>
+<tr>
+<td>M6</td>
+<td>Testing &amp; Demo Ready</td>
+<td>Sep 7</td>
+<td>M5</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. Risk Management</h2>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Probability</th>
+<th>Impact</th>
+<th>Mitigation Strategy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LLM API rate limits hit during demo</td>
+<td>Medium</td>
+<td>High</td>
+<td>Pre-cache demo answers; use Ollama as backup</td>
+</tr>
+<tr>
+<td>Entity extraction quality is poor</td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Use LLM-based extraction as primary; spaCy as supplement</td>
+</tr>
+<tr>
+<td>Neo4j learning curve slows Week 3</td>
+<td>Medium</td>
+<td>Low</td>
+<td>Follow official Python driver tutorial; simple schema first</td>
+</tr>
+<tr>
+<td>React UI takes longer than expected</td>
+<td>Low</td>
+<td>Medium</td>
+<td>Use minimal UI; focus on functionality over aesthetics for MVP</td>
+</tr>
+<tr>
+<td>Qdrant Docker issues</td>
+<td>Low</td>
+<td>Low</td>
+<td>Use standalone binary as alternative</td>
+</tr>
+<tr>
+<td>PDF extraction fails on some papers</td>
+<td>Medium</td>
+<td>Low</td>
+<td>Test with multiple PDFs early; handle errors gracefully</td>
+</tr>
+<tr>
+<td>Time overrun on agents</td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Agents are Week 5; MVP works without them</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. Resource Allocation</h2>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Allocation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Development Machine</td>
+<td>Student laptop (8+ GB RAM)</td>
+</tr>
+<tr>
+<td>Neo4j</td>
+<td>Local installation (Neo4j Desktop)</td>
+</tr>
+<tr>
+<td>Qdrant</td>
+<td>Docker container or standalone binary</td>
+</tr>
+<tr>
+<td>LLM API</td>
+<td>Google Gemini free tier (primary)</td>
+</tr>
+<tr>
+<td>Code Editor</td>
+<td>VS Code with Python and React extensions</td>
+</tr>
+<tr>
+<td>Version Control</td>
+<td>Git + GitHub</td>
+</tr>
+<tr>
+<td>Testing</td>
+<td>Postman (API), manual (UI), Neo4j Browser (graph)</td>
+</tr>
+</tbody>
+</table>
+<hr class='page-break'>
+
+<h1>UML Diagrams</h1>
+<h2>ResearchNode: A GraphRAG Reasoning Engine for Scientific Literature</h2>
+<p><strong>Date:</strong> July 2026</p>
+<hr />
+<h2>1. Use Case Diagram</h2>
+<div class="mermaid">
+graph TB
+    subgraph "ResearchNode System"
+        UC1["Upload Research Paper"]
+        UC2["Ask Question"]
+        UC3["View Knowledge Graph"]
+        UC4["Run Literature Discovery"]
+        UC5["Detect Contradictions"]
+        UC6["Get Experiment Suggestions"]
+    end
+
+    Actor["👤 Researcher"] --> UC1
+    Actor --> UC2
+    Actor --> UC3
+    Actor --> UC4
+    Actor --> UC5
+    Actor --> UC6
+
+    UC1 --> E1["Extract Text"]
+    UC1 --> E2["Generate Embeddings"]
+    UC1 --> E3["Build Knowledge Graph"]
+    UC2 --> E4["Vector Search"]
+    UC2 --> E5["Graph Traversal"]
+    UC2 --> E6["LLM Generation"]
+
+    E1["Extract Text"]
+    E2["Generate Embeddings"]
+    E3["Build Knowledge Graph"]
+    E4["Vector Search"]
+    E5["Graph Traversal"]
+    E6["LLM Generation"]
+
+</div>
+
+<h3>Use Case Descriptions</h3>
+<table>
+<thead>
+<tr>
+<th>Use Case</th>
+<th>Actor</th>
+<th>Description</th>
+<th>Precondition</th>
+<th>Postcondition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UC1: Upload Paper</td>
+<td>Researcher</td>
+<td>Upload a PDF paper for processing</td>
+<td>User has a PDF file</td>
+<td>Paper is processed, graph updated, vectors stored</td>
+</tr>
+<tr>
+<td>UC2: Ask Question</td>
+<td>Researcher</td>
+<td>Ask a natural language question about uploaded papers</td>
+<td>At least one paper uploaded</td>
+<td>Answer with citations returned</td>
+</tr>
+<tr>
+<td>UC3: View Graph</td>
+<td>Researcher</td>
+<td>View the knowledge graph visualization</td>
+<td>At least one paper processed</td>
+<td>Interactive graph displayed</td>
+</tr>
+<tr>
+<td>UC4: Literature Discovery</td>
+<td>Researcher</td>
+<td>Find related papers on a topic</td>
+<td>At least one paper uploaded</td>
+<td>List of related papers with connections</td>
+</tr>
+<tr>
+<td>UC5: Contradiction Detection</td>
+<td>Researcher</td>
+<td>Detect conflicting findings across papers</td>
+<td>At least two papers uploaded</td>
+<td>List of contradictions with evidence</td>
+</tr>
+<tr>
+<td>UC6: Experiment Suggestions</td>
+<td>Researcher</td>
+<td>Get AI-suggested experiments</td>
+<td>At least two papers uploaded</td>
+<td>List of experimental suggestions</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>2. Class Diagram</h2>
+<div class="mermaid">
+classDiagram
+    class PDFExtractor {
+        -file_path: str
+        +extract(path: str) str
+        +extract_metadata(path: str) dict
+    }
+
+    class TextCleaner {
+        +clean(text: str) str
+        +split_sections(text: str) dict
+    }
+
+    class TextChunker {
+        -chunk_size: int
+        -chunk_overlap: int
+        +chunk(text: str) list~str~
+    }
+
+    class EmbeddingGenerator {
+        -model: SentenceTransformer
+        -model_name: str
+        +embed(text: str) ndarray
+        +embed_batch(texts: list) ndarray
+    }
+
+    class VectorStoreManager {
+        -client: QdrantClient
+        -collection_name: str
+        +store(embeddings, metadata) list~str~
+        +search(query_vector, top_k) list~dict~
+        +delete_by_paper(paper_id) None
+    }
+
+    class Neo4jService {
+        -driver: GraphDatabase.driver
+        -uri: str
+        +create_paper_node(data: dict) str
+        +create_entity_node(type, props) str
+        +create_relationship(src, tgt, rel) None
+        +get_paper_subgraph(paper_id) dict
+        +get_full_graph() dict
+        +query(cypher: str) list
+        +find_research_gaps() list
+        +close() None
+    }
+
+    class EntityExtractor {
+        -nlp: spacy.Language
+        +extract_entities(text: str) list~dict~
+        +extract_with_llm(text: str) dict
+        +identify_relationships(entities, text) list~dict~
+    }
+
+    class HybridRetriever {
+        -vector_store: VectorStoreManager
+        -neo4j: Neo4jService
+        -embedder: EmbeddingGenerator
+        +retrieve(query: str, top_k: int) dict
+    }
+
+    class AnswerGenerator {
+        -llm_client: LangChain LLM
+        +generate(question: str, context: dict) dict
+    }
+
+    class LiteratureAgent {
+        -retriever: HybridRetriever
+        +run(topic: str) dict
+    }
+
+    class ContradictionAgent {
+        -neo4j: Neo4jService
+        -retriever: HybridRetriever
+        +run() dict
+    }
+
+    class ExperimentAgent {
+        -neo4j: Neo4jService
+        -retriever: HybridRetriever
+        +run() dict
+    }
+
+    class SessionManager {
+        -db: psycopg2.Connection
+        +create_session(title: str) str
+        +get_session_messages(session_id: str) list
+        +save_message(session_id, role, content) None
+    }
+
+    class NodeAnnotationManager {
+        -db: psycopg2.Connection
+        +get_annotations(node_id: str) dict
+        +save_annotations(node_id, notes, ai_summary) None
+    }
+
+    PDFExtractor --> TextCleaner : sends raw text
+    TextCleaner --> TextChunker : sends clean text
+    TextChunker --> EmbeddingGenerator : sends chunks
+    EmbeddingGenerator --> VectorStoreManager : sends vectors
+    TextCleaner --> EntityExtractor : sends clean text
+    EntityExtractor --> Neo4jService : sends entities
+    HybridRetriever --> VectorStoreManager : queries vectors
+    HybridRetriever --> Neo4jService : queries graph
+    HybridRetriever --> EmbeddingGenerator : embeds query
+    AnswerGenerator --> HybridRetriever : gets context
+    LiteratureAgent --> HybridRetriever : uses retrieval
+    ContradictionAgent --> HybridRetriever : uses retrieval
+    ContradictionAgent --> Neo4jService : queries graph
+    ExperimentAgent --> HybridRetriever : uses retrieval
+    ExperimentAgent --> Neo4jService : queries graph
+
+</div>
+
+<hr />
+<h2>3. Sequence Diagram — Paper Upload</h2>
+<div class="mermaid">
+sequenceDiagram
+    actor User
+    participant UI as React Frontend
+    participant API as FastAPI
+    participant PDF as PDFExtractor
+    participant Clean as TextCleaner
+    participant Chunk as TextChunker
+    participant Emb as EmbeddingGenerator
+    participant QD as Qdrant
+    participant NER as EntityExtractor
+    participant Neo as Neo4jService
+
+    User->>UI: Select and upload PDF
+    UI->>API: POST /api/upload-paper (file)
+    API->>API: Validate file (PDF, <50MB)
+    API->>API: Save to papers/ directory
+
+    API->>PDF: extract(file_path)
+    PDF-->>API: raw_text
+
+    API->>Clean: clean(raw_text)
+    Clean-->>API: cleaned_text
+
+    par Embedding Pipeline
+        API->>Chunk: chunk(cleaned_text)
+        Chunk-->>API: chunks[]
+        API->>Emb: embed_batch(chunks)
+        Emb-->>API: vectors[]
+        API->>QD: store(vectors, metadata)
+        QD-->>API: point_ids[]
+    and Graph Pipeline
+        API->>NER: extract_entities(cleaned_text)
+        NER-->>API: entities[]
+        API->>NER: identify_relationships(entities)
+        NER-->>API: relationships[]
+        API->>Neo: create_paper_node(metadata)
+        loop For each entity
+            API->>Neo: create_entity_node(entity)
+        end
+        loop For each relationship
+            API->>Neo: create_relationship(rel)
+        end
+    end
+
+    API-->>UI: {paper_id, title, status: "success"}
+    UI-->>User: "Paper uploaded and processed!"
+
+</div>
+
+<hr />
+<h2>4. Sequence Diagram — Question Answering</h2>
+<div class="mermaid">
+sequenceDiagram
+    actor User
+    participant UI as React Frontend
+    participant API as FastAPI
+    participant Ret as HybridRetriever
+    participant Emb as EmbeddingGenerator
+    participant QD as Qdrant
+    participant Neo as Neo4jService
+    participant Gen as AnswerGenerator
+    participant LLM as LLM API
+
+    User->>UI: Type question
+    UI->>API: POST /api/query {question}
+
+    API->>Ret: retrieve(question, top_k=5)
+
+    par Vector Retrieval
+        Ret->>Emb: embed(question)
+        Emb-->>Ret: query_vector
+        Ret->>QD: search(query_vector, top_k=5)
+        QD-->>Ret: similar_chunks[]
+    and Graph Retrieval
+        Ret->>Ret: Extract key terms from question
+        Ret->>Neo: query(cypher_for_related_entities)
+        Neo-->>Ret: graph_paths[]
+    end
+
+    Ret-->>API: {vector_chunks, graph_context}
+
+    API->>Gen: generate(question, context)
+    Gen->>Gen: Build prompt with context
+    Gen->>LLM: Send prompt
+    LLM-->>Gen: generated_answer
+    Gen->>Gen: Extract citations
+    Gen-->>API: {answer, citations[], confidence}
+
+    API-->>UI: {answer, citations, graph_context}
+    UI-->>User: Display answer with citations
+
+</div>
+
+<hr />
+<h2>5. Activity Diagram — Complete System Flow</h2>
+<div class="mermaid">
+graph TD
+    Start(("Start")) --> A["User accesses ResearchNode"]
+    A --> B{"Action?"}
+
+    B -->|Upload Paper| C["Select PDF file"]
+    C --> D["Upload to server"]
+    D --> E["Extract text from PDF"]
+    E --> F["Clean and normalize text"]
+    F --> G["Split into chunks"]
+    G --> H["Generate embeddings"]
+    H --> I["Store in Qdrant"]
+    F --> J["Extract entities"]
+    J --> K["Identify relationships"]
+    K --> L["Update Neo4j graph"]
+    I --> M["Upload complete"]
+    L --> M
+    M --> B
+
+    B -->|Ask Question| N["Type question"]
+    N --> O["Embed question"]
+    O --> P["Vector search in Qdrant"]
+    N --> Q["Parse question entities"]
+    Q --> R["Graph query in Neo4j"]
+    P --> S["Merge contexts"]
+    R --> S
+    S --> T["Generate answer via LLM"]
+    T --> U["Display answer + citations"]
+    U --> B
+
+    B -->|View Graph| V["Fetch graph data"]
+    V --> W["Render with Cytoscape.js"]
+    W --> X["Interact with graph"]
+    X --> B
+
+    B -->|Run Agent| Y["Select agent type"]
+    Y --> Z["Agent analyzes graph + vectors"]
+    Z --> AA["Display agent results"]
+    AA --> B
+
+    B -->|Exit| End(("End"))
+
+</div>
+
+<hr />
+<h2>6. Entity-Relationship Diagram (Neo4j Schema)</h2>
+<div class="mermaid">
+erDiagram
+    PAPER {
+        string name PK
+        string title
+        int year
+        string abstract
+        string source_file
+        date upload_date
+    }
+
+    MODEL {
+        string name PK
+        string type
+        string parameters
+        int year_introduced
+    }
+
+    METHOD {
+        string name PK
+        string category
+        string description
+    }
+
+    DATASET {
+        string name PK
+        string domain
+        string size
+        string task_type
+    }
+
+    TASK {
+        string name PK
+        string domain
+        string description
+    }
+
+    AUTHOR {
+        string name PK
+        string affiliation
+        string email
+    }
+
+    PAPER ||--o{ MODEL : "USES"
+    PAPER ||--o{ METHOD : "USES"
+    PAPER ||--o{ DATASET : "EVALUATED_ON"
+    PAPER ||--o{ TASK : "ADDRESSES"
+    PAPER ||--o{ AUTHOR : "AUTHORED_BY"
+    PAPER ||--o{ PAPER : "CITES"
+    MODEL ||--o{ DATASET : "EVALUATED_ON"
+    MODEL ||--o{ MODEL : "COMPARED_WITH"
+    MODEL ||--o{ MODEL : "IMPROVES_ON"
+    METHOD ||--o{ TASK : "APPLIED_TO"
+
+</div>
+
+<hr />
+<h2>7. Entity-Relationship Diagram (PostgreSQL Schema)</h2>
+<div class="mermaid">
+erDiagram
+    SESSIONS {
+        uuid id PK
+        string title
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    MESSAGES {
+        int id PK
+        uuid session_id FK
+        string role
+        string content
+        timestamp created_at
+    }
+
+    NODE_ANNOTATIONS {
+        string node_id PK
+        string notes
+        string ai_summary
+        timestamp updated_at
+    }
+
+    SESSIONS ||--o{ MESSAGES : "contains"
+
+</div>
+
+<hr />
+<h2>8. Component Diagram</h2>
+<div class="mermaid">
+graph TB
+    subgraph "Client Tier"
+        Browser["Web Browser"]
+        subgraph "React Application"
+            Dashboard["Dashboard Component"]
+            Upload["Upload Component"]
+            Chat["Chat Component"]
+            GraphViz["Graph Visualization Component"]
+            Compare["Compare (Venn) Component"]
+            SplitView["Split-View PDF Component"]
+        end
+    end
+
+    subgraph "Server Tier"
+        subgraph "FastAPI Application"
+            UploadAPI["Upload Router"]
+            QueryAPI["Query Router"]
+            Middleware["CORS Middleware"]
+        end
+        subgraph "Processing Pipeline"
+            PDFProc["PDF Processor"]
+            EmbPipeline["Embedding Pipeline"]
+            GraphPipeline["Graph Pipeline"]
+        end
+        subgraph "Intelligence Layer"
+            RAGEngine["GraphRAG Engine"]
+            AgentSystem["Multi-Agent System"]
+        end
+    end
+
+    subgraph "Data Tier"
+        Neo4j["Neo4j Graph DB"]
+        Qdrant["Qdrant Vector DB"]
+        Postgres["PostgreSQL (Neon DB)"]
+        FileStore["File System"]
+    end
+
+    subgraph "External Services"
+        LLMAPI["LLM API"]
+    end
+
+    Browser --> Middleware
+    Dashboard --> UploadAPI
+    Upload --> UploadAPI
+    Chat --> QueryAPI
+    GraphViz --> QueryAPI
+
+    UploadAPI --> PDFProc
+    PDFProc --> EmbPipeline
+    PDFProc --> GraphPipeline
+    QueryAPI --> RAGEngine
+    QueryAPI --> AgentSystem
+
+    EmbPipeline --> Qdrant
+    GraphPipeline --> Neo4j
+    RAGEngine --> Qdrant
+    RAGEngine --> Neo4j
+    RAGEngine --> LLMAPI
+    AgentSystem --> RAGEngine
+    UploadAPI --> FileStore
+
+</div>
+
+<hr />
+<h2>9. Deployment Diagram</h2>
+<div class="mermaid">
+graph TB
+    subgraph "Development Machine"
+        subgraph "Frontend Server"
+            Node["Node.js Dev Server :3000"]
+            ReactApp["React Application"]
+        end
+
+        subgraph "Backend Server"
+            Uvicorn["Uvicorn ASGI :8000"]
+            FastAPI["FastAPI Application"]
+            Python["Python 3.12 Runtime"]
+        end
+
+        subgraph "Database Servers"
+            Neo4jDB["Neo4j Desktop :7687"]
+            QdrantDB["Qdrant :6333"]
+        end
+
+        subgraph "Local AI"
+            OllamaOpt["Ollama (optional) :11434"]
+        end
+    end
+
+    subgraph "Cloud Services"
+        GeminiAPI["Google Gemini API"]
+        NeonDB["Neon PostgreSQL (Serverless)"]
+    end
+
+    ReactApp --> FastAPI
+    FastAPI --> Neo4jDB
+    FastAPI --> QdrantDB
+    FastAPI --> NeonDB
+    FastAPI --> GeminiAPI
+    FastAPI --> OllamaOpt
+
+</div>
+
+<hr class='page-break'>
+
+<h1>Testing Plan</h1>
+<h2>ResearchNode: A GraphRAG Reasoning Engine for Scientific Literature</h2>
+<p><strong>Version:</strong> 1.0<br />
+<strong>Date:</strong> July 2026</p>
+<hr />
+<h2>1. Testing Strategy</h2>
+<h3>1.1 Testing Levels</h3>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Scope</th>
+<th>Tools</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Unit Testing</strong></td>
+<td>Individual functions and classes</td>
+<td>pytest</td>
+<td>During development</td>
+</tr>
+<tr>
+<td><strong>Integration Testing</strong></td>
+<td>Module interactions (e.g., PDF → Qdrant)</td>
+<td>pytest, requests</td>
+<td>After each module</td>
+</tr>
+<tr>
+<td><strong>System Testing</strong></td>
+<td>End-to-end workflows</td>
+<td>Manual + Postman</td>
+<td>Week 6</td>
+</tr>
+<tr>
+<td><strong>User Acceptance Testing</strong></td>
+<td>User perspective validation</td>
+<td>Manual</td>
+<td>Week 6</td>
+</tr>
+</tbody>
+</table>
+<h3>1.2 Testing Environment</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Configuration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OS</td>
+<td>Windows 10/11</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>3.12</td>
+</tr>
+<tr>
+<td>Neo4j</td>
+<td>Community Edition (local)</td>
+</tr>
+<tr>
+<td>Qdrant</td>
+<td>Local instance (Docker/standalone)</td>
+</tr>
+<tr>
+<td>Browser</td>
+<td>Chrome / Firefox (latest)</td>
+</tr>
+<tr>
+<td>API Testing</td>
+<td>Postman / curl</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>2. Test Cases</h2>
+<h3>Module 1 — PDF Processing</h3>
+<h4>TC-01: Valid PDF Upload</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>TC-01</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>PDF Processing</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Upload a valid PDF research paper</td>
+</tr>
+<tr>
+<td><strong>Precondition</strong></td>
+<td>Backend server running</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td>Valid PDF file (&lt; 50 MB)</td>
+</tr>
+<tr>
+<td><strong>Steps</strong></td>
+<td>1. Send POST to <code>/api/upload-paper</code> with PDF file</td>
+</tr>
+<tr>
+<td><strong>Expected Result</strong></td>
+<td>Status 200, <code>{paper_id, title, status: "success"}</code></td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<h4>TC-02: Invalid File Upload</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>TC-02</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>PDF Processing</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Upload a non-PDF file</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td><code>.txt</code> or <code>.jpg</code> file</td>
+</tr>
+<tr>
+<td><strong>Steps</strong></td>
+<td>1. Send POST to <code>/api/upload-paper</code> with non-PDF file</td>
+</tr>
+<tr>
+<td><strong>Expected Result</strong></td>
+<td>Status 400, error message: "Only PDF files are accepted"</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<h4>TC-03: Text Extraction Quality</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>TC-03</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>PDF Processing</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Verify text extraction produces readable output</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td>PDF with known content</td>
+</tr>
+<tr>
+<td><strong>Steps</strong></td>
+<td>1. Extract text using <code>PDFExtractor</code> 2. Compare with expected text</td>
+</tr>
+<tr>
+<td><strong>Expected Result</strong></td>
+<td>Extracted text matches expected content (&gt; 90% accuracy)</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<h4>TC-04: Empty PDF Handling</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>TC-04</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>PDF Processing</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Handle a PDF with no extractable text (scanned image)</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td>Image-only PDF</td>
+</tr>
+<tr>
+<td><strong>Expected Result</strong></td>
+<td>Graceful error: "No text could be extracted from this PDF"</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>Module 2 — Embedding Pipeline</h3>
+<h4>TC-05: Text Chunking</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>TC-05</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>Embedding Pipeline</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Verify text is split into chunks of correct size</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td>5000-character text string</td>
+</tr>
+<tr>
+<td><strong>Steps</strong></td>
+<td>1. Run <code>TextChunker.chunk(text)</code></td>
+</tr>
+<tr>
+<td><strong>Expected Result</strong></td>
+<td>5-6 chunks, each ~1000 chars, with 200-char overlap between consecutive chunks</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<h4>TC-06: Embedding Generation</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>TC-06</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>Embedding Pipeline</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Verify embedding dimensions and type</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td>"Transformer architecture for NLP"</td>
+</tr>
+<tr>
+<td><strong>Steps</strong></td>
+<td>1. Run <code>EmbeddingGenerator.embed(text)</code></td>
+</tr>
+<tr>
+<td><strong>Expected Result</strong></td>
+<td>NumPy array of shape (384,), dtype float32</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<h4>TC-07: Vector Storage and Retrieval</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>TC-07</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>Embedding Pipeline</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Store vectors and retrieve similar ones</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td>10 sample chunks with embeddings</td>
+</tr>
+<tr>
+<td><strong>Steps</strong></td>
+<td>1. Store all in Qdrant 2. Search with a related query</td>
+</tr>
+<tr>
+<td><strong>Expected Result</strong></td>
+<td>Top result is semantically similar to query, score &gt; 0.7</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>Module 3 — Knowledge Graph</h3>
+<h4>TC-08: Neo4j Connection</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>TC-08</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>Knowledge Graph</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Verify Neo4j connection is established</td>
+</tr>
+<tr>
+<td><strong>Precondition</strong></td>
+<td>Neo4j running on localhost:7687</td>
+</tr>
+<tr>
+<td><strong>Steps</strong></td>
+<td>1. Initialize <code>Neo4jService</code> 2. Run a test query</td>
+</tr>
+<tr>
+<td><strong>Expected Result</strong></td>
+<td>Connection successful, query returns result</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<h4>TC-09: Node Creation</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>TC-09</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>Knowledge Graph</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Create a Paper node with properties</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td><code>{name: "BERT Paper", title: "BERT: Pre-training...", year: 2019}</code></td>
+</tr>
+<tr>
+<td><strong>Steps</strong></td>
+<td>1. Call <code>create_paper_node(data)</code> 2. Query Neo4j to verify</td>
+</tr>
+<tr>
+<td><strong>Expected Result</strong></td>
+<td>Node exists with correct properties</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<h4>TC-10: Relationship Creation</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>TC-10</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>Knowledge Graph</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Create a USES relationship between Paper and Model</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td>Paper: "BERT Paper", Model: "BERT"</td>
+</tr>
+<tr>
+<td><strong>Steps</strong></td>
+<td>1. Create both nodes 2. Create relationship 3. Query to verify</td>
+</tr>
+<tr>
+<td><strong>Expected Result</strong></td>
+<td><code>(BERT Paper)-[:USES]-&gt;(BERT)</code> exists in graph</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<h4>TC-11: Duplicate Prevention</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>TC-11</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>Knowledge Graph</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Uploading the same paper twice should not create duplicate nodes</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td>Same paper uploaded twice</td>
+</tr>
+<tr>
+<td><strong>Expected Result</strong></td>
+<td>Only one Paper node exists; relationships are not duplicated</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>Module 4 — GraphRAG Engine</h3>
+<h4>TC-12: Hybrid Retrieval</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>TC-12</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>GraphRAG Engine</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Verify both vector and graph context are returned</td>
+</tr>
+<tr>
+<td><strong>Precondition</strong></td>
+<td>Papers uploaded, graph and vectors populated</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td>Question: "What methods are used for sentiment analysis?"</td>
+</tr>
+<tr>
+<td><strong>Steps</strong></td>
+<td>1. Call <code>HybridRetriever.retrieve(question)</code></td>
+</tr>
+<tr>
+<td><strong>Expected Result</strong></td>
+<td>Response contains both <code>vector_chunks</code> (non-empty) and <code>graph_context</code> (non-empty)</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<h4>TC-13: Answer Generation with Citations</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>TC-13</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>GraphRAG Engine</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Generated answer includes paper citations</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td>Question with relevant context</td>
+</tr>
+<tr>
+<td><strong>Expected Result</strong></td>
+<td>Answer references specific paper titles; citations array is non-empty</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>Module 5 — Multi-Agent System</h3>
+<h4>TC-14: Literature Agent</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>TC-14</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>Agents</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Literature agent finds related papers</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+<td>Topic: "deep learning for NLP"</td>
+</tr>
+<tr>
+<td><strong>Expected Result</strong></td>
+<td>Returns list of related papers with relevance explanations</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<h4>TC-15: Contradiction Agent</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>TC-15</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>Agents</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Contradiction agent identifies conflicting findings</td>
+</tr>
+<tr>
+<td><strong>Precondition</strong></td>
+<td>Two papers with opposing findings uploaded</td>
+</tr>
+<tr>
+<td><strong>Expected Result</strong></td>
+<td>Returns at least one contradiction with paper references</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<h4>TC-16: Experiment Agent</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>TC-16</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>Agents</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Experiment agent suggests novel experiments</td>
+</tr>
+<tr>
+<td><strong>Precondition</strong></td>
+<td>Multiple papers uploaded</td>
+</tr>
+<tr>
+<td><strong>Expected Result</strong></td>
+<td>Returns experiment suggestions with rationale</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>Module 6 — API Layer</h3>
+<h4>TC-17: API Health Check</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>TC-17</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>API</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Health check endpoint responds correctly</td>
+</tr>
+<tr>
+<td><strong>Steps</strong></td>
+<td>1. Send GET to <code>/health</code></td>
+</tr>
+<tr>
+<td><strong>Expected Result</strong></td>
+<td>Status 200, <code>{"status": "ok"}</code></td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<h4>TC-18: CORS Headers</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>TC-18</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>API</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>API returns correct CORS headers for frontend</td>
+</tr>
+<tr>
+<td><strong>Steps</strong></td>
+<td>1. Send OPTIONS request from frontend origin</td>
+</tr>
+<tr>
+<td><strong>Expected Result</strong></td>
+<td><code>Access-Control-Allow-Origin</code> header present</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>Module 7 — Frontend</h3>
+<h4>TC-19: Upload UI</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>TC-19</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>Frontend</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Upload page renders and accepts PDF</td>
+</tr>
+<tr>
+<td><strong>Steps</strong></td>
+<td>1. Navigate to Upload page 2. Select PDF 3. Click Upload</td>
+</tr>
+<tr>
+<td><strong>Expected Result</strong></td>
+<td>Progress shown, success message after completion</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<h4>TC-20: Chat UI</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>TC-20</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>Frontend</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Chat page displays question and answer</td>
+</tr>
+<tr>
+<td><strong>Steps</strong></td>
+<td>1. Navigate to Chat 2. Type question 3. Press Enter</td>
+</tr>
+<tr>
+<td><strong>Expected Result</strong></td>
+<td>User question and AI answer displayed in chat history</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<h4>TC-21: Graph Visualization</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>TC-21</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>Frontend</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Knowledge graph renders with correct nodes and edges</td>
+</tr>
+<tr>
+<td><strong>Precondition</strong></td>
+<td>At least one paper processed</td>
+</tr>
+<tr>
+<td><strong>Steps</strong></td>
+<td>1. Navigate to Graph page</td>
+</tr>
+<tr>
+<td><strong>Expected Result</strong></td>
+<td>Interactive graph with color-coded nodes and labeled edges</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<h4>TC-22: Persistent Sessions</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>TC-22</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>API / DB</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Verify chat sessions persist across reloads</td>
+</tr>
+<tr>
+<td><strong>Precondition</strong></td>
+<td>PostgreSQL running</td>
+</tr>
+<tr>
+<td><strong>Steps</strong></td>
+<td>1. Send chat message 2. Reload page 3. Open session</td>
+</tr>
+<tr>
+<td><strong>Expected Result</strong></td>
+<td>Previous chat messages load from PostgreSQL</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<h4>TC-23: Multi-Paper Comparison (Venn Diagram)</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>TC-23</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>Frontend</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Compare two papers for overlapping entities</td>
+</tr>
+<tr>
+<td><strong>Steps</strong></td>
+<td>1. Select two papers 2. Click Compare</td>
+</tr>
+<tr>
+<td><strong>Expected Result</strong></td>
+<td>Renders a Venn Diagram showing shared models, methods, etc.</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<h4>TC-24: Split-View PDF Citations</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ID</strong></td>
+<td>TC-24</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>Frontend</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>View PDF alongside chat</td>
+</tr>
+<tr>
+<td><strong>Steps</strong></td>
+<td>1. Ask question 2. Click citation chip</td>
+</tr>
+<tr>
+<td><strong>Expected Result</strong></td>
+<td>Opens Split-View displaying the source PDF</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3. Test Data</h2>
+<h3>Sample Papers for Testing</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Paper Title</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>"Attention Is All You Need" (Vaswani et al.)</td>
+<td>Tests: Transformer, self-attention, NLP, machine translation</td>
+</tr>
+<tr>
+<td>2</td>
+<td>"BERT: Pre-training of Deep Bidirectional Transformers"</td>
+<td>Tests: BERT model, fine-tuning, NLU tasks</td>
+</tr>
+<tr>
+<td>3</td>
+<td>"ResNet: Deep Residual Learning for Image Recognition"</td>
+<td>Tests: CNN, computer vision, different domain from papers 1-2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>A paper contradicting or extending one of the above</td>
+<td>Tests: Contradiction detection agent</td>
+</tr>
+<tr>
+<td>5</td>
+<td>A survey paper covering multiple methods</td>
+<td>Tests: Multiple entity extraction, many relationships</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. Test Results Summary Template</h2>
+<table>
+<thead>
+<tr>
+<th>TC ID</th>
+<th>Description</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TC-01</td>
+<td>Valid PDF Upload</td>
+<td>⬜ Pending</td>
+<td></td>
+</tr>
+<tr>
+<td>TC-02</td>
+<td>Invalid File Upload</td>
+<td>⬜ Pending</td>
+<td></td>
+</tr>
+<tr>
+<td>TC-03</td>
+<td>Text Extraction Quality</td>
+<td>⬜ Pending</td>
+<td></td>
+</tr>
+<tr>
+<td>TC-04</td>
+<td>Empty PDF Handling</td>
+<td>⬜ Pending</td>
+<td></td>
+</tr>
+<tr>
+<td>TC-05</td>
+<td>Text Chunking</td>
+<td>⬜ Pending</td>
+<td></td>
+</tr>
+<tr>
+<td>TC-06</td>
+<td>Embedding Generation</td>
+<td>⬜ Pending</td>
+<td></td>
+</tr>
+<tr>
+<td>TC-07</td>
+<td>Vector Storage/Retrieval</td>
+<td>⬜ Pending</td>
+<td></td>
+</tr>
+<tr>
+<td>TC-08</td>
+<td>Neo4j Connection</td>
+<td>⬜ Pending</td>
+<td></td>
+</tr>
+<tr>
+<td>TC-09</td>
+<td>Node Creation</td>
+<td>⬜ Pending</td>
+<td></td>
+</tr>
+<tr>
+<td>TC-10</td>
+<td>Relationship Creation</td>
+<td>⬜ Pending</td>
+<td></td>
+</tr>
+<tr>
+<td>TC-11</td>
+<td>Duplicate Prevention</td>
+<td>⬜ Pending</td>
+<td></td>
+</tr>
+<tr>
+<td>TC-12</td>
+<td>Hybrid Retrieval</td>
+<td>⬜ Pending</td>
+<td></td>
+</tr>
+<tr>
+<td>TC-13</td>
+<td>Answer with Citations</td>
+<td>⬜ Pending</td>
+<td></td>
+</tr>
+<tr>
+<td>TC-14</td>
+<td>Literature Agent</td>
+<td>⬜ Pending</td>
+<td></td>
+</tr>
+<tr>
+<td>TC-15</td>
+<td>Contradiction Agent</td>
+<td>⬜ Pending</td>
+<td></td>
+</tr>
+<tr>
+<td>TC-16</td>
+<td>Experiment Agent</td>
+<td>⬜ Pending</td>
+<td></td>
+</tr>
+<tr>
+<td>TC-17</td>
+<td>API Health Check</td>
+<td>⬜ Pending</td>
+<td></td>
+</tr>
+<tr>
+<td>TC-18</td>
+<td>CORS Headers</td>
+<td>⬜ Pending</td>
+<td></td>
+</tr>
+<tr>
+<td>TC-19</td>
+<td>Upload UI</td>
+<td>⬜ Pending</td>
+<td></td>
+</tr>
+<tr>
+<td>TC-20</td>
+<td>Chat UI</td>
+<td>⬜ Pending</td>
+<td></td>
+</tr>
+<tr>
+<td>TC-21</td>
+<td>Graph Visualization</td>
+<td>⬜ Pending</td>
+<td></td>
+</tr>
+<tr>
+<td>TC-22</td>
+<td>Persistent Sessions</td>
+<td>⬜ Pending</td>
+<td></td>
+</tr>
+<tr>
+<td>TC-23</td>
+<td>Venn Diagram Compare</td>
+<td>⬜ Pending</td>
+<td></td>
+</tr>
+<tr>
+<td>TC-24</td>
+<td>Split-View Citations</td>
+<td>⬜ Pending</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total Test Cases:</strong> 24<br />
+<strong>Pass Criteria:</strong> All High-priority tests pass; 80%+ of Medium-priority tests pass.</p>
+<hr class='page-break'>
+
+<h1>ResearchNode — Judge Presentation Guide</h1>
+<blockquote>
+<p>Use this guide to explain the project confidently. Keep it simple, speak naturally.</p>
+</blockquote>
+<hr />
+<h2>🎯 One-Line Pitch</h2>
+<blockquote>
+<p>"ResearchNode is a web app that reads research papers, connects the ideas in a knowledge graph, and answers your questions using AI — with proper citations."</p>
+</blockquote>
+<hr />
+<h2>📖 Simple Explanation (2 Minutes)</h2>
+<p><strong>The Problem:</strong>
+Researchers today read hundreds of papers. Google Scholar can <em>find</em> papers, but it can't tell you how Paper A's method relates to Paper B's dataset, or if two papers contradict each other. Everything is disconnected.</p>
+<p><strong>Our Solution:</strong>
+ResearchNode does three things:</p>
+<ol>
+<li><strong>Upload</strong> — You upload research papers (PDFs). The system extracts text and identifies key things like models, methods, datasets, and tasks.</li>
+<li><strong>Connect</strong> — It builds a visual knowledge graph where all these concepts are linked. You can <em>see</em> how papers relate to each other.</li>
+<li><strong>Ask</strong> — You ask questions in plain English. Instead of just searching text, the system combines graph relationships + text similarity to give you a richer, cited answer. This is called <strong>GraphRAG</strong>.</li>
+</ol>
+<p>On top of this, we have <strong>3 AI agents</strong> that automatically:
+- Find related literature you might have missed
+- Detect contradictions between papers
+- Suggest new experiments based on gaps in the graph</p>
+<p>We also added <strong>Premium UI Features</strong>:
+- <strong>Persistent Sessions:</strong> Powered by PostgreSQL to save chat histories and node notes.
+- <strong>Venn Diagram Comparison:</strong> Visually compare shared entities between multiple papers.
+- <strong>Split-View PDF:</strong> Click any citation in the chat to instantly open the source PDF side-by-side.</p>
+<hr />
+<h2>🔧 How It Works (Technical — Keep Short)</h2>
+<pre><code>PDF Upload
+   ↓
+Text Extraction (PyMuPDF)
+   ↓
+Two parallel paths:
+   ├── Chunking → Embedding (MiniLM) → Stored in Qdrant (Vector DB)
+   └── Entity Extraction (spaCy + LLM) → Stored in Neo4j (Graph DB)
+   ↓
+User asks a question
+   ↓
+GraphRAG combines:  Vector Search (similar text) + Graph Traversal (related concepts)
+   ↓
+LLM generates answer with citations
+</code></pre>
+<p><strong>In one sentence:</strong> <em>"We split the paper into chunks for text search AND extract entities for graph search, then combine both to answer questions."</em></p>
+<hr />
+<h2>🧩 Tech Stack (If Asked)</h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Technology</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Backend</td>
+<td>Python + FastAPI</td>
+<td>Fast, modern, auto-generates API docs</td>
+</tr>
+<tr>
+<td>Vector DB</td>
+<td>Qdrant</td>
+<td>Free, fast (written in Rust), great for semantic search</td>
+</tr>
+<tr>
+<td>Graph DB</td>
+<td>Neo4j</td>
+<td>Industry standard for knowledge graphs, uses Cypher query language</td>
+</tr>
+<tr>
+<td>Relational DB</td>
+<td>PostgreSQL</td>
+<td>Saves user chat sessions and node annotations reliably</td>
+</tr>
+<tr>
+<td>Embeddings</td>
+<td>all-MiniLM-L6-v2</td>
+<td>Lightweight (384 dims), free, good quality</td>
+</tr>
+<tr>
+<td>NLP</td>
+<td>spaCy + LangChain</td>
+<td>Entity extraction + LLM orchestration</td>
+</tr>
+<tr>
+<td>LLM</td>
+<td>Google Gemini + Ollama</td>
+<td>Hybrid approach for API quality and local privacy</td>
+</tr>
+<tr>
+<td>Frontend</td>
+<td>React + Vite + Cytoscape.js</td>
+<td>Fast interactive graph visualization with Neon-Glass CSS</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>❓ Expected Questions &amp; Answers</h2>
+<h3>Q1: What is RAG?</h3>
+<p><strong>A:</strong> RAG stands for <strong>Retrieval-Augmented Generation</strong>. Instead of the AI making up answers, we first <em>retrieve</em> relevant text from our database, then <em>augment</em> the AI's prompt with that context, so it <em>generates</em> answers based on actual paper content — not hallucinations.</p>
+<h3>Q2: What is GraphRAG? How is it different from normal RAG?</h3>
+<p><strong>A:</strong> Normal RAG only does text similarity search — it finds chunks of text that <em>sound similar</em> to your question. GraphRAG adds a second layer: it also searches the <strong>knowledge graph</strong> for related concepts and relationships. So if you ask about "BERT for sentiment analysis," normal RAG finds text mentioning those words, but GraphRAG also pulls in that BERT is connected to Transformer, which is connected to other papers — giving richer context.</p>
+<h3>Q3: Why two databases? Why not just one?</h3>
+<p><strong>A:</strong> They solve different problems:
+- <strong>Qdrant (Vector DB)</strong> answers: <em>"What text is semantically similar to my question?"</em>
+- <strong>Neo4j (Graph DB)</strong> answers: <em>"What concepts are connected to each other?"</em></p>
+<p>Combining both gives us the best of both worlds. Text search alone misses relationships. Graph search alone misses nuance in language.</p>
+<h3>Q4: What is a Knowledge Graph?</h3>
+<p><strong>A:</strong> It's a network of <strong>nodes</strong> (things like papers, models, datasets) connected by <strong>edges</strong> (relationships like "uses," "evaluated on," "compared with"). Think of it like a mind map that the system builds automatically from the papers you upload.</p>
+<h3>Q5: How do you extract entities from papers?</h3>
+<p><strong>A:</strong> We use a <strong>hybrid approach</strong>:
+1. <strong>spaCy NER</strong> — a pre-trained NLP model that identifies names, organizations, products
+2. <strong>LLM-based extraction</strong> — we send the text to Gemini with a structured prompt asking it to extract models, methods, datasets, and tasks as JSON</p>
+<p>The combination catches more entities than either approach alone.</p>
+<h3>Q6: What are the three agents? Why do you need them?</h3>
+<p><strong>A:</strong>
+- <strong>Literature Agent</strong> — Given a topic, it finds related papers and explains how they connect. Like a smart literature review assistant.
+- <strong>Contradiction Agent</strong> — It finds papers that study the same thing but reach different conclusions. Researchers need to know about conflicting results.
+- <strong>Experiment Agent</strong> — It looks for <em>missing edges</em> in the graph. If Model X has been applied to Dataset A and B, but never to Dataset C, it suggests that as a potential experiment.</p>
+<p>They are separate because each requires a different reasoning strategy.</p>
+<h3>Q7: What embedding model are you using and why?</h3>
+<p><strong>A:</strong> <code>all-MiniLM-L6-v2</code> from Sentence Transformers. It generates 384-dimensional vectors. We chose it because:
+- It's <strong>free and open-source</strong>
+- It's <strong>small</strong> (~80 MB) so it runs fast even without a GPU
+- It's <strong>well-tested</strong> for semantic similarity tasks
+- For a college project, it gives excellent quality without needing paid APIs</p>
+<h3>Q8: How is this different from ChatGPT or Perplexity?</h3>
+<p><strong>A:</strong> ChatGPT doesn't have your specific papers. It can hallucinate. It treats each question independently.
+ResearchNode:
+- Works on <strong>your uploaded papers</strong> specifically
+- Builds a <strong>persistent knowledge graph</strong> that grows as you add papers
+- Gives <strong>citations</strong> pointing to exact sources
+- Detects <strong>contradictions and gaps</strong> across papers — ChatGPT cannot do this</p>
+<h3>Q9: What is Cypher? Why Neo4j?</h3>
+<p><strong>A:</strong> Cypher is Neo4j's query language for graph databases. It's like SQL but for graphs. Example:</p>
+<pre><code>MATCH (p:Paper)-[:USES]-&gt;(m:Model)
+WHERE m.name = &quot;BERT&quot;
+RETURN p.title
+</code></pre>
+<p>This finds all papers that use BERT. We chose Neo4j because it's the most popular graph database, has great Python support, and Cypher is very readable.</p>
+<h3>Q10: What are the limitations of your project?</h3>
+<p><strong>A:</strong> <em>(Always be honest about limitations — judges respect this)</em>
+- Entity extraction isn't 100% accurate — the LLM can miss or misclassify entities
+- Works best with well-structured ML/AI papers; may struggle with other domains
+- Requires Neo4j and Qdrant to be running locally (not cloud-deployed yet)
+- The knowledge graph quality depends on the number of papers uploaded — needs at least 3–5 papers to show meaningful connections
+- Currently English-only</p>
+<h3>Q11: What is the future scope?</h3>
+<p><strong>A:</strong>
+- Real-time paper ingestion from arXiv and PubMed APIs
+- Multi-user collaborative workspaces
+- Fine-tuned domain-specific models for better entity extraction
+- Integration with reference managers like Zotero
+- Cloud deployment for public access</p>
+<h3>Q12: What is cosine similarity?</h3>
+<p><strong>A:</strong> It measures how similar two vectors are by calculating the cosine of the angle between them. Score ranges from 0 (completely different) to 1 (identical). We use it to find text chunks whose embeddings are closest to the question's embedding.</p>
+<h3>Q13: Why did you add PostgreSQL? Don't you have enough databases?</h3>
+<p><strong>A:</strong> Neo4j is for relationships. Qdrant is for semantic search. But we needed a reliable way to store standard relational data — like user chat session history and custom text annotations on graph nodes. PostgreSQL (hosted on Neon) handles this traditional CRUD data perfectly, allowing users to return to their previous research sessions.</p>
+<hr />
+<h2>💡 Tips for the Presentation</h2>
+<ol>
+<li><strong>Start with the problem, not the tech</strong> — "Researchers are drowning in papers..."</li>
+<li><strong>Show the demo</strong> — A live working demo beats any slide</li>
+<li><strong>Use the graph visual</strong> — The knowledge graph is your most impressive visual element</li>
+<li><strong>Admit limitations honestly</strong> — Judges respect self-awareness</li>
+<li><strong>Know your tech stack</strong> — Be ready to explain <em>why</em> you chose each technology</li>
+<li><strong>Don't memorize — understand</strong> — If you understand the flow (PDF → Extract → Embed → Graph → Query → Answer), you can answer any question</li>
+</ol>
+<hr />
+<p><em>Good luck! 🚀</em></p>
+<hr class='page-break'>
+    </div>
+</body>
+</html>

@@ -78,8 +78,8 @@ async def detailed_health():
         result["services"]["qdrant"] = {
             "status": "connected",
             "collection": settings.qdrant_collection,
-            "vectors_count": info.vectors_count,
-            "points_count": info.points_count,
+            "vectors_count": getattr(info, "vectors_count", getattr(info, "points_count", 0)),
+            "points_count": getattr(info, "points_count", 0),
         }
     except Exception as e:
         result["services"]["qdrant"] = {"status": "disconnected", "error": str(e)}

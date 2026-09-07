@@ -28,3 +28,12 @@ papers/*.pdf
 
 # Obsidian
 .obsidian/
+
+# Database files
+database/chat_history.db
+database/feedback.json
+database/qdrant_storage/
+
+# Temp scripts
+ppt_dump.txt
+ppt_verify.txt

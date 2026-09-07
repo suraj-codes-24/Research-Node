@@ -14,6 +14,9 @@ from backend.api.feedback import router as feedback_router
 from backend.api.health import router as health_router
 from backend.api.query import router as query_router
 from backend.api.upload import router as upload_router
+from backend.api.sessions import router as sessions_router
+from backend.api.nodes import router as nodes_router
+from backend.api.sessions import init_db
 from backend.config import settings
 
 
@@ -29,6 +32,9 @@ async def lifespan(app: FastAPI):
     settings.papers_dir.mkdir(parents=True, exist_ok=True)
     print(f"Papers directory: {settings.papers_dir}")
     print(f"{settings.app_name} v{settings.app_version} starting...")
+    
+    # Initialize PostgreSQL database for sessions
+    init_db()
 
     yield  # App runs here
 
@@ -55,6 +61,8 @@ app.add_middleware(
 # Include API routers
 app.include_router(upload_router)
 app.include_router(query_router)
+app.include_router(sessions_router)
+app.include_router(nodes_router)
 app.include_router(feedback_router)
 app.include_router(health_router)
 

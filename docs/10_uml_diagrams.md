@@ -139,6 +139,19 @@ classDiagram
         +run() dict
     }
 
+    class SessionManager {
+        -db: psycopg2.Connection
+        +create_session(title: str) str
+        +get_session_messages(session_id: str) list
+        +save_message(session_id, role, content) None
+    }
+
+    class NodeAnnotationManager {
+        -db: psycopg2.Connection
+        +get_annotations(node_id: str) dict
+        +save_annotations(node_id, notes, ai_summary) None
+    }
+
     PDFExtractor --> TextCleaner : sends raw text
     TextCleaner --> TextChunker : sends clean text
     TextChunker --> EmbeddingGenerator : sends chunks
@@ -362,7 +375,38 @@ erDiagram
 
 ---
 
-## 7. Component Diagram
+## 7. Entity-Relationship Diagram (PostgreSQL Schema)
+
+```mermaid
+erDiagram
+    SESSIONS {
+        uuid id PK
+        string title
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    MESSAGES {
+        int id PK
+        uuid session_id FK
+        string role
+        string content
+        timestamp created_at
+    }
+
+    NODE_ANNOTATIONS {
+        string node_id PK
+        string notes
+        string ai_summary
+        timestamp updated_at
+    }
+
+    SESSIONS ||--o{ MESSAGES : "contains"
+```
+
+---
+
+## 8. Component Diagram
 
 ```mermaid
 graph TB
@@ -373,6 +417,8 @@ graph TB
             Upload["Upload Component"]
             Chat["Chat Component"]
             GraphViz["Graph Visualization Component"]
+            Compare["Compare (Venn) Component"]
+            SplitView["Split-View PDF Component"]
         end
     end
 
@@ -396,6 +442,7 @@ graph TB
     subgraph "Data Tier"
         Neo4j["Neo4j Graph DB"]
         Qdrant["Qdrant Vector DB"]
+        Postgres["PostgreSQL (Neon DB)"]
         FileStore["File System"]
     end
 
@@ -426,7 +473,7 @@ graph TB
 
 ---
 
-## 8. Deployment Diagram
+## 9. Deployment Diagram
 
 ```mermaid
 graph TB
@@ -452,13 +499,15 @@ graph TB
         end
     end
 
-    subgraph "External"
+    subgraph "Cloud Services"
         GeminiAPI["Google Gemini API"]
+        NeonDB["Neon PostgreSQL (Serverless)"]
     end
 
     ReactApp --> FastAPI
     FastAPI --> Neo4jDB
     FastAPI --> QdrantDB
+    FastAPI --> NeonDB
     FastAPI --> GeminiAPI
     FastAPI --> OllamaOpt
 ```

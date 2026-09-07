@@ -19,6 +19,7 @@ Endpoints:
 """
 
 import json
+import uuid
 
 import ollama
 from fastapi import APIRouter, HTTPException
@@ -30,6 +31,7 @@ from backend.config import settings
 from backend.graph.neo4j_service import get_neo4j_service
 from backend.rag.generator import AnswerGenerator
 from backend.rag.retriever import HybridRetriever
+from backend.api.sessions import get_db_connection
 
 router = APIRouter(prefix="/api", tags=["Query & Agents"])
 
@@ -61,6 +63,7 @@ class ConversationTurn(BaseModel):
 
 class QueryRequest(BaseModel):
     question: str
+    session_id: str | None = None
     conversation_history: list[ConversationTurn] | None = None
 
 
@@ -82,30 +85,96 @@ async def ask_question(request: QueryRequest):
         
         # We need a synchronous wrapper to yield the context immediately, then the stream
         async def stream_generator():
-            # Initial retrieval step (simulated progress)
-            yield f"data: {json.dumps({'type': 'status', 'content': 'Rewriting query...'})}\n\n"
-            context = retriever.retrieve(request.question)
+            full_answer = ""
+            final_metadata = {}
             
-            if not context["vector_chunks"]:
-                final_data = {
-                    'type': 'done',
-                    'answer': "No relevant papers found. Please upload research papers first, then ask your question.",
-                    'citations': [],
-                    'validation': {"grounded": False, "grounding_score": 0, "unsupported_claims": []},
-                    'graph_context': None
-                }
-                yield f"data: {json.dumps(final_data)}\n\n"
-                return
+            try:
+                # Initial retrieval step (simulated progress)
+                yield f"data: {json.dumps({'type': 'status', 'content': 'Rewriting query...'})}\n\n"
+                context = await retriever.retrieve(request.question, session_id=request.session_id)
+                
+                if not context["vector_chunks"]:
+                    full_answer = "No relevant papers found. Please upload research papers first, then ask your question."
+                    final_metadata = {
+                        'validation': {"grounded": False, "grounding_score": 0, "unsupported_claims": []},
+                        'citations': [],
+                        'confidence': 'Low',
+                        'graph_context': None
+                    }
+                    yield f"data: {json.dumps({'type': 'done', 'answer': full_answer, **final_metadata})}\n\n"
+                    return
 
-            history = None
-            if request.conversation_history:
-                history = [{"question": t.question, "answer": t.answer} for t in request.conversation_history]
+                history = []
+                
+                # If session_id is provided, load from SQLite
+                if request.session_id:
+                    conn = get_db_connection()
+                    try:
+                        cursor = conn.cursor()
+                        # Fetch last 10 messages for context (5 turns)
+                        cursor.execute(
+                            "SELECT role, content FROM messages WHERE session_id = %s ORDER BY created_at ASC LIMIT 10", 
+                            (request.session_id,)
+                        )
+                        rows = cursor.fetchall()
+                        # Convert to Q/A pairs
+                        for i in range(0, len(rows) - 1, 2):
+                            if rows[i]['role'] == 'user' and rows[i+1]['role'] == 'assistant':
+                                history.append({"question": rows[i]['content'], "answer": rows[i+1]['content']})
+                    finally:
+                        conn.close()
+                # Fallback to manual history
+                elif request.conversation_history:
+                    history = [{"question": t.question, "answer": t.answer} for t in request.conversation_history]
 
-            yield f"data: {json.dumps({'type': 'status', 'content': 'Generating response...', 'rewritten_query': context.get('rewritten_query'), 'chunks_used': len(context['vector_chunks']), 'retrieval_stats': context.get('retrieval_stats', {})})}\n\n"
+                yield f"data: {json.dumps({'type': 'status', 'content': 'Generating response...', 'rewritten_query': context.get('rewritten_query'), 'chunks_used': len(context['vector_chunks']), 'retrieval_stats': context.get('retrieval_stats', {})})}\n\n"
 
-            generator = _get_generator()
-            for chunk in generator.generate_stream(request.question, context, conversation_history=history):
-                yield chunk
+                generator = _get_generator()
+                
+                for chunk in generator.generate_stream(request.question, context, conversation_history=history):
+                    # We need to capture the full answer and metadata to save it to SQLite
+                    if chunk.startswith("data: "):
+                        try:
+                            data = json.loads(chunk.replace("data: ", "", 1).strip())
+                            if data.get("type") == "token":
+                                full_answer += data.get("content", "")
+                            elif data.get("type") == "done":
+                                final_metadata = data
+                        except:
+                            pass
+                    yield chunk
+            
+            finally:
+                # After generation is complete (or cancelled/returned early), save to DB if session_id exists
+                if request.session_id and full_answer:
+                    conn = get_db_connection()
+                    try:
+                        cursor = conn.cursor()
+                        # Save User Message
+                        cursor.execute(
+                            "INSERT INTO messages (id, session_id, role, content, citations_json, metadata_json) VALUES (%s, %s, %s, %s, %s, %s)",
+                            (str(uuid.uuid4()), request.session_id, 'user', request.question, '[]', '{}')
+                        )
+                        # Save AI Message
+                        cursor.execute(
+                            "INSERT INTO messages (id, session_id, role, content, citations_json, metadata_json) VALUES (%s, %s, %s, %s, %s, %s)",
+                            (
+                                str(uuid.uuid4()), request.session_id, 'assistant', full_answer, 
+                                json.dumps(final_metadata.get('citations', [])),
+                                json.dumps({
+                                    'confidence': final_metadata.get('confidence'),
+                                    'validation': final_metadata.get('validation'),
+                                    'has_graph': bool(final_metadata.get('graph_context'))
+                                })
+                            )
+                        )
+                        # Update session timestamp
+                        cursor.execute("UPDATE sessions SET updated_at = CURRENT_TIMESTAMP WHERE id = %s", (request.session_id,))
+                        conn.commit()
+                    except Exception as e:
+                        print(f"Failed to save message to session DB: {e}")
+                    finally:
+                        conn.close()
 
         return StreamingResponse(stream_generator(), media_type="text/event-stream")
 
@@ -117,11 +186,11 @@ async def ask_question(request: QueryRequest):
 
 
 @router.get("/graph")
-async def get_full_graph():
-    """Get the full knowledge graph. Implemented in Phase D."""
+async def get_full_graph(session_id: str = None):
+    """Get the full knowledge graph. Filters by session_id if provided."""
     try:
         neo4j = get_neo4j_service()
-        graph_data = neo4j.get_full_graph()
+        graph_data = neo4j.get_full_graph(session_id)
         return {
             "nodes": graph_data["nodes"],
             "edges": graph_data["edges"],
@@ -145,6 +214,50 @@ async def get_paper_graph(paper_id: str):
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error retrieving subgraph: {e}")
+
+
+@router.post("/graph/predict")
+async def predict_graph_links():
+    """Predict 3 new relationships between disconnected nodes in the graph."""
+    try:
+        neo4j = get_neo4j_service()
+        graph_data = neo4j.get_full_graph()
+        
+        nodes = graph_data.get("nodes", [])
+        if len(nodes) < 2:
+            return {"suggestions": [], "message": "Not enough nodes in the graph to predict links."}
+            
+        # Format graph nodes for the prompt
+        node_summaries = []
+        for n in nodes[:50]:  # Limit to 50 nodes to avoid massive prompts
+            node_summaries.append(f"[{n.get('label', 'Entity')}] {n.get('id', 'Unknown')}")
+            
+        prompt = f"""
+        You are a graph analytics AI. Analyze this list of entities from a scientific knowledge graph.
+        
+        Entities:
+        {chr(10).join(node_summaries)}
+        
+        Suggest exactly 3 plausible, novel relationships between these entities that are NOT explicitly stated but logically make sense (e.g. Model X could be evaluated on Dataset Y, or Method A could improve Model B).
+        
+        Format your response ONLY as a JSON array of objects, like this:
+        [
+          {{"source": "Entity1", "target": "Entity2", "relationship": "COULD_IMPROVE", "rationale": "Why this makes sense"}}
+        ]
+        """
+        
+        client = ollama.Client(host=settings.ollama_host)
+        response = client.generate(model=settings.ollama_model, prompt=prompt, format='json')
+        
+        import json
+        try:
+            suggestions = json.loads(response.get("response", "[]"))
+        except:
+            suggestions = []
+            
+        return {"suggestions": suggestions}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error predicting links: {e}")
 
 
 @router.post("/agents/literature")
@@ -190,6 +303,23 @@ async def get_recommendations():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+
+@router.get("/compare")
+async def compare_papers(papers: str):
+    """Compare multiple papers. Comma-separated paper IDs."""
+    if not papers:
+        raise HTTPException(status_code=400, detail="No paper IDs provided.")
+        
+    paper_ids = [pid.strip() for pid in papers.split(",")]
+    if len(paper_ids) < 2:
+        raise HTTPException(status_code=400, detail="Provide at least 2 paper IDs to compare.")
+        
+    try:
+        neo4j = get_neo4j_service()
+        result = neo4j.compare_papers(paper_ids)
+        return result
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error comparing papers: {e}")
 
 class ExportRequest(BaseModel):
     conversation_history: list[ConversationTurn]
